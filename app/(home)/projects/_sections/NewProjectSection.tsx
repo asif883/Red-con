@@ -58,10 +58,10 @@ export default function NewProjectSection() {
                 type="button"
                 onClick={() => setActiveCategory(category)}
                 aria-pressed={isActive}
-                className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-200 sm:px-5 ${
+                className={`rounded-full  px-4 py-2 text-sm font-medium transition-colors duration-200 sm:px-5 ${
                   isActive
-                    ? "border-emerald-800 bg-emerald-800 text-white"
-                    : "border-slate-200 bg-white text-slate-700 hover:border-emerald-700 hover:text-emerald-800"
+                ? "bg-[#16A34A] text-white shadow-[0_4px_12px_rgba(22,163,74,0.2)]"
+                : "bg-transparent text-[rgba(255,255,255,0.70)] hover:text-white border border-[#fff3]"
                 }`}
               >
                 {category}
@@ -127,9 +127,9 @@ export default function NewProjectSection() {
                     {project.client}
                   </p>
 
-                  <h3 className="text-lg font-semibold leading-snug text-slate-50 transition-colors group-hover:text-slate-300 sm:text-xl">
-                    {project.title}
-                  </h3>
+                 <h3 className="line-clamp-2 text-lg font-semibold leading-snug text-slate-50 transition-colors group-hover:text-slate-300 sm:text-xl">
+                     {project.title}
+                 </h3>
 
                   <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-300">
                     {project.description}
@@ -168,7 +168,7 @@ export default function NewProjectSection() {
 
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-semibold text-emerald-800 transition-colors hover:text-emerald-950"
+                    className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-semibold text-[#16A34A] transition-colors "
                     aria-label={`View details for ${project.title}`}
                   >
                     View Details
