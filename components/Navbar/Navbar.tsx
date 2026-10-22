@@ -13,7 +13,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about-us" },
-    { name: "Services", href: "/services", hasDropdown: true },
+    { name: "Services", href: "/services", hasDropdown: false },
     { name: "Projects", href: "/projects" },
     { name: "Teams", href: "/teams" },
     { name: "Insights", href: "/insights" },
