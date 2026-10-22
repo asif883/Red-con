@@ -89,24 +89,16 @@ export default function NewProjectSection() {
                 key={project.id}
                 className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#03170B] bg-[#03170B] transition duration-300 hover:-translate-y-1  hover:shadow-xl hover:shadow-slate-900/5"
               >
-                <div className="relative flex aspect-[16/9] items-end overflow-hidden bg-gradient-to-br from-slate-800 via-slate-700 to-emerald-950 p-6">
-                  {project.image ? (
-                    // Use a real project image when one is supplied in product.ts.
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="absolute inset-0" aria-hidden="true">
-                      <div className="absolute -right-10 -top-16 h-48 w-48 rounded-full border border-white/15" />
-                      <div className="absolute -right-2 -top-8 h-32 w-32 rounded-full border border-white/15" />
-                      <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-t from-black/35 to-transparent" />
-                    </div>
-                  )}
+                <div className="relative aspect-[16/9] overflow-hidden bg-black">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={project.imageMain}
+                    alt={`${project.title} project view`}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-                  <div className="relative z-10 flex w-full items-end justify-between gap-3">
+                  <div className="absolute inset-x-3 bottom-3 z-10 flex items-end justify-between gap-3">
                     <span className="max-w-[75%] rounded-full border border-white/25 bg-black/20 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
                       {project.category}
                     </span>

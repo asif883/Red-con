@@ -12,18 +12,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const API_BASE_URL =
     process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:5000";
 
-  // Fallback image handling to protect the layout layout bounds
-  const mainFeatureImage = project.thumbnail
-    ? `${API_BASE_URL}${project.thumbnail}`
-    : "/images/projects/fallback-main.png";
-
-  const galleryImg1 = project.gallery?.[0]
-    ? `${API_BASE_URL}${project.gallery[0]}`
-    : "/images/projects/fallback-sub1.png";
-
-  const galleryImg2 = project.gallery?.[1]
-    ? `${API_BASE_URL}${project.gallery[1]}`
-    : "/images/projects/fallback-sub2.png";
+  const projectImage = project.thumbnail || project.gallery?.[0];
+  const mainFeatureImage = projectImage
+    ? projectImage.startsWith("http") || projectImage.startsWith("/images/")
+      ? projectImage
+      : `${API_BASE_URL.replace(/\/$/, "")}/${projectImage.replace(/^\//, "")}`
+    : "/images/projects/project1_1.png";
 
   return (
     <div className="w-full py-12 border-b border-neutral-800/50 last:border-b-0 flex flex-col gap-6 relative">
@@ -80,32 +74,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           />
         </div>
 
-        {/* Right Column: Dynamic Supporting Information Subgrid */}
+        {/* Right Column: Supporting project information */}
         <div className="w-full flex flex-col gap-5">
-          {/* Dual Sub-Images Split Array Layout */}
-          <div className="grid grid-cols-2 gap-4 w-full">
-            <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-neutral-900 bg-neutral-900">
-              <Image
-                src={galleryImg1}
-                alt={`${project.title} Context Workspace View A`}
-                fill
-                className="object-cover object-center"
-                sizes="(max-width: 1024px) 50vw, 350px"
-                unoptimized={process.env.NODE_ENV === "development"}
-              />
-            </div>
-            <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-neutral-900 bg-neutral-900">
-              <Image
-                src={galleryImg2}
-                alt={`${project.title} Context Workspace View B`}
-                fill
-                className="object-cover object-center"
-                sizes="(max-width: 1024px) 50vw, 350px"
-                unoptimized={process.env.NODE_ENV === "development"}
-              />
-            </div>
-          </div>
-
           {/* Description Copy Content Text */}
           <p className="text-white/70 text-sm sm:text-[16px] font-normal leading-[24px] opacity-95">
             {project.description ||

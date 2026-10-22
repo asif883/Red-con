@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 
 export interface ServiceData {
@@ -60,12 +61,12 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
               </button>
 
-              <button className="group/details inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.02] px-5 py-2.5 text-white text-[12px] font-semibold uppercase tracking-[0.08em] transition-all duration-300 hover:border-[#16A34A] hover:bg-[#16A34A]/10 cursor-pointer">
+              <Link href={`/services/${service.slug}`} className="group/details inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.02] px-5 py-2.5 text-white text-[12px] font-semibold uppercase tracking-[0.08em] transition-all duration-300 hover:border-[#16A34A] hover:bg-[#16A34A]/10">
                 <span>View Details</span>
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 transition-all duration-300 group-hover/details:bg-[#16A34A] group-hover/details:rotate-45">
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
 

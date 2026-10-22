@@ -19,7 +19,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-neutral-950 py-20 px-4 md:px-8 lg:px-16 flex items-center justify-center overflow-hidden min-h-screen">
+    <section id="contact" className="w-full bg-neutral-950 py-20 px-4 md:px-8 lg:px-16 flex items-center justify-center overflow-hidden min-h-screen">
       <div className="max-w-[1440px] w-full flex flex-col gap-12">
         {/* SECTION HEADER CONTENT */}
         <div className="flex flex-col items-center gap-4 text-center  ">
