@@ -98,7 +98,7 @@ export default function NewProjectSection() {
               htmlFor="project-category"
               className="mb-2 block text-sm font-medium text-slate-200"
             >
-              Filter by category
+              Filter by services
             </label>
 
             <div className="relative w-10/12 sm:w-80">

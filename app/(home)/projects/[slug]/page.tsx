@@ -21,7 +21,7 @@ function ProjectHero({
     <section className="relative ">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(22,163,74,0.12),_transparent_60%)]" />
 
-      <div className="relative mx-auto max-w-6xl px-5 pb-12 pt-28 sm:px-8 sm:pb-16 sm:pt-32">
+      <div className="relative mx-auto max-w-[1440px] px-5 pb-12 pt-28 sm:px-8 sm:pb-16 sm:pt-32">
         <Link
           href="/projects"
           className="group inline-flex items-center gap-2 text-sm text-white/60 transition hover:text-white"
@@ -30,7 +30,7 @@ function ProjectHero({
           All projects
         </Link>
 
-        <div className="mt-8 max-w-5xl">
+        <div className="mt-8 max-w-[1440px]">
           <div className="flex flex-wrap gap-2">
             {category && (
               <span className="rounded-full border border-[#16A34A]/30 bg-[#16A34A]/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-emerald-200">
@@ -60,7 +60,7 @@ function ProjectHero({
 /* ---------- COVER: small framed card ---------- */
 function ProjectCover({ cover, title }: { cover: string; title: string }) {
   return (
-    <div className="mx-auto max-w-6xl px-5 sm:px-8">
+    <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
       <div className="relative -mt-6 overflow-hidden rounded-2xl border border-white/10 bg-neutral-900 shadow-2xl shadow-black/50">
         <div className="relative aspect-[16/7] w-full">
           <Image
@@ -92,7 +92,7 @@ function ProjectGallery({
   if (validImages.length === 0) return null;
 
   return (
-    <section className="mt-16">
+    <section className="mt-16 ">
       <div className="mb-8">
         <h2 className="mt-2 text-2xl font-semibold text-white sm:text-3xl">
           Behind the Project
@@ -177,7 +177,7 @@ export default async function ProjectDetailsPage({
       <ProjectCover cover={project.imageMain} title={project.title} />
 
       {/* 3. Details */}
-      <div className="mx-auto max-w-6xl px-5 pb-20 pt-12 sm:px-8">
+      <div className="mx-auto max-w-[1440px] px-5 pb-20 pt-12 sm:px-8">
         {/* Info strip */}
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {details.map(({ icon: Icon, label, value }) => (
