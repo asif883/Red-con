@@ -39,7 +39,7 @@ interface ProjectState {
   updateCategory: (id: string, name: string) => Promise<{ success: boolean }>;
   deleteCategory: (id: string) => Promise<{ success: boolean }>;
 
-  fetchProjects: () => Promise<void>;
+  fetchProjects: (page?: number, limit?: number) => Promise<void>;
   createProject: (formData: FormData) => Promise<{ success: boolean }>;
   updateProject: (
     id: string,
