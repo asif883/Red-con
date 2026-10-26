@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, MapPin, Calendar, Tag, User } from "lucide-react";
 import Navbar from "@/components/Navbar/Navbar";
-import { projects as portfolioProjects, type Project } from "../_sections/project";
+import { projects as portfolioProjects } from "../_sections/project";
 
 /* ---------- HERO: text only, compact ---------- */
 function ProjectHero({
@@ -78,33 +78,58 @@ function ProjectCover({ cover, title }: { cover: string; title: string }) {
   );
 }
 
-/* ---------- GALLERY ---------- */
-function ProjectGallery({ title, images }: { title: string; images: string[] }) {
-  const validImages = images.filter(Boolean);
+function ProjectGallery({
+  title,
+  images,
+  steps,
+}: {
+  title: string;
+  images: string[];
+  steps: string[];
+}) {
+  const validImages = images.filter(Boolean).slice(0, 3);
+
   if (validImages.length === 0) return null;
 
   return (
-    <section className="mt-12">
-      <div className="mb-4 flex items-end justify-between">
-        <h2 className="text-lg font-semibold text-white">Project gallery</h2>
-        <span className="font-mono text-xs text-white/40">
-          {String(validImages.length).padStart(2, "0")} images
-        </span>
+    <section className="mt-16">
+      <div className="mb-8">
+        <h2 className="mt-2 text-2xl font-semibold text-white sm:text-3xl">
+          Behind the Project
+        </h2>
+
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-white/60">
+          Explore the key stages and visual highlights of {title}.
+        </p>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-3">
-        {validImages.slice(0, 3).map((image, index) => (
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+        {validImages.map((image, index) => (
           <div
             key={`${image}-${index}`}
-            className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10 bg-neutral-900"
+            className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] transition-colors duration-300 hover:border-[#16A34A]/30"
           >
-            <Image
-              src={image}
-              alt={`${title} — image ${index + 1}`}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 640px) 100vw, 33vw"
-            />
+            <div className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-900">
+              <Image
+                src={image}
+                alt={`${title} - ${steps[index] ?? `Step ${index + 1}`}`}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </div>
+
+            <div className="flex flex-col p-4 sm:p-5">
+              <span className="mb-[1px] shrink-0 font-mono text-xs tracking-wider text-[#16A34A]">
+                STEP {String(index + 1).padStart(2, "0")}
+              </span>
+
+              <h3 className="text-lg font-medium text-white">
+                {steps[index] ?? `Project Step ${index + 1}`}
+              </h3>
+            </div>
           </div>
         ))}
       </div>
@@ -203,7 +228,8 @@ export default async function ProjectDetailsPage({
         {/* Gallery */}
         <ProjectGallery
           title={project.title}
-          images={[project.imageMain, project.image2, project.image3]}
+          images={[project.stepImg1, project.stepImg2, project.stepImg3]}
+          steps={project.steps}
         />
       </div>
     </main>

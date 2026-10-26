@@ -1,7 +1,6 @@
 /**
  * REDCon Ltd. project portfolio data.
  * Source: REDCon_Project_Wise_Portfolio.docx supplied by the client.
- * Fields and wording are based on the source document. Demo images are assigned per project.
  */
 
 export type ProjectStatus = "Ongoing" | "Completed" | string;
@@ -16,48 +15,74 @@ export type Project = {
   status: ProjectStatus;
   startDate: string;
   endDate: string;
+
   imageMain: string;
-  image2: string;
-  image3: string;
+
+  stepImg1: string;
+  stepImg2: string;
+  stepImg3: string;
+
   description: string;
   scopeOfWork: string;
   engineeringHighlights: string;
+
+  steps: string[];
 };
 
 const projectRecords: Project[] = [
   {
     id: 1,
     slug: "feasibility-study-for-establishment-of-a-foreign-collaboration-and-advanced-research-cente",
-    title: "Feasibility study for establishment of a foreign Collaboration and advanced Research Center at MIST",
+    title:
+      "Feasibility study for establishment of a foreign Collaboration and advanced Research Center at MIST",
     category: "Feasibility Study / Planning",
     client: "Military Institute of science and Technology",
     location: "Dhaka",
     status: "Ongoing",
     startDate: "17/06/2026",
     endDate: "Ongoing",
-    imageMain: "/images/projects/project1_1.png",
-    image2: "/images/projects/project1_2.png",
-    image3: "/images/projects/project1_3.png",
-    description: "The assignment supports planning for a proposed Foreign Collaboration and Advanced Research Center at MIST, assessing the project concept, requirements, implementation considerations and overall feasibility.",
-    scopeOfWork: "Review the project concept and institutional requirements; assess site, functional, infrastructure and implementation needs; identify key technical considerations; and develop recommendations to support investment and decision-making.",
-    engineeringHighlights: "Integrated feasibility planning for an advanced research facility, with emphasis on functional requirements, infrastructure interfaces, site considerations, implementation strategy and engineering viability.",
+    imageMain: "/images/projects/project-1-img-3.jpg",
+    stepImg1: "/images/projects/project-1-img-1.jpg",
+    stepImg2: "/images/projects/project-1-img-2.jpg",
+    stepImg3: "/images/projects/project-1-img-3.jpg",
+    steps: [
+      "Project Area Map",
+      "Noise Level Measurement",
+      "Final Implementation",
+    ],
+    description:
+      "The assignment supports planning for a proposed Foreign Collaboration and Advanced Research Center at MIST, assessing the project concept, requirements, implementation considerations and overall feasibility.",
+    scopeOfWork:
+      "Review the project concept and institutional requirements; assess site, functional, infrastructure and implementation needs; identify key technical considerations; and develop recommendations to support investment and decision-making.",
+    engineeringHighlights:
+      "Integrated feasibility planning for an advanced research facility, with emphasis on functional requirements, infrastructure interfaces, site considerations, implementation strategy and engineering viability.",
   },
   {
     id: 2,
     slug: "environmental-monitoring-environmental-monitoring-report-of-implementing-improving-urban-g",
-    title: "Environmental Monitoring Environmental Monitoring Report of Implementing Improving Urban Governance & Infrastructure Program for Package \"UT+DR-01\" Post construction phase",
+    title:
+      'Environmental Monitoring Environmental Monitoring Report of Implementing Improving Urban Governance & Infrastructure Program for Package "UT+DR-01" Post construction phase',
     category: "Environmental & Social / Environmental Monitoring",
     client: "LGED",
     location: "Chadpur",
     status: "Ongoing",
     startDate: "02/06/2026",
     endDate: "Ongoing",
-    imageMain: "/images/projects/project2_1.png",
-    image2: "/images/projects/project2_2.png",
-    image3: "/images/projects/project2_3.png",
-    description: "The assignment provides post-construction environmental monitoring for Package UT+DR-01 under the Improving Urban Governance & Infrastructure Program, documenting environmental performance and compliance during the post-construction phase.",
-    scopeOfWork: "Conduct environmental monitoring; review implementation against applicable environmental requirements; identify impacts or non-compliances; document mitigation measures; and prepare monitoring findings and recommendations.",
-    engineeringHighlights: "Structured post-construction monitoring, environmental compliance review, field verification, impact identification and evidence-based corrective recommendations.",
+    imageMain: "/images/projects/project-2-img-3.jpg",
+    stepImg1: "/images/projects/project-2-img-1.jpg",
+    stepImg2: "/images/projects/project-2-img-2.jpg",
+    stepImg3: "/images/projects/project-2-img-3.jpg",
+    steps: [
+      "Environmental Site Assessment",
+      "Post-Construction Monitoring",
+      "Monitoring Report & Recommendations",
+    ],
+    description:
+      "The assignment provides post-construction environmental monitoring for Package UT+DR-01 under the Improving Urban Governance & Infrastructure Program, documenting environmental performance and compliance during the post-construction phase.",
+    scopeOfWork:
+      "Conduct environmental monitoring; review implementation against applicable environmental requirements; identify impacts or non-compliances; document mitigation measures; and prepare monitoring findings and recommendations.",
+    engineeringHighlights:
+      "Structured post-construction monitoring, environmental compliance review, field verification, impact identification and evidence-based corrective recommendations.",
   },
   {
     id: 3,
@@ -69,12 +94,22 @@ const projectRecords: Project[] = [
     status: "Ongoing",
     startDate: "07/06/2026",
     endDate: "Ongoing",
-    imageMain: "/images/projects/project3_1.png",
-    image2: "/images/projects/project3_2.png",
-    image3: "/images/projects/project3_3.png",
-    description: "The project examines the feasibility of upgrading the Lalmonirhat–Barobari to Burimari N509 highway corridor, considering technical, operational, economic and implementation requirements.",
-    scopeOfWork: "Assess existing road conditions and corridor needs; review alignment and traffic considerations; identify improvement options; evaluate engineering and implementation constraints; and prepare feasibility recommendations.",
-    engineeringHighlights: "Highway corridor assessment with emphasis on alignment, geometric considerations, road condition, safety, traffic functionality and constructability.",
+    imageMain: "/images/projects/project-3-img-3.jpg",
+
+    stepImg1: "/images/projects/project-3-img-1.jpg",
+    stepImg2: "/images/projects/project-3-img-2.jpg",
+    stepImg3: "/images/projects/project-3-img-3.jpg",
+    steps: [
+      "Highway Corridor Assessment",
+      "Engineering Feasibility Analysis",
+      "Development Recommendations",
+    ],
+    description:
+      "The project examines the feasibility of upgrading the Lalmonirhat–Barobari to Burimari N509 highway corridor, considering technical, operational, economic and implementation requirements.",
+    scopeOfWork:
+      "Assess existing road conditions and corridor needs; review alignment and traffic considerations; identify improvement options; evaluate engineering and implementation constraints; and prepare feasibility recommendations.",
+    engineeringHighlights:
+      "Highway corridor assessment with emphasis on alignment, geometric considerations, road condition, safety, traffic functionality and constructability.",
   },
   {
     id: 4,
@@ -86,63 +121,106 @@ const projectRecords: Project[] = [
     status: "Ongoing",
     startDate: "11/03/2026",
     endDate: "Ongoing",
-    imageMain: "/images/projects/project1_1.png",
-    image2: "/images/projects/project1_2.png",
-    image3: "/images/projects/project1_3.png",
-    description: "The preparatory survey supports development of a Health System Strengthening Project in Dhaka and Narshingdi, establishing the technical and implementation basis for the proposed intervention.",
-    scopeOfWork: "Review sector and facility requirements; assess existing conditions and gaps; consult relevant stakeholders; identify infrastructure and service needs; and support formulation of project components and implementation arrangements.",
-    engineeringHighlights: "Multi-stakeholder preparatory assessment integrating facility needs, infrastructure requirements, implementation planning and field-based technical verification.",
+    imageMain: "/images/projects/project-4-img-3.png",
+
+    stepImg1: "/images/projects/project-4-img-1.jpg",
+    stepImg2: "/images/projects/project-4-img-2.jpg",
+    stepImg3: "/images/projects/project-4-img-3.png",
+    steps: [
+      "Healthcare Needs Assessment",
+      "Facility & Infrastructure Review",
+      "Project Planning & Recommendations",
+    ],
+    description:
+      "The preparatory survey supports development of a Health System Strengthening Project in Dhaka and Narshingdi, establishing the technical and implementation basis for the proposed intervention.",
+    scopeOfWork:
+      "Review sector and facility requirements; assess existing conditions and gaps; consult relevant stakeholders; identify infrastructure and service needs; and support formulation of project components and implementation arrangements.",
+    engineeringHighlights:
+      "Multi-stakeholder preparatory assessment integrating facility needs, infrastructure requirements, implementation planning and field-based technical verification.",
   },
   {
     id: 5,
     slug: "feasibility-study-initial-environmental-examination-of-upward-expansion-of-existing-infras",
-    title: "Feasibility Study & Initial Environmental Examination of Upward Expansion of Existing Infrastructures Located in Different Locations of Bangladesh Coast Guard.",
+    title:
+      "Feasibility Study & Initial Environmental Examination of Upward Expansion of Existing Infrastructures Located in Different Locations of Bangladesh Coast Guard.",
     category: "Environmental & Social / Environmental Monitoring",
     client: "BCG",
     location: "Bhola, Mongla & Chittagong",
     status: "Ongoing",
     startDate: "15/01/2026",
     endDate: "Ongoing",
-    imageMain: "/images/projects/project2_1.png",
-    image2: "/images/projects/project2_2.png",
-    image3: "/images/projects/project2_3.png",
-    description: "The assignment assesses the feasibility and environmental implications of upward expansion of existing Bangladesh Coast Guard infrastructure at selected coastal locations.",
-    scopeOfWork: "Assess existing facilities and expansion requirements; review site and structural/infrastructure considerations; identify environmental risks; undertake Initial Environmental Examination inputs; and recommend feasible development options.",
-    engineeringHighlights: "Multi-location feasibility assessment combining infrastructure expansion planning, site appraisal, environmental screening and implementation considerations.",
+    imageMain: "/images/projects/project-5-img-3.png",
+
+    stepImg1: "/images/projects/project-5-img-1.png",
+    stepImg2: "/images/projects/project-5-img-2.png",
+    stepImg3: "/images/projects/project-5-img-3.png",
+    steps: [
+      "Existing Infrastructure Assessment",
+      "Environmental Examination",
+      "Expansion Feasibility & Planning",
+    ],
+    description:
+      "The assignment assesses the feasibility and environmental implications of upward expansion of existing Bangladesh Coast Guard infrastructure at selected coastal locations.",
+    scopeOfWork:
+      "Assess existing facilities and expansion requirements; review site and structural/infrastructure considerations; identify environmental risks; undertake Initial Environmental Examination inputs; and recommend feasible development options.",
+    engineeringHighlights:
+      "Multi-location feasibility assessment combining infrastructure expansion planning, site appraisal, environmental screening and implementation considerations.",
   },
   {
     id: 6,
     slug: "feasibility-study-of-proposed-2-two-storied-acoc-building-for-technical-gate-4-at-baf-base",
-    title: "Feasibility Study of Proposed 2 (Two) Storied ACOC Building for (Technical Gate-4) At BAF Base Kurmitola",
+    title:
+      "Feasibility Study of Proposed 2 (Two) Storied ACOC Building for (Technical Gate-4) At BAF Base Kurmitola",
     category: "Feasibility Study / Planning",
     client: "BAF",
     location: "Dhaka",
     status: "Ongoing",
     startDate: "01/01/2026",
     endDate: "Ongoing",
-    imageMain: "/images/projects/project3_1.png",
-    image2: "/images/projects/project3_2.png",
-    image3: "/images/projects/project3_3.png",
-    description: "The project evaluates the feasibility of constructing a proposed two-storey ACOC Building at Technical Gate-4 of BAF Base Kurmitola, Dhaka.",
-    scopeOfWork: "Assess site and functional requirements; review architectural and engineering needs; identify utility and access requirements; evaluate construction feasibility; and provide recommendations for implementation.",
-    engineeringHighlights: "Building feasibility planning with focus on functional layout, site constraints, structural/infrastructure requirements, utilities, access and constructability.",
+    imageMain: "/images/projects/project-6-img-3.png",
+
+    stepImg1: "/images/projects/project-6-img-1.png",
+    stepImg2: "/images/projects/project-6-img-2.png",
+    stepImg3: "/images/projects/project-6-img-3.png",
+    steps: [
+      "Site & Functional Assessment",
+      "Building Engineering Review",
+      "Construction Feasibility",
+    ],
+    description:
+      "The project evaluates the feasibility of constructing a proposed two-storey ACOC Building at Technical Gate-4 of BAF Base Kurmitola, Dhaka.",
+    scopeOfWork:
+      "Assess site and functional requirements; review architectural and engineering needs; identify utility and access requirements; evaluate construction feasibility; and provide recommendations for implementation.",
+    engineeringHighlights:
+      "Building feasibility planning with focus on functional layout, site constraints, structural/infrastructure requirements, utilities, access and constructability.",
   },
   {
     id: 7,
     slug: "feasibility-study-of-1-52-b-type-quarter-14-storey-with-14-storied-foundation-shaheenbagh",
-    title: "Feasibility Study of 1 × 52 B-Type Quarter (14-storey with 14-storied foundation) Shaheenbagh (BAF Base Bashar), Tejgaon",
+    title:
+      "Feasibility Study of 1 × 52 B-Type Quarter (14-storey with 14-storied foundation) Shaheenbagh (BAF Base Bashar), Tejgaon",
     category: "Feasibility Study / Planning",
     client: "BAF",
     location: "Dhaka",
     status: "Ongoing",
     startDate: "05/11/2025",
     endDate: "Ongoing",
-    imageMain: "/images/projects/project1_1.png",
-    image2: "/images/projects/project1_2.png",
-    image3: "/images/projects/project1_3.png",
-    description: "The assignment assesses the feasibility of a 14-storey B-Type residential quarter with a 14-storey foundation at Shaheenbagh, BAF Base Bashar, Tejgaon.",
-    scopeOfWork: "Assess site conditions and residential requirements; review planning, structural and utility needs; identify foundation and vertical-development considerations; and develop feasibility recommendations.",
-    engineeringHighlights: "High-rise residential feasibility with emphasis on foundation strategy, structural planning, vertical circulation, utilities, site constraints and construction feasibility.",
+    imageMain: "/images/projects/project-7-img-3.png",
+
+    stepImg1: "/images/projects/project-7-img-1.png",
+    stepImg2: "/images/projects/project-7-img-2.png",
+    stepImg3: "/images/projects/project-7-img-3.png",
+    steps: [
+      "Residential Site Assessment",
+      "Structural & Foundation Feasibility",
+      "High-Rise Development Planning",
+    ],
+    description:
+      "The assignment assesses the feasibility of a 14-storey B-Type residential quarter with a 14-storey foundation at Shaheenbagh, BAF Base Bashar, Tejgaon.",
+    scopeOfWork:
+      "Assess site conditions and residential requirements; review planning, structural and utility needs; identify foundation and vertical-development considerations; and develop feasibility recommendations.",
+    engineeringHighlights:
+      "High-rise residential feasibility with emphasis on foundation strategy, structural planning, vertical circulation, utilities, site constraints and construction feasibility.",
   },
   {
     id: 8,
@@ -154,12 +232,22 @@ const projectRecords: Project[] = [
     status: "Completed",
     startDate: "Not specified",
     endDate: "Not specified",
-    imageMain: "/images/projects/project2_1.png",
-    image2: "/images/projects/project2_2.png",
-    image3: "/images/projects/project2_3.png",
-    description: "The project covers interior design planning for the dining and living areas of a private residence in Dhaka, focusing on functional use, aesthetics and coordinated interior solutions.",
-    scopeOfWork: "Develop space planning and interior concepts; coordinate finishes, furniture and lighting requirements; optimize circulation and functionality; and provide design guidance for implementation.",
-    engineeringHighlights: "Space optimization, interior detailing, material coordination, lighting considerations and practical constructability for residential interiors.",
+    imageMain: "/images/projects/project-8-img-3.png",
+
+    stepImg1: "/images/projects/project-8-img-1.png",
+    stepImg2: "/images/projects/project-8-img-2.png",
+    stepImg3: "/images/projects/project-8-img-3.png",
+    steps: [
+      "Space Planning & Interior Concept",
+      "Material, Furniture & Lighting Selection",
+      "Interior Design Implementation",
+    ],
+    description:
+      "The project covers interior design planning for the dining and living areas of a private residence in Dhaka, focusing on functional use, aesthetics and coordinated interior solutions.",
+    scopeOfWork:
+      "Develop space planning and interior concepts; coordinate finishes, furniture and lighting requirements; optimize circulation and functionality; and provide design guidance for implementation.",
+    engineeringHighlights:
+      "Space optimization, interior detailing, material coordination, lighting considerations and practical constructability for residential interiors.",
   },
   {
     id: 9,
@@ -171,165 +259,274 @@ const projectRecords: Project[] = [
     status: "Completed",
     startDate: "16/06/2025",
     endDate: "31/10/2025",
-    imageMain: "/images/projects/project3_1.png",
-    image2: "/images/projects/project3_2.png",
-    image3: "/images/projects/project3_3.png",
-    description: "The assignment provides post-environmental impact assessment of RO water purification points in Satkhira, reviewing environmental conditions, water-quality-related considerations and operational impacts.",
-    scopeOfWork: "Assess environmental conditions around RO points; review water, soil and operational considerations; identify environmental risks and mitigation needs; and document findings with recommendations for sustainable operation.",
-    engineeringHighlights: "Field-based environmental assessment covering water-quality parameters, site conditions, soil considerations, operational impacts and mitigation planning.",
+    imageMain: "/images/projects/project-9-img-3.png",
+
+    stepImg1: "/images/projects/project-9-img-1.png",
+    stepImg2: "/images/projects/project-9-img-2.png",
+    stepImg3: "/images/projects/project-9-img-3.png",
+    steps: [
+      "RO Point Site Assessment",
+      "Environmental Impact Evaluation",
+      "Assessment Findings & Mitigation",
+    ],
+    description:
+      "The assignment provides post-environmental impact assessment of RO water purification points in Satkhira, reviewing environmental conditions, water-quality-related considerations and operational impacts.",
+    scopeOfWork:
+      "Assess environmental conditions around RO points; review water, soil and operational considerations; identify environmental risks and mitigation needs; and document findings with recommendations for sustainable operation.",
+    engineeringHighlights:
+      "Field-based environmental assessment covering water-quality parameters, site conditions, soil considerations, operational impacts and mitigation planning.",
   },
   {
     id: 10,
     slug: "road-safety-design-for-kalihati-gangair-brahmmashashon-dhanbari-and-modhupur-intersection",
-    title: "Road Safety Design for Kalihati, Gangair, Brahmmashashon, Dhanbari and Modhupur Intersection at N4 National Highway",
+    title:
+      "Road Safety Design for Kalihati, Gangair, Brahmmashashon, Dhanbari and Modhupur Intersection at N4 National Highway",
     category: "Road Safety Engineering",
     client: "RHD",
     location: "Tangail",
     status: "Completed",
     startDate: "01/06/2025",
     endDate: "31/01/2026",
-    imageMain: "/images/projects/project1_1.png",
-    image2: "/images/projects/project1_2.png",
-    image3: "/images/projects/project1_3.png",
-    description: "The project develops road safety design interventions for selected intersections along the N4 National Highway in Tangail to improve traffic safety and intersection performance.",
-    scopeOfWork: "Review existing intersection conditions; assess traffic and safety risks; undertake site verification; develop safety improvement concepts and design recommendations; and support implementation planning.",
-    engineeringHighlights: "Intersection safety engineering addressing geometry, traffic movement, visibility, channelization, pedestrian considerations and practical safety treatments.",
+    imageMain: "/images/projects/project-10-img-3.png",
+
+    stepImg1: "/images/projects/project-10-img-1.png",
+    stepImg2: "/images/projects/project-10-img-2.png",
+    stepImg3: "/images/projects/project-10-img-3.png",
+    steps: [
+      "Intersection & Traffic Assessment",
+      "Road Safety Risk Analysis",
+      "Safety Design Recommendations",
+    ],
+    description:
+      "The project develops road safety design interventions for selected intersections along the N4 National Highway in Tangail to improve traffic safety and intersection performance.",
+    scopeOfWork:
+      "Review existing intersection conditions; assess traffic and safety risks; undertake site verification; develop safety improvement concepts and design recommendations; and support implementation planning.",
+    engineeringHighlights:
+      "Intersection safety engineering addressing geometry, traffic movement, visibility, channelization, pedestrian considerations and practical safety treatments.",
   },
   {
     id: 11,
     slug: "topography-survey-for-kalihati-gangair-brahmmashashon-dhanbari-and-modhupur-intersection-a",
-    title: "Topography Survey for Kalihati, Gangair, Brahmmashashon, Dhanbari and Modhupur Intersection at N4 National Highway",
+    title:
+      "Topography Survey for Kalihati, Gangair, Brahmmashashon, Dhanbari and Modhupur Intersection at N4 National Highway",
     category: "Surveying & Geospatial Engineering",
     client: "RHD",
     location: "Tangail",
     status: "Completed",
     startDate: "01/06/2025",
     endDate: "31/01/2026",
-    imageMain: "/images/projects/project2_1.png",
-    image2: "/images/projects/project2_2.png",
-    image3: "/images/projects/project2_3.png",
-    description: "The assignment establishes accurate topographic information for selected N4 National Highway intersections in Tangail to support road safety design and engineering decision-making.",
-    scopeOfWork: "Carry out field survey and control establishment; capture terrain and existing features; process survey data; prepare digital topographic information; and provide survey outputs for engineering design.",
-    engineeringHighlights: "Survey control, detailed feature capture, digital terrain representation and engineering-grade topographic data for intersection improvement.",
+    imageMain: "/images/projects/project-11-img-3.png",
+
+    stepImg1: "/images/projects/project-11-img-1.png",
+    stepImg2: "/images/projects/project-11-img-2.png",
+    stepImg3: "/images/projects/project-11-img-3.png",
+    steps: [
+      "Survey Control & Field Preparation",
+      "Topographic Data Collection",
+      "Digital Mapping & Survey Outputs",
+    ],
+    description:
+      "The assignment establishes accurate topographic information for selected N4 National Highway intersections in Tangail to support road safety design and engineering decision-making.",
+    scopeOfWork:
+      "Carry out field survey and control establishment; capture terrain and existing features; process survey data; prepare digital topographic information; and provide survey outputs for engineering design.",
+    engineeringHighlights:
+      "Survey control, detailed feature capture, digital terrain representation and engineering-grade topographic data for intersection improvement.",
   },
   {
     id: 12,
     slug: "development-project-proposal-for-bangladesh-university-of-professionals-bup-foreign-studen",
-    title: "Development Project Proposal for Bangladesh University of Professionals (BUP) Foreign Students' Dormitory, Four Research Laboratories and Related Infrastructure Construction Project",
+    title:
+      "Development Project Proposal for Bangladesh University of Professionals (BUP) Foreign Students' Dormitory, Four Research Laboratories and Related Infrastructure Construction Project",
     category: "Building Design / Construction Supervision",
     client: "Vision Urbanization Ltd",
     location: "Dhaka",
     status: "Completed",
     startDate: "20/07/2024",
     endDate: "30/06/2025*",
-    imageMain: "/images/projects/project3_1.png",
-    image2: "/images/projects/project3_2.png",
-    image3: "/images/projects/project3_3.png",
-    description: "The assignment develops a project proposal for a Foreign Students' Dormitory, four research laboratories and associated infrastructure at Bangladesh University of Professionals.",
-    scopeOfWork: "Assess institutional requirements; define project components; review site and infrastructure needs; develop preliminary planning and implementation concepts; and support preparation of the development project proposal.",
-    engineeringHighlights: "Integrated campus infrastructure planning covering accommodation, research facilities, supporting utilities, circulation and implementation requirements.",
+     imageMain: "/images/projects/project-12-img-3.png",
+
+    stepImg1: "/images/projects/project-12-img-1.png",
+    stepImg2: "/images/projects/project-12-img-2.png",
+    stepImg3: "/images/projects/project-12-img-3.png",
+    steps: [
+      "Institutional Requirements Assessment",
+      "Campus Infrastructure Planning",
+      "Development Project Proposal",
+    ],
+    description:
+      "The assignment develops a project proposal for a Foreign Students' Dormitory, four research laboratories and associated infrastructure at Bangladesh University of Professionals.",
+    scopeOfWork:
+      "Assess institutional requirements; define project components; review site and infrastructure needs; develop preliminary planning and implementation concepts; and support preparation of the development project proposal.",
+    engineeringHighlights:
+      "Integrated campus infrastructure planning covering accommodation, research facilities, supporting utilities, circulation and implementation requirements.",
   },
   {
     id: 13,
     slug: "road-safety-type-design-for-school-hospital-and-market-zone-including-bus-bay",
-    title: "Road Safety Type Design for School, Hospital and Market Zone including Bus-bay",
+    title:
+      "Road Safety Type Design for School, Hospital and Market Zone including Bus-bay",
     category: "Road Safety Engineering",
     client: "RHD",
     location: "Gazipur",
     status: "Completed",
     startDate: "01/06/2024",
     endDate: "30/04/2025*",
-    imageMain: "/images/projects/project1_1.png",
-    image2: "/images/projects/project1_2.png",
-    image3: "/images/projects/project1_3.png",
-    description: "The project develops road safety type designs for school, hospital and market zones, including bus-bay arrangements, to improve safety for vulnerable road users and traffic operations.",
-    scopeOfWork: "Assess typical roadside conditions and risk points; develop standardized safety treatments; incorporate pedestrian and public-transport needs; and prepare practical type-design recommendations.",
-    engineeringHighlights: "Standardized road safety solutions for high-activity roadside zones, including pedestrian protection, access management, bus-bay planning and traffic calming.",
+    imageMain: "/images/projects/project-13-img-3.png",
+
+    stepImg1: "/images/projects/project-13-img-1.png",
+    stepImg2: "/images/projects/project-13-img-2.png",
+    stepImg3: "/images/projects/project-13-img-3.png",
+    steps: [
+      "Roadside Safety Assessment",
+      "Standardized Safety Design",
+      "Bus-Bay & Pedestrian Solutions",
+    ],
+    description:
+      "The project develops road safety type designs for school, hospital and market zones, including bus-bay arrangements, to improve safety for vulnerable road users and traffic operations.",
+    scopeOfWork:
+      "Assess typical roadside conditions and risk points; develop standardized safety treatments; incorporate pedestrian and public-transport needs; and prepare practical type-design recommendations.",
+    engineeringHighlights:
+      "Standardized road safety solutions for high-activity roadside zones, including pedestrian protection, access management, bus-bay planning and traffic calming.",
   },
   {
     id: 14,
     slug: "details-map-of-digital-topographical-survey-by-total-station-in-royal-enfield-factory",
-    title: "Details Map of Digital Topographical Survey by Total Station in Royal Enfield Factory",
+    title:
+      "Details Map of Digital Topographical Survey by Total Station in Royal Enfield Factory",
     category: "Surveying & Geospatial Engineering",
     client: "IFAD Motors Ltd.",
     location: "Cumilla",
     status: "Completed",
     startDate: "28/03/2025",
     endDate: "28/04/2025",
-    imageMain: "/images/projects/project2_1.png",
-    image2: "/images/projects/project2_2.png",
-    image3: "/images/projects/project2_3.png",
-    description: "The assignment produces a detailed digital topographical map of the Royal Enfield factory site in Cumilla using Total Station survey methods.",
-    scopeOfWork: "Establish survey control; conduct detailed Total Station observations; capture buildings, utilities, levels and site features; process survey data; and prepare digital mapping outputs.",
-    engineeringHighlights: "High-accuracy terrestrial surveying, detailed feature mapping, level data capture and digital topographic drawing preparation.",
+    imageMain: "/images/projects/project-14-img-3.png",
+
+    stepImg1: "/images/projects/project-14-img-1.png",
+    stepImg2: "/images/projects/project-14-img-2.png",
+    stepImg3: "/images/projects/project-14-img-3.png",
+    steps: [
+      "Site Survey Control Setup",
+      "Total Station Data Collection",
+      "Digital Topographic Map Preparation",
+    ],
+    description:
+      "The assignment produces a detailed digital topographical map of the Royal Enfield factory site in Cumilla using Total Station survey methods.",
+    scopeOfWork:
+      "Establish survey control; conduct detailed Total Station observations; capture buildings, utilities, levels and site features; process survey data; and prepare digital mapping outputs.",
+    engineeringHighlights:
+      "High-accuracy terrestrial surveying, detailed feature mapping, level data capture and digital topographic drawing preparation.",
   },
   {
     id: 15,
     slug: "survey-master-plan-and-feasibility-study-for-bangladesh-university-of-professionals-bup",
-    title: "Survey, Master Plan and Feasibility Study for Bangladesh University of Professionals (BUP)",
+    title:
+      "Survey, Master Plan and Feasibility Study for Bangladesh University of Professionals (BUP)",
     category: "Feasibility Study / Planning",
     client: "Vision Urbanization Ltd",
     location: "Dhaka",
     status: "Completed",
     startDate: "20/07/2024",
     endDate: "30/06/2025*",
-    imageMain: "/images/projects/project3_1.png",
-    image2: "/images/projects/project3_2.png",
-    image3: "/images/projects/project3_3.png",
-    description: "The project undertakes survey, master planning and feasibility assessment for Bangladesh University of Professionals to support coordinated future campus development.",
-    scopeOfWork: "Collect and analyze site information; assess existing land use and infrastructure; develop master-planning options; evaluate development requirements; and formulate feasible implementation recommendations.",
-    engineeringHighlights: "Campus-scale planning integrating survey data, land-use planning, circulation, infrastructure networks, development phasing and feasibility analysis.",
+    imageMain: "/images/projects/project-15-img-3.png",
+
+    stepImg1: "/images/projects/project-15-img-1.png",
+    stepImg2: "/images/projects/project-15-img-2.png",
+    stepImg3: "/images/projects/project-15-img-3.png",
+    steps: [
+      "Campus Survey & Data Collection",
+      "Master Plan Development",
+      "Feasibility Assessment & Phasing",
+    ],
+    description:
+      "The project undertakes survey, master planning and feasibility assessment for Bangladesh University of Professionals to support coordinated future campus development.",
+    scopeOfWork:
+      "Collect and analyze site information; assess existing land use and infrastructure; develop master-planning options; evaluate development requirements; and formulate feasible implementation recommendations.",
+    engineeringHighlights:
+      "Campus-scale planning integrating survey data, land-use planning, circulation, infrastructure networks, development phasing and feasibility analysis.",
   },
   {
     id: 16,
     slug: "7-storied-residential-building-of-design-and-construction-site-supervision-at-rampura-dhak",
-    title: "7 Storied Residential Building of Design and Construction Site Supervision at Rampura, Dhaka",
+    title:
+      "7 Storied Residential Building of Design and Construction Site Supervision at Rampura, Dhaka",
     category: "Building Design / Construction Supervision",
     client: "Md Abdul Mannan Sheikh & Others",
     location: "Dhaka",
     status: "Ongoing",
     startDate: "04/03/2025",
     endDate: "Ongoing",
-    imageMain: "/images/projects/project1_1.png",
-    image2: "/images/projects/project1_2.png",
-    image3: "/images/projects/project1_3.png",
-    description: "The project covers design and construction-site supervision for a seven-storey residential building at Rampura, Dhaka, ensuring coordinated implementation of the approved engineering and architectural requirements.",
-    scopeOfWork: "Develop/coordinate building design; prepare engineering details and construction guidance; review site progress; monitor workmanship and material use; and provide technical supervision and issue resolution.",
-    engineeringHighlights: "Multi-storey building coordination, structural and architectural interface management, construction quality monitoring and site-based technical supervision.",
+    imageMain: "/images/projects/project-16-img-3.png",
+
+    stepImg1: "/images/projects/project-16-img-1.png",
+    stepImg2: "/images/projects/project-16-img-2.png",
+    stepImg3: "/images/projects/project-16-img-3.png",
+    steps: [
+      "Residential Building Design",
+      "Engineering Coordination",
+      "Construction Site Supervision",
+    ],
+    description:
+      "The project covers design and construction-site supervision for a seven-storey residential building at Rampura, Dhaka, ensuring coordinated implementation of the approved engineering and architectural requirements.",
+    scopeOfWork:
+      "Develop/coordinate building design; prepare engineering details and construction guidance; review site progress; monitor workmanship and material use; and provide technical supervision and issue resolution.",
+    engineeringHighlights:
+      "Multi-storey building coordination, structural and architectural interface management, construction quality monitoring and site-based technical supervision.",
   },
   {
     id: 17,
     slug: "land-acquisition-plan-and-resettle-action-plan-for-mirpur-12-metro-rail-uttara-south-stati",
-    title: "Land Acquisition Plan and Resettle Action Plan for Mirpur-12 Metro Rail Uttara South Station Road",
+    title:
+      "Land Acquisition Plan and Resettle Action Plan for Mirpur-12 Metro Rail Uttara South Station Road",
     category: "Land Acquisition & Resettlement Planning",
     client: "Not specified in source",
     location: "Dhaka",
     status: "Completed",
     startDate: "01/12/2024",
     endDate: "31/03/2025",
-    imageMain: "/images/projects/project2_1.png",
-    image2: "/images/projects/project2_2.png",
-    image3: "/images/projects/project2_3.png",
-    description: "The assignment supports land acquisition and resettlement planning associated with the Mirpur-12 Metro Rail Uttara South Station Road, addressing project-affected land and people considerations.",
-    scopeOfWork: "Identify affected land and assets; support inventory and documentation; assess resettlement implications; develop acquisition/resettlement planning inputs; and coordinate stakeholder and field information.",
-    engineeringHighlights: "Structured land and asset assessment, impact documentation, resettlement planning and alignment of engineering requirements with social safeguards.",
+    imageMain: "/images/projects/project-17-img-3.png",
+
+    stepImg1: "/images/projects/project-17-img-1.png",
+    stepImg2: "/images/projects/project-17-img-2.png",
+    stepImg3: "/images/projects/project-17-img-3.png",
+    steps: [
+      "Land & Asset Identification",
+      "Resettlement Impact Assessment",
+      "Acquisition & Resettlement Planning",
+    ],
+    description:
+      "The assignment supports land acquisition and resettlement planning associated with the Mirpur-12 Metro Rail Uttara South Station Road, addressing project-affected land and people considerations.",
+    scopeOfWork:
+      "Identify affected land and assets; support inventory and documentation; assess resettlement implications; develop acquisition/resettlement planning inputs; and coordinate stakeholder and field information.",
+    engineeringHighlights:
+      "Structured land and asset assessment, impact documentation, resettlement planning and alignment of engineering requirements with social safeguards.",
   },
   {
     id: 18,
     slug: "road-safety-design-for-vatkura-intersection-shibpur-intersection-and-vawal-college",
-    title: "Road Safety Design for Vatkura Intersection, Shibpur Intersection and Vawal College",
+    title:
+      "Road Safety Design for Vatkura Intersection, Shibpur Intersection and Vawal College",
     category: "Road Safety Engineering",
     client: "RHD",
     location: "Gazipur",
     status: "Completed",
     startDate: "01/06/2024",
     endDate: "30/04/2025*",
-    imageMain: "/images/projects/project3_1.png",
-    image2: "/images/projects/project3_2.png",
-    image3: "/images/projects/project3_3.png",
-    description: "The project develops road safety designs for selected intersections and Vawal College area in Gazipur, targeting safer traffic movement and improved protection of pedestrians and other vulnerable users.",
-    scopeOfWork: "Assess existing safety conditions; identify conflict points; develop intersection and roadside safety treatments; incorporate pedestrian and access requirements; and prepare design recommendations.",
-    engineeringHighlights: "Practical intersection safety engineering emphasizing traffic conflicts, visibility, pedestrian movement, channelization and roadside safety.",
+    imageMain: "/images/projects/project-18-img-1.jpg",
+
+    stepImg1: "/images/projects/project-18-img-1.jpg",
+    stepImg2: "/images/projects/project-18-img-2.png",
+    stepImg3: "/images/projects/project-18-img-3.png",
+    steps: [
+      "Intersection Safety Assessment",
+      "Traffic Conflict & Risk Analysis",
+      "Road Safety Design Solutions",
+    ],
+    description:
+      "The project develops road safety designs for selected intersections and Vawal College area in Gazipur, targeting safer traffic movement and improved protection of pedestrians and other vulnerable users.",
+    scopeOfWork:
+      "Assess existing safety conditions; identify conflict points; develop intersection and roadside safety treatments; incorporate pedestrian and access requirements; and prepare design recommendations.",
+    engineeringHighlights:
+      "Practical intersection safety engineering emphasizing traffic conflicts, visibility, pedestrian movement, channelization and roadside safety.",
   },
   {
     id: 19,
@@ -341,182 +538,302 @@ const projectRecords: Project[] = [
     status: "Completed",
     startDate: "11/06/2024",
     endDate: "31/07/2024",
-    imageMain: "/images/projects/project1_1.png",
-    image2: "/images/projects/project1_2.png",
-    image3: "/images/projects/project1_3.png",
-    description: "The feasibility study examines the proposed Mirpur-12 Metro Rail Uttara South Station Road development, establishing key technical and implementation considerations.",
-    scopeOfWork: "Review site and corridor conditions; assess development requirements; identify technical constraints; evaluate feasible options; and provide recommendations for implementation and further design.",
-    engineeringHighlights: "Feasibility assessment integrating corridor/site appraisal, infrastructure interfaces, access, constructability and implementation planning.",
+    imageMain: "/images/projects/project-19-img-3.png",
+
+    stepImg1: "/images/projects/project-19-img-1.png",
+    stepImg2: "/images/projects/project-19-img-2.jpg",
+    stepImg3: "/images/projects/project-19-img-3.png",
+    steps: [
+      "Road Corridor Assessment",
+      "Technical Feasibility Review",
+      "Implementation Recommendations",
+    ],
+    description:
+      "The feasibility study examines the proposed Mirpur-12 Metro Rail Uttara South Station Road development, establishing key technical and implementation considerations.",
+    scopeOfWork:
+      "Review site and corridor conditions; assess development requirements; identify technical constraints; evaluate feasible options; and provide recommendations for implementation and further design.",
+    engineeringHighlights:
+      "Feasibility assessment integrating corridor/site appraisal, infrastructure interfaces, access, constructability and implementation planning.",
   },
   {
     id: 20,
     slug: "environmental-monitoring-environmental-monitoring-report-of-implementing-improving-urban-g",
-    title: "Environmental Monitoring Environmental Monitoring Report of Implementing Improving Urban Governance & Infrastructure Program for Package \"UT+DR-01\"",
+    title:
+      'Environmental Monitoring Environmental Monitoring Report of Implementing Improving Urban Governance & Infrastructure Program for Package "UT+DR-01"',
     category: "Environmental & Social / Environmental Monitoring",
     client: "MRB-MMR JV",
     location: "Chadpur",
     status: "Ongoing",
     startDate: "02/05/2024",
     endDate: "Ongoing",
-    imageMain: "/images/projects/project2_1.png",
-    image2: "/images/projects/project2_2.png",
-    image3: "/images/projects/project2_3.png",
-    description: "The assignment provides environmental monitoring support for Package UT+DR-01 under the Improving Urban Governance & Infrastructure Program in Chadpur.",
-    scopeOfWork: "Conduct field monitoring; assess environmental performance and mitigation measures; review compliance; document observations; and recommend corrective actions where required.",
-    engineeringHighlights: "Routine environmental compliance monitoring, field verification, mitigation tracking and structured reporting for an urban infrastructure package.",
+    imageMain: "/images/projects/project-20-img-3.png",
+
+    stepImg1: "/images/projects/project-20-img-1.png",
+    stepImg2: "/images/projects/project-20-img-2.png",
+    stepImg3: "/images/projects/project-20-img-3.png",
+    steps: [
+      "Project Site Monitoring",
+      "Environmental Compliance Review",
+      "Monitoring Findings & Corrective Actions",
+    ],
+    description:
+      "The assignment provides environmental monitoring support for Package UT+DR-01 under the Improving Urban Governance & Infrastructure Program in Chadpur.",
+    scopeOfWork:
+      "Conduct field monitoring; assess environmental performance and mitigation measures; review compliance; document observations; and recommend corrective actions where required.",
+    engineeringHighlights:
+      "Routine environmental compliance monitoring, field verification, mitigation tracking and structured reporting for an urban infrastructure package.",
   },
   {
     id: 21,
     slug: "environmental-monitoring-report-of-implementing-improving-urban-governance-infrastructure",
-    title: "Environmental Monitoring Report of Implementing Improving Urban Governance & Infrastructure Program for Package \"DR-01\"",
+    title:
+      'Environmental Monitoring Report of Implementing Improving Urban Governance & Infrastructure Program for Package "DR-01"',
     category: "Environmental & Social / Environmental Monitoring",
     client: "MRB-MMR JV",
     location: "Chadpur",
     status: "Ongoing",
     startDate: "02/05/2024",
     endDate: "Ongoing",
-    imageMain: "/images/projects/project3_1.png",
-    image2: "/images/projects/project3_2.png",
-    image3: "/images/projects/project3_3.png",
-    description: "The project provides environmental monitoring for Package DR-01 under the Improving Urban Governance & Infrastructure Program, supporting environmental performance during implementation.",
-    scopeOfWork: "Monitor site environmental conditions; verify mitigation measures; identify potential impacts; maintain monitoring records; and prepare findings and recommendations.",
-    engineeringHighlights: "Construction-phase environmental monitoring, compliance verification, impact identification and mitigation follow-up.",
+    imageMain: "/images/projects/project-21-img-3.png",
+
+    stepImg1: "/images/projects/project-21-img-1.jpg",
+    stepImg2: "/images/projects/project-21-img-2.jpg",
+    stepImg3: "/images/projects/project-21-img-3.png",
+    steps: [
+      "Environmental Site Inspection",
+      "Mitigation & Compliance Verification",
+      "Environmental Monitoring Report",
+    ],
+    description:
+      "The project provides environmental monitoring for Package DR-01 under the Improving Urban Governance & Infrastructure Program, supporting environmental performance during implementation.",
+    scopeOfWork:
+      "Monitor site environmental conditions; verify mitigation measures; identify potential impacts; maintain monitoring records; and prepare findings and recommendations.",
+    engineeringHighlights:
+      "Construction-phase environmental monitoring, compliance verification, impact identification and mitigation follow-up.",
   },
   {
     id: 22,
     slug: "environmental-monitoring-report-of-implementing-improving-urban-governance-infrastructure",
-    title: "Environmental Monitoring Report of Implementing Improving Urban Governance & Infrastructure Program for Package \"DR-04\"",
+    title:
+      'Environmental Monitoring Report of Implementing Improving Urban Governance & Infrastructure Program for Package "DR-04"',
     category: "Environmental & Social / Environmental Monitoring",
     client: "NT-AB-MRL JV",
     location: "Chadpur",
     status: "Ongoing",
     startDate: "02/05/2024",
     endDate: "Ongoing",
-    imageMain: "/images/projects/project1_1.png",
-    image2: "/images/projects/project1_2.png",
-    image3: "/images/projects/project1_3.png",
-    description: "The project provides environmental monitoring for Package DR-04 under the Improving Urban Governance & Infrastructure Program, supporting responsible implementation and environmental compliance.",
-    scopeOfWork: "Undertake field monitoring; review environmental safeguards and mitigation measures; identify risks and non-compliances; and report findings with practical recommendations.",
-    engineeringHighlights: "Field-based environmental monitoring with systematic compliance checks, mitigation tracking and documentation.",
+    imageMain: "/images/projects/project-22-img-3.png",
+
+    stepImg1: "/images/projects/project-22-img-1.jpg",
+    stepImg2: "/images/projects/project-22-img-2.jpg",
+    stepImg3: "/images/projects/project-22-img-3.png",
+    steps: [
+      "Field Environmental Monitoring",
+      "Safeguard & Mitigation Review",
+      "Compliance Reporting & Recommendations",
+    ],
+    description:
+      "The project provides environmental monitoring for Package DR-04 under the Improving Urban Governance & Infrastructure Program, supporting responsible implementation and environmental compliance.",
+    scopeOfWork:
+      "Undertake field monitoring; review environmental safeguards and mitigation measures; identify risks and non-compliances; and report findings with practical recommendations.",
+    engineeringHighlights:
+      "Field-based environmental monitoring with systematic compliance checks, mitigation tracking and documentation.",
   },
   {
     id: 23,
     slug: "consultancy-services-to-conduct-04-nos-bridge-preliminary-design-drawings-boq-under-rhd-in",
-    title: "Consultancy Services to Conduct 04 Nos. Bridge Preliminary Design, Drawings & BOQ under RHD in Comilla",
+    title:
+      "Consultancy Services to Conduct 04 Nos. Bridge Preliminary Design, Drawings & BOQ under RHD in Comilla",
     category: "Bridge Design & Engineering",
     client: "Onushandhani Creeds Ltd",
     location: "Cumilla",
     status: "Completed",
     startDate: "01/04/2024",
     endDate: "01/12/2024",
-    imageMain: "/images/projects/project2_1.png",
-    image2: "/images/projects/project2_2.png",
-    image3: "/images/projects/project2_3.png",
-    description: "The assignment provides preliminary engineering services for four bridges under RHD in Cumilla, establishing design concepts, drawings and quantities for further development.",
-    scopeOfWork: "Review site and crossing conditions; develop preliminary bridge concepts; prepare design drawings; estimate quantities; and compile BOQ and supporting technical information.",
-    engineeringHighlights: "Preliminary bridge engineering integrating site assessment, structural concept development, drawing preparation, quantity estimation and BOQ development.",
+    imageMain: "/images/projects/project-23-img-3.png",
+
+    stepImg1: "/images/projects/project-23-img-1.png",
+    stepImg2: "/images/projects/project-23-img-2.png",
+    stepImg3: "/images/projects/project-23-img-3.png",
+    steps: [
+      "Bridge Site & Crossing Assessment",
+      "Preliminary Bridge Design & Drawings",
+      "Quantity Estimation & BOQ Preparation",
+    ],
+    description:
+      "The assignment provides preliminary engineering services for four bridges under RHD in Cumilla, establishing design concepts, drawings and quantities for further development.",
+    scopeOfWork:
+      "Review site and crossing conditions; develop preliminary bridge concepts; prepare design drawings; estimate quantities; and compile BOQ and supporting technical information.",
+    engineeringHighlights:
+      "Preliminary bridge engineering integrating site assessment, structural concept development, drawing preparation, quantity estimation and BOQ development.",
   },
   {
     id: 24,
     slug: "interior-design-and-construction-of-am-global-international-head-office-in-dhaka",
-    title: "Interior Design and construction of AM Global International Head Office in Dhaka",
+    title:
+      "Interior Design and construction of AM Global International Head Office in Dhaka",
     category: "Interior Design & Construction",
     client: "AM Global Internation",
     location: "Dhaka",
     status: "Completed",
     startDate: "16/02/2024",
     endDate: "26/02/2024",
-    imageMain: "/images/projects/project3_1.png",
-    image2: "/images/projects/project3_2.png",
-    image3: "/images/projects/project3_3.png",
-    description: "The project covers interior design and construction of the AM Global International head office in Dhaka, translating functional requirements into a coordinated workplace environment.",
-    scopeOfWork: "Develop interior planning and design; coordinate finishes, furniture, lighting and services; support construction execution; and monitor implementation against design intent.",
-    engineeringHighlights: "Commercial interior coordination, space planning, material and finish selection, services integration and construction implementation.",
+    imageMain: "/images/projects/project-24-img-3.png",
+
+    stepImg1: "/images/projects/project-24-img-1.png",
+    stepImg2: "/images/projects/project-24-img-2.png",
+    stepImg3: "/images/projects/project-24-img-3.png",
+    steps: [
+      "Office Space Planning & Interior Design",
+      "Materials, Finishes & Services Coordination",
+      "Office Interior Construction",
+    ],
+    description:
+      "The project covers interior design and construction of the AM Global International head office in Dhaka, translating functional requirements into a coordinated workplace environment.",
+    scopeOfWork:
+      "Develop interior planning and design; coordinate finishes, furniture, lighting and services; support construction execution; and monitor implementation against design intent.",
+    engineeringHighlights:
+      "Commercial interior coordination, space planning, material and finish selection, services integration and construction implementation.",
   },
   {
     id: 25,
     slug: "feasibility-study-of-10-crime-prevention-company-cpc-complex-construction-of-rab",
-    title: "Feasibility Study of 10 Crime Prevention Company (CPC) Complex Construction of RAB",
+    title:
+      "Feasibility Study of 10 Crime Prevention Company (CPC) Complex Construction of RAB",
     category: "Feasibility Study / Planning",
     client: "Decent Engineering & Consultant Limited",
     location: "Bangladesh",
     status: "Completed",
     startDate: "01/12/2023",
     endDate: "01/05/2024",
-    imageMain: "/images/projects/project1_1.png",
-    image2: "/images/projects/project1_2.png",
-    image3: "/images/projects/project1_3.png",
-    description: "The assignment assesses the feasibility of constructing ten Crime Prevention Company (CPC) complexes for RAB at different locations in Bangladesh.",
-    scopeOfWork: "Assess sites and functional requirements; develop preliminary facility planning; review infrastructure and utility needs; estimate project requirements; and evaluate implementation feasibility across locations.",
-    engineeringHighlights: "Multi-location institutional facility feasibility covering site appraisal, functional planning, infrastructure, utilities, cost considerations and implementation strategy.",
+    imageMain: "/images/projects/project-25-img-3.png",
+
+    stepImg1: "/images/projects/project-25-img-1.png",
+    stepImg2: "/images/projects/project-25-img-2.png",
+    stepImg3: "/images/projects/project-25-img-3.png",
+    steps: [
+      "Multi-Site Assessment",
+      "CPC Complex Planning & Feasibility",
+      "Implementation Strategy & Recommendations",
+    ],
+    description:
+      "The assignment assesses the feasibility of constructing ten Crime Prevention Company (CPC) complexes for RAB at different locations in Bangladesh.",
+    scopeOfWork:
+      "Assess sites and functional requirements; develop preliminary facility planning; review infrastructure and utility needs; estimate project requirements; and evaluate implementation feasibility across locations.",
+    engineeringHighlights:
+      "Multi-location institutional facility feasibility covering site appraisal, functional planning, infrastructure, utilities, cost considerations and implementation strategy.",
   },
   {
     id: 26,
     slug: "digital-and-orthographic-survey-of-chad-uddan-sewerage-system-by-using-drone",
-    title: "Digital and Orthographic Survey of Chad Uddan Sewerage System by using Drone",
+    title:
+      "Digital and Orthographic Survey of Chad Uddan Sewerage System by using Drone",
     category: "Surveying & Geospatial Engineering",
     client: "Rana Enterprise",
     location: "Dhaka",
     status: "Completed",
     startDate: "01/12/2023",
     endDate: "08/12/2023",
-    imageMain: "/images/projects/project2_1.png",
-    image2: "/images/projects/project2_2.png",
-    image3: "/images/projects/project2_3.png",
-    description: "The project maps the Chad Uddan sewerage system using drone-based digital and orthographic survey techniques to establish a current spatial record of the system and surrounding features.",
-    scopeOfWork: "Conduct drone data acquisition; process aerial imagery; generate orthographic outputs; map sewerage and surface features; and prepare digital survey deliverables.",
-    engineeringHighlights: "UAV-based photogrammetry, orthomosaic generation, digital mapping and spatial documentation for sewerage infrastructure.",
+    imageMain: "/images/projects/project-26-img-3.png",
+
+    stepImg1: "/images/projects/project-26-img-1.png",
+    stepImg2: "/images/projects/project-26-img-2.png",
+    stepImg3: "/images/projects/project-26-img-3.png",
+    steps: [
+      "Drone Survey Planning & Data Capture",
+      "Orthographic Image Processing",
+      "Digital Sewerage System Mapping",
+    ],
+    description:
+      "The project maps the Chad Uddan sewerage system using drone-based digital and orthographic survey techniques to establish a current spatial record of the system and surrounding features.",
+    scopeOfWork:
+      "Conduct drone data acquisition; process aerial imagery; generate orthographic outputs; map sewerage and surface features; and prepare digital survey deliverables.",
+    engineeringHighlights:
+      "UAV-based photogrammetry, orthomosaic generation, digital mapping and spatial documentation for sewerage infrastructure.",
   },
   {
     id: 27,
     slug: "digital-and-orthographic-survey-of-feni-poshuran-bilonia-road-by-using-drone",
-    title: "Digital and Orthographic Survey of Feni-Poshuran-Bilonia Road by using Drone",
+    title:
+      "Digital and Orthographic Survey of Feni-Poshuran-Bilonia Road by using Drone",
     category: "Surveying & Geospatial Engineering",
     client: "RHD",
     location: "Feni",
     status: "Completed",
     startDate: "13/10/2023",
     endDate: "20/10/2023",
-    imageMain: "/images/projects/project3_1.png",
-    image2: "/images/projects/project3_2.png",
-    image3: "/images/projects/project3_3.png",
-    description: "The assignment provides drone-based digital and orthographic survey of the Feni–Poshuran–Bilonia Road corridor, creating accurate spatial information for engineering use.",
-    scopeOfWork: "Plan UAV survey coverage; acquire aerial imagery; process and georeference data; generate orthographic and digital outputs; and prepare engineering-ready mapping.",
-    engineeringHighlights: "Drone photogrammetry, corridor mapping, orthographic survey production and digital spatial data preparation.",
+    imageMain: "/images/projects/project-27-img-3.jpg",
+
+    stepImg1: "/images/projects/project-27-img-1.png",
+    stepImg2: "/images/projects/project-27-img-2.jpg",
+    stepImg3: "/images/projects/project-27-img-3.jpg",
+    steps: [
+      "Road Corridor Drone Survey",
+      "Aerial Image Processing",
+      "Orthographic Mapping & Deliverables",
+    ],
+    description:
+      "The assignment provides drone-based digital and orthographic survey of the Feni–Poshuran–Bilonia Road corridor, creating accurate spatial information for engineering use.",
+    scopeOfWork:
+      "Plan UAV survey coverage; acquire aerial imagery; process and georeference data; generate orthographic and digital outputs; and prepare engineering-ready mapping.",
+    engineeringHighlights:
+      "Drone photogrammetry, corridor mapping, orthographic survey production and digital spatial data preparation.",
   },
   {
     id: 28,
     slug: "digital-and-orthographic-survey-of-laxmipur-char-alexander-ramgoti-sonapur-choto-feni-brid",
-    title: "Digital and Orthographic Survey of Laxmipur-Char Alexander-Ramgoti-Sonapur-Choto Feni bridge-Sonagazi bypass-Badamtoli economic zone-Zoragonj Road by using Drone",
+    title:
+      "Digital and Orthographic Survey of Laxmipur-Char Alexander-Ramgoti-Sonapur-Choto Feni bridge-Sonagazi bypass-Badamtoli economic zone-Zoragonj Road by using Drone",
     category: "Surveying & Geospatial Engineering",
     client: "RHD",
     location: "Laxmipur, Feni",
     status: "Completed",
     startDate: "23/10/2023",
     endDate: "25/10/2023",
-    imageMain: "/images/projects/project1_1.png",
-    image2: "/images/projects/project1_2.png",
-    image3: "/images/projects/project1_3.png",
-    description: "The project conducts drone-based digital and orthographic survey along the Laxmipur–Char Alexander–Ramgoti–Sonapur and connected road corridor, documenting existing conditions for engineering applications.",
-    scopeOfWork: "Undertake UAV image acquisition; process imagery; generate orthographic and digital survey outputs; map corridor features; and organize data for engineering assessment and planning.",
-    engineeringHighlights: "Long corridor UAV surveying, photogrammetric processing, orthographic mapping and digital documentation of road and surrounding features.",
+    imageMain: "/images/projects/project-28-img-3.png",
+
+    stepImg1: "/images/projects/project-28-img-1.jpg",
+    stepImg2: "/images/projects/project-28-img-2.png",
+    stepImg3: "/images/projects/project-28-img-3.png",
+    steps: [
+      "Road Corridor Survey Planning",
+      "Drone Data Acquisition & Processing",
+      "Digital Orthographic Survey Outputs",
+    ],
+    description:
+      "The project conducts drone-based digital and orthographic survey along the Laxmipur–Char Alexander–Ramgoti–Sonapur and connected road corridor, documenting existing conditions for engineering applications.",
+    scopeOfWork:
+      "Undertake UAV image acquisition; process imagery; generate orthographic and digital survey outputs; map corridor features; and organize data for engineering assessment and planning.",
+    engineeringHighlights:
+      "Long corridor UAV surveying, photogrammetric processing, orthographic mapping and digital documentation of road and surrounding features.",
   },
   {
     id: 29,
     slug: "asma-kunja-five-storied-residential-building-design-and-construction-supervision-brahmanba",
-    title: "Asma Kunja, Five Storied Residential Building Design and Construction Supervision, Brahmanbaria",
+    title:
+      "Asma Kunja, Five Storied Residential Building Design and Construction Supervision, Brahmanbaria",
     category: "Building Design / Construction Supervision",
     client: "Masuma Khatun & others",
     location: "Brahmanbaria",
     status: "Completed",
     startDate: "01/01/2019",
     endDate: "01/10/2022",
-    imageMain: "/images/projects/project2_1.png",
-    image2: "/images/projects/project2_2.png",
-    image3: "/images/projects/project2_3.png",
-    description: "The project covers design and construction supervision of a five-storey residential building at Asma Kunja, Brahmanbaria, with emphasis on coordinated design and quality implementation.",
-    scopeOfWork: "Prepare/coordinate building design; support construction documentation; supervise site activities; monitor quality and progress; and resolve technical issues during construction.",
-    engineeringHighlights: "Residential building engineering, design coordination, site supervision, quality control and construction-stage technical support.",
+    imageMain: "/images/projects/project-29-img-3.png",
+
+    stepImg1: "/images/projects/project-29-img-1.jpg",
+    stepImg2: "/images/projects/project-29-img-2.png",
+    stepImg3: "/images/projects/project-29-img-3.png",
+    steps: [
+      "Residential Building Design",
+      "Engineering & Construction Coordination",
+      "Site Supervision & Quality Control",
+    ],
+    description:
+      "The project covers design and construction supervision of a five-storey residential building at Asma Kunja, Brahmanbaria, with emphasis on coordinated design and quality implementation.",
+    scopeOfWork:
+      "Prepare/coordinate building design; support construction documentation; supervise site activities; monitor quality and progress; and resolve technical issues during construction.",
+    engineeringHighlights:
+      "Residential building engineering, design coordination, site supervision, quality control and construction-stage technical support.",
   },
 ];
 
