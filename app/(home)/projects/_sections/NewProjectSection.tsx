@@ -80,7 +80,9 @@ export default function NewProjectSection() {
           </p>
 
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Projects That Make an Impact
+            Projects That <span className="italic text-[#16A34A]">
+              Make an Impact 
+            </span>
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-200 sm:text-base">
@@ -90,7 +92,7 @@ export default function NewProjectSection() {
         </div>
 
         {/* Category dropdown and result count */}
-        <div className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <label
               htmlFor="project-category"
