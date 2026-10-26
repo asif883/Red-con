@@ -19,6 +19,7 @@ const SmoothScroller: React.FC<SmoothScrollerProps> = ({ children }) => {
       gestureOrientation: "vertical",
       smoothWheel: true,
       autoRaf: true, // Automatically links to browser requestAnimationFrame
+      anchors: true,
     });
 
     lenisRef.current = lenis;

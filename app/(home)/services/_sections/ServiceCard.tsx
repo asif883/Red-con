@@ -56,12 +56,13 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
 
             {/* Actions — Primary + Secondary hierarchy */}
             <div className="flex flex-wrap items-center gap-3 mt-2">
-            <Link href={'#contact'}>
-              <span className="group/btn inline-flex items-center gap-2 rounded-full bg-[#16A34A] px-6 py-3 text-white text-[12px] font-semibold uppercase tracking-[0.08em] transition-all duration-300 hover:bg-[#15803d] hover:shadow-[0_8px_30px_-8px_rgba(22,163,74,0.6)] cursor-pointer">
+              <a
+                href="#contact"
+                className="group/btn inline-flex items-center gap-2 rounded-full bg-[#16A34A] px-6 py-3 text-white text-[12px] font-semibold uppercase tracking-[0.08em] transition-all duration-300 hover:bg-[#15803d] hover:shadow-[0_8px_30px_-8px_rgba(22,163,74,0.6)]"
+              >
                 Request Quote
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-              </span>
-            </Link>
+              </a>
 
               <Link href={`/services/${service.slug}`} className="group/details inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.02] px-5 py-2.5 text-white text-[12px] font-semibold uppercase tracking-[0.08em] transition-all duration-300 hover:border-[#16A34A] hover:bg-[#16A34A]/10">
                 <span>View Details</span>
