@@ -43,7 +43,7 @@ const Methodology = () => {
     <section className="relative w-full py-24 overflow-hidden flex items-center justify-center bg-black text-white">
       
       {/* BACKGROUND ATMOSPHERIC LIGHTING EFFECT */}
-      <div className="absolute pointer-events-none   mix-blend-screen left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] rounded-full bg-[linear-gradient(45deg,var(--gradient-4-layer1-start,rgba(52,211,153,0.10))_0%,var(--gradient-4-layer1-mid-1,rgba(10,10,10,0.20))_50%,var(--gradient-4-layer1-end,rgba(244,63,94,0.10))_100%)] blur-[75px] z-0" />
+      <div className="absolute pointer-events-none   mix-blend-screen left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] rounded-full bg-[linear-gradient(45deg,var(--gradient-4-layer1-start,rgba(52,211,153,0.10))_0%,var(--gradient-4-layer1-mid-1,rgba(10,10,10,0.20))_50%,var(--gradient-4-layer1-end,rgba(22,163,74,0.10))_100%)] blur-[75px] z-0" />
 
       <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-16">
         
@@ -52,7 +52,7 @@ const Methodology = () => {
           {/* Top Tag Sub-indicator */}
           <div className="flex items-center gap-3">
             <div className="w-8 h-[2px] rounded-full bg-[#166534]" />
-            <span className="text-[#EF4444] font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
+            <span className="text-[#16A34A] font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
               our methodology
             </span>
           </div>
@@ -72,10 +72,10 @@ const Methodology = () => {
             <div
               key={item.id}
               /* Adjusted horizontal and vertical spacing padding rules (p-6 sm:p-8) to keep layout elements from compressing on small viewports */
-              className="relative overflow-hidden rounded-[32px] border border-[rgba(22,163,74,0.30)] bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(69,10,10,0.40)_100%)] p-6 sm:p-8 flex flex-col gap-5 min-h-[240px] sm:min-h-[260px] justify-start text-left"
+              className="relative overflow-hidden rounded-[32px] border border-[rgba(22,163,74,0.30)] bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(2,44,34,0.40)_100%)] p-6 sm:p-8 flex flex-col gap-5 min-h-[240px] sm:min-h-[260px] justify-start text-left"
             >
               {/* Subtle Corner Glow Accent Layer */}
-              <div className="absolute w-24 h-24 -top-[31px] -right-[31px] rounded-full bg-[rgba(220,165,78,0.05)] blur-[20px] pointer-events-none  " />
+              <div className="absolute w-24 h-24 -top-[31px] -right-[31px] rounded-full bg-[rgba(22,163,74,0.05)] blur-[20px] pointer-events-none  " />
 
               {/* Step Tracking Tag */}
               <span className="text-[#16A34A] text-[14px] font-bold leading-[16px] tracking-wide">

@@ -16,7 +16,7 @@ const Stats = () => {
       id: 1,
       value: "8+",
       label: "YEARS ACTIVE",
-      colorClass: "text-[#DCA54E]",
+      colorClass: "text-[#16A34A]",
     },
     {
       id: 2,
@@ -28,7 +28,7 @@ const Stats = () => {
       id: 3,
       value: "25+",
       label: "SENIOR ENGINEERS",
-      colorClass: "text-[#F43F5E]",
+      colorClass: "text-[#16A34A]",
     },
     {
       id: 4,
@@ -39,7 +39,7 @@ const Stats = () => {
   ];
 
   return (
-    <section className="relative w-full py-24 overflow-hidden flex items-center justify-center bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(69,10,10,0.40)_100%)]">
+    <section className="relative w-full py-24 overflow-hidden flex items-center justify-center bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(2,44,34,0.40)_100%)]">
       
       <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex justify-center">
         
@@ -47,7 +47,7 @@ const Stats = () => {
         <div className="relative max-w-[1088px] w-full rounded-[24px] border border-[rgba(22,163,74,0.50)] bg-[#0C0C0C] p-8 sm:p-12 overflow-hidden">
           
           {/* Subtle Ambient Accent Glow positioned precisely inside bottom-left corner */}
-          <div className="absolute w-[128px] h-[128px] -left-[39px] -bottom-[39px] rounded-full bg-[rgba(245,158,11,0.05)] blur-[32px] pointer-events-none   z-0" />
+          <div className="absolute w-[128px] h-[128px] -left-[39px] -bottom-[39px] rounded-full bg-[rgba(22,163,74,0.05)] blur-[32px] pointer-events-none   z-0" />
 
           {/* Dynamic Grid Layout Layer mapping over metrics data definitions */}
           <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-6 z-10">

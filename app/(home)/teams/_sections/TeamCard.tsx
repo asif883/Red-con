@@ -112,7 +112,7 @@ export default function TeamCard({ member }: TeamCardProps) {
         {/* Email Copy Row Link Block */}
         <div className="flex items-center justify-between gap-3 bg-neutral-950/30 rounded-xl px-3 py-2.5 border border-white/5">
           <div className="flex items-center gap-2 min-w-0">
-            <Mail className="w-3.5 h-3.5 shrink-0" style={{ color: "#DCA54E" }} />
+            <Mail className="w-3.5 h-3.5 shrink-0" style={{ color: "#16A34A" }} />
             <span className="truncate text-white/60 text-xs font-medium leading-[16px]" style={{ fontFamily: "Inter, sans-serif" }}>
               {member.email}
             </span>

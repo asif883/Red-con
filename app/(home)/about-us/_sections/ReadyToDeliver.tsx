@@ -9,7 +9,7 @@ const ReadyToDeliver = () => {
       <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex justify-center">
         
         {/* Core CTA Card Container Framework - Upgraded to solid opaque alpha colors for high visibility */}
-        <div className="relative w-full max-w-[1120px] rounded-[32px] sm:rounded-[40px] border border-[rgba(22,163,74,0.25)] bg-[linear-gradient(45deg,rgba(2,44,34,1)_0%,rgba(69,10,10,1)_100%)] px-6 py-16 sm:py-20 md:px-12 flex flex-col items-center  justify-center text-center gap-6 sm:gap-8 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]">
+        <div className="relative w-full max-w-[1120px] rounded-[32px] sm:rounded-[40px] border border-[rgba(22,163,74,0.25)] bg-[linear-gradient(45deg,rgba(2,44,34,1)_0%,rgba(2,44,34,1)_100%)] px-6 py-16 sm:py-20 md:px-12 flex flex-col items-center  justify-center text-center gap-6 sm:gap-8 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]">
           
           {/* Top Subtitle Component Indicator */}
           <span className="text-[#16A34A] text-[12px] font-black leading-[16px] tracking-[3.6px] uppercase">
@@ -30,7 +30,7 @@ const ReadyToDeliver = () => {
           </p>
 
           {/* Interactive Global Consultation Action Anchor Trigger */}
-          <button className="flex items-center gap-4 pl-6 pr-2 py-2 mt-2 rounded-full text-white bg-[linear-gradient(90deg,rgba(69,10,10,0.7)_0%,rgba(2,44,34,0.7)_100%)] border border-neutral-800/60 transition-all duration-300 hover:scale-[1.02] hover:border-neutral-700/80 group shrink-0 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
+          <button className="flex items-center gap-4 pl-6 pr-2 py-2 mt-2 rounded-full text-black bg-[linear-gradient(270deg,#ffffff_0%,#00a63e_100%)] border border-neutral-800/60 transition-all duration-300 hover:scale-[1.02] hover:border-neutral-700/80 group shrink-0 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
             <span className="text-[12px] font-bold leading-[16px] tracking-[1.2px] uppercase">
               get consultation
             </span>

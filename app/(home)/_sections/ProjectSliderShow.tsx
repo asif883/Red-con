@@ -189,7 +189,7 @@ const ProjectSliderShow: React.FC = () => {
       </div>
 
       {/* Massive Ambient Glow Layout Structure */}
-      <div className="absolute z-0 bottom-[-300px] left-1/2 -translate-x-1/2 rotate-[-179.41deg] w-[1350px] h-[833.236px] rounded-[1350px] bg-[linear-gradient(270deg,rgba(0,151,56,0.30)_0%,rgba(255,0,0,0.30)_100%)] blur-[250px] pointer-events-none" />
+      <div className="absolute z-0 bottom-[-300px] left-1/2 -translate-x-1/2 rotate-[-179.41deg] w-[1350px] h-[833.236px] rounded-[1350px] bg-[linear-gradient(270deg,rgba(0,151,56,0.30)_0%,rgba(0,151,56,0.30)_100%)] blur-[250px] pointer-events-none" />
       
     </section>
   );

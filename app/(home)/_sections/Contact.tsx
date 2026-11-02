@@ -26,7 +26,7 @@ const Contact: React.FC = () => {
           <div className="flex items-center gap-3">
             {/* Standard Branding Line Element */}
             <div className="w-8 h-[2px] rounded-full bg-[#166534]" />
-            <span className="text-[#EF4444]   font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
+            <span className="text-[#16A34A]   font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
               contact us
             </span>
           </div>
@@ -44,7 +44,7 @@ const Contact: React.FC = () => {
           {/* LEFT AREA: HEADQUARTERS & BUSINESS HOURS BOXES (SPAN 5) */}
           <div className="col-span-1 lg:col-span-5 flex flex-col gap-6 w-full">
             {/* Card 1: Headquarters Information Box */}
-            <div className="w-full rounded-[24px] border border-[#16a34a]/20 bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(69,10,10,0.40)_100%)] backdrop-blur-[2px] p-6 md:p-8 flex flex-col gap-6">
+            <div className="w-full rounded-[24px] border border-[#16a34a]/20 bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(2,44,34,0.40)_100%)] backdrop-blur-[2px] p-6 md:p-8 flex flex-col gap-6">
               <h3 className="text-white   font-bold text-[20px] leading-[28px]">
                 REDCon Headquarters
               </h3>
@@ -53,7 +53,7 @@ const Contact: React.FC = () => {
                 {/* Address Group */}
                 <div className="flex items-start gap-4">
                   <div className="w-5 h-5 shrink-0 mt-0.5 flex items-center justify-center">
-                    <MapPin className="w-5 h-5 text-[#EF4444]" />
+                    <MapPin className="w-5 h-5 text-[#16A34A]" />
                   </div>
                   <div className="flex flex-col gap-1">
                     <h4 className="text-white   font-bold text-[14px] leading-[20px]">
@@ -96,7 +96,7 @@ const Contact: React.FC = () => {
                 {/* Email Group */}
                 <div className="flex items-start gap-4">
                   <div className="w-5 h-5 shrink-0 mt-0.5 flex items-center justify-center">
-                    <Mail className="w-5 h-5 text-[#EF4444]" />
+                    <Mail className="w-5 h-5 text-[#16A34A]" />
                   </div>
                   <div className="flex flex-col gap-1">
                     <h4 className="text-white   font-bold text-[14px] leading-[20px]">
@@ -105,7 +105,7 @@ const Contact: React.FC = () => {
                     <p className="text-white/70   font-medium text-[12px] leading-[16px]">
                       <a
                         href="mailto:info.redconbd@gmail.com"
-                        className="hover:text-[#EF4444] transition-colors"
+                        className="hover:text-[#16A34A] transition-colors"
                       >
                         info.redconbd@gmail.com
                       </a>
@@ -116,7 +116,7 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Card 2: Business Hours Box */}
-            <div className="w-full rounded-[24px] border border-[#16a34a]/20 bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(69,10,10,0.40)_100%)] backdrop-blur-[2px] p-6 md:p-8 flex flex-col gap-3">
+            <div className="w-full rounded-[24px] border border-[#16a34a]/20 bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(2,44,34,0.40)_100%)] backdrop-blur-[2px] p-6 md:p-8 flex flex-col gap-3">
               <h3 className="text-white   font-bold text-[16px] leading-[24px]">
                 Our Business Hours
               </h3>
@@ -130,7 +130,7 @@ const Contact: React.FC = () => {
           {/* RIGHT AREA: INTERACTIVE CONSULTATION FORM SYSTEM (SPAN 7) */}
           <form
             onSubmit={handleSubmit}
-            className="col-span-1 lg:col-span-7 w-full rounded-[24px] border border-[rgba(22,163,74,0.40)] bg-[linear-gradient(270deg,rgba(0,151,56,0.35)_0%,rgba(255,0,0,0.35)_100%)] backdrop-blur-[2px] p-6 md:p-10 flex flex-col gap-6"
+            className="col-span-1 lg:col-span-7 w-full rounded-[24px] border border-[rgba(22,163,74,0.40)] bg-[linear-gradient(270deg,rgba(0,151,56,0.35)_0%,rgba(0,151,56,0.35)_100%)] backdrop-blur-[2px] p-6 md:p-10 flex flex-col gap-6"
           >
             {/* Row 1: Full Name & Email Address Split */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -146,7 +146,7 @@ const Contact: React.FC = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, fullName: e.target.value })
                   }
-                  className="w-full rounded-[12px] border border-[#262626] bg-[rgba(87,86,86,0.05)] px-4 py-3 text-white text-[14px] placeholder-[#9CA3AF] focus:outline-none focus:border-[#16a34a]/40 transition-colors"
+                  className="w-full rounded-[12px] border border-gray-600 bg-[rgba(87,86,86,0.05)] px-4 py-3 text-white text-[14px] placeholder-[#9CA3AF] focus:outline-none focus:border-[#16a34a]/40 transition-colors"
                 />
               </div>
 
@@ -162,7 +162,7 @@ const Contact: React.FC = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, emailAddress: e.target.value })
                   }
-                  className="w-full rounded-[12px] border border-[#262626] bg-[rgba(87,86,86,0.05)] px-4 py-3 text-white text-[14px] placeholder-[#9CA3AF] focus:outline-none focus:border-[#16a34a]/40 transition-colors"
+                  className="w-full rounded-[12px] border border-gray-600 bg-[rgba(87,86,86,0.05)] px-4 py-3 text-white text-[14px] placeholder-[#9CA3AF] focus:outline-none focus:border-[#16a34a]/40 transition-colors"
                 />
               </div>
             </div>
@@ -181,7 +181,7 @@ const Contact: React.FC = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, phoneNumber: e.target.value })
                   }
-                  className="w-full rounded-[12px] border border-[#262626] bg-[rgba(87,86,86,0.05)] px-4 py-3 text-white text-[14px] placeholder-[#9CA3AF] focus:outline-none focus:border-[#16a34a]/40 transition-colors"
+                  className="w-full rounded-[12px] border border-gray-600 bg-[rgba(87,86,86,0.05)] px-4 py-3 text-white text-[14px] placeholder-[#9CA3AF] focus:outline-none focus:border-[#16a34a]/40 transition-colors"
                 />
               </div>
 
@@ -197,7 +197,7 @@ const Contact: React.FC = () => {
                       serviceRequired: e.target.value,
                     })
                   }
-                  className="w-full rounded-[12px] border border-[#262626] px-4 py-3 text-white text-[14px] focus:outline-none focus:border-[#16a34a]/40 transition-colors cursor-pointer appearance-none bg-[url bg-[length:12px_12px] bg-[right_16px_center] bg-no-repeat"
+                  className="w-full rounded-[12px] border border-gray-600 px-4 py-3 text-white text-[14px] focus:outline-none focus:border-[#16a34a]/40 transition-colors cursor-pointer appearance-none bg-[url bg-[length:12px_12px] bg-[right_16px_center] bg-no-repeat"
                 >
                   <option value="Survey & Monitoring" className="bg-neutral-900">
                     Survey & Monitoring
@@ -225,7 +225,7 @@ const Contact: React.FC = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, projectDetails: e.target.value })
                 }
-                className="w-full rounded-[12px] border border-[#262626] bg-[rgba(87,86,86,0.05)] px-4 py-3 text-white text-[14px] placeholder-[#9CA3AF] focus:outline-none focus:border-[#16a34a]/40 transition-colors"
+                className="w-full rounded-[12px] border border-gray-600 bg-[rgba(87,86,86,0.05)] px-4 py-3 text-white text-[14px] placeholder-[#9CA3AF] focus:outline-none focus:border-[#16a34a]/40 transition-colors"
               />
             </div>
 
@@ -242,14 +242,14 @@ const Contact: React.FC = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
-                className="w-full rounded-[12px] border border-[#262626] bg-[rgba(87,86,86,0.05)] px-4 py-3 text-white text-[14px] placeholder-[#9CA3AF] focus:outline-none focus:border-[#16a34a]/40 transition-colors resize-none min-h-[120px]"
+                className="w-full rounded-[12px] border border-gray-600 bg-[rgba(87,86,86,0.05)] px-4 py-3 text-white text-[14px] placeholder-[#9CA3AF] focus:outline-none focus:border-[#16a34a]/40 transition-colors resize-none min-h-[120px]"
               />
             </div>
 
             {/* Form Submit Button Component with Gradient-to-Right Accent Mapping */}
             <button
               type="submit"
-              className="w-full mt-2 py-3.5 text-center text-white   font-bold text-[14px] leading-[20px] rounded-[12px] bg-[linear-gradient(90deg,#16A34A_0%,#DC2626_100%)] shadow-[0_20px_25px_-5px_rgba(69,10,10,0.20),0_8px_10px_-6px_rgba(69,10,10,0.20)] hover:opacity-95 active:scale-[0.99] transition-all cursor-pointer"
+              className="w-full mt-2 py-3.5 text-center text-black font-bold text-[14px] leading-[20px] rounded-[12px] bg-[linear-gradient(270deg,#ffffff_0%,#00a63e_100%)] shadow-[0_20px_25px_-5px_rgba(2,44,34,0.20),0_8px_10px_-6px_rgba(2,44,34,0.20)] hover:opacity-95 active:scale-[0.99] transition-all cursor-pointer"
             >
               Schedule a Consultation
             </button>

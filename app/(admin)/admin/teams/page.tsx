@@ -66,7 +66,7 @@ export default function AdminTeamsManagement() {
 
   return (
     <div className="relative w-full min-h-screen bg-[#050505] p-6 lg:p-12 overflow-hidden text-white">
-      <div className="absolute pointer-events-none   mix-blend-screen left-1/4 top-1/4 w-[800px] h-[400px] rounded-[800px] bg-[linear-gradient(270deg,rgba(0,151,56,0.12)_0%,rgba(255,0,0,0.12)_100%)] blur-[160px]" />
+      <div className="absolute pointer-events-none   mix-blend-screen left-1/4 top-1/4 w-[800px] h-[400px] rounded-[800px] bg-[linear-gradient(270deg,rgba(0,151,56,0.12)_0%,rgba(0,151,56,0.12)_100%)] blur-[160px]" />
 
       <div className="max-w-[1440px] mx-auto z-10 relative">
         {/* Workspace Layout Header Strip */}
@@ -74,13 +74,13 @@ export default function AdminTeamsManagement() {
           <div>
             <div className="flex items-center gap-2 mb-1">
               <div className="w-8 h-[2px] rounded-full bg-[#166534]" />
-              <span className="text-[#EF4444] font-bold text-[11px] tracking-[2.4px] uppercase">
+              <span className="text-[#16A34A] font-bold text-[11px] tracking-[2.4px] uppercase">
                 Workforce Node
               </span>
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-white">
               REDCon HR{" "}
-              <span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#FF0000_25%,#16A34A_100%)]">
+              <span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_25%,#16A34A_100%)]">
                 Control Center
               </span>
             </h1>
@@ -93,7 +93,7 @@ export default function AdminTeamsManagement() {
               onClick={() => setIsCategoryModalOpen(true)}
               className="flex items-center gap-2 px-5 py-3 rounded-[10px] text-[13px] font-semibold bg-neutral-900 border border-neutral-800 hover:bg-neutral-800/50 transition-colors cursor-pointer"
             >
-              <FolderPlus className="w-4 h-4 text-[#EF4444]" />
+              <FolderPlus className="w-4 h-4 text-[#16A34A]" />
               <span>Add Group Tier</span>
             </button>
 
@@ -102,13 +102,12 @@ export default function AdminTeamsManagement() {
                 setEditingMember(null);
                 setIsModalOpen(true);
               }}
-              className="flex items-center gap-2 px-5 py-3 rounded-[10px] text-[13px] font-bold transition-all hover:opacity-95 active:scale-[0.99] cursor-pointer"
+              className="flex items-center gap-2 px-5 py-3 rounded-[10px] text-[13px] font-bold text-black transition-all hover:opacity-95 active:scale-[0.99] cursor-pointer"
               style={{
-                background:
-                  "linear-gradient(270deg, rgba(0,151,56,0.85) 0%, rgba(255, 0, 0, 0.85) 100%)",
+                background: "linear-gradient(270deg, #ffffff 0%, #00a63e 100%)",
               }}
             >
-              <Plus className="w-4 h-4 text-white" />
+              <Plus className="w-4 h-4 text-black" />
               <span>Deploy Team Members</span>
             </button>
           </div>
@@ -222,7 +221,7 @@ export default function AdminTeamsManagement() {
                     <div className="flex items-center gap-2 text-xs font-medium text-white/60 truncate bg-neutral-950/30 border border-white/5 px-3 py-2 rounded-xl">
                       <Mail
                         className="w-3.5 h-3.5 shrink-0"
-                        style={{ color: "#DCA54E" }}
+                        style={{ color: "#16A34A" }}
                       />
                       <span className="truncate">{member.email}</span>
                     </div>
@@ -247,7 +246,7 @@ export default function AdminTeamsManagement() {
                         </button>
                         <button
                           onClick={() => handleDelete(member.id)}
-                          className="p-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 transition-all cursor-pointer"
+                          className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/70 transition-all cursor-pointer"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>

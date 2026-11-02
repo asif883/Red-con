@@ -90,7 +90,7 @@ const OurTeam = () => {
     <section className="relative w-full py-24 overflow-hidden flex flex-col justify-center bg-black text-white">
       
       {/* BACKGROUND ATMOSPHERIC LIGHTING */}
-      <div className="absolute pointer-events-none   mix-blend-screen left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[1488px] h-[404px] rounded-[1488px] bg-[linear-gradient(270deg,rgba(0,151,56,0.35)_0%,rgba(255,0,0,0.35)_100%)] blur-[250px] z-0" />
+      <div className="absolute pointer-events-none   mix-blend-screen left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[1488px] h-[404px] rounded-[1488px] bg-[linear-gradient(270deg,rgba(0,151,56,0.35)_0%,rgba(0,151,56,0.35)_100%)] blur-[250px] z-0" />
 
       <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-16">
         
@@ -102,7 +102,7 @@ const OurTeam = () => {
             {/* Top Tag Sub-indicator */}
             <div className="flex items-center gap-3">
               <div className="w-8 h-[2px] rounded-full bg-[#166534]" />
-              <span className="text-[#EF4444] font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
+              <span className="text-[#16A34A] font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
                 our team
               </span>
             </div>

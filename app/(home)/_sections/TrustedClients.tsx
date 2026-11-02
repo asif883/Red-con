@@ -19,7 +19,7 @@ const TrustedClients = () => {
         <h2 
           className="text-center   italic font-bold text-[30px] leading-[48px] tracking-[3.8px] bg-clip-text text-transparent"
           style={{
-            background: "linear-gradient(270deg, #FF0000 0%, #009738 100%)",
+            background: "linear-gradient(270deg, #16A34A 0%, #009738 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
@@ -28,7 +28,7 @@ const TrustedClients = () => {
         </h2>
 
         {/* Updated Glowing Effect: Positioned exactly below the text & horizontally centered */}
-        <div className="absolute pointer-events-none   left-1/2 -translate-x-1/2 top-full w-[1445px] h-[49px] rounded-[1445px] bg-[linear-gradient(270deg,rgba(0,151,56,0.90)_0%,rgba(255,0,0,0.90)_100%)] blur-[250px] -z-10" />
+        <div className="absolute pointer-events-none   left-1/2 -translate-x-1/2 top-full w-[1445px] h-[49px] rounded-[1445px] bg-[linear-gradient(270deg,rgba(0,151,56,0.90)_0%,rgba(0,151,56,0.90)_100%)] blur-[250px] -z-10" />
       </div>
 
       {/* Infinite Logo Marquee Track Container */}

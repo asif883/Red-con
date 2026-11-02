@@ -7,7 +7,7 @@ interface ApproachCardProps {
   id: number;
   title: string;
   description: string;
-  isRedBadge?: boolean;
+  isAccentBadge?: boolean;
   hoverRadiusClass: string;
 }
 
@@ -16,25 +16,25 @@ const approachData: Omit<ApproachCardProps, "hoverRadiusClass">[] = [
     id: 1,
     title: "Client-Centric Solutions",
     description: "Delivering customized solutions tailored to project objectives.",
-    isRedBadge: false,
+    isAccentBadge: false,
   },
   {
     id: 2,
     title: "Creative Execution",
     description: "Combining technical expertise with innovative thinking.",
-    isRedBadge: true,
+    isAccentBadge: true,
   },
   {
     id: 3,
     title: "Data-Driven Decision",
     description: "Using analytics and evidence-based methodologies for optimal outcomes.",
-    isRedBadge: false,
+    isAccentBadge: false,
   },
   {
     id: 4,
     title: "Continuous Improvement",
     description: "Embracing modern technologies and evolving industry practices.",
-    isRedBadge: true,
+    isAccentBadge: true,
   },
 ];
 
@@ -42,7 +42,7 @@ const ApproachCard: React.FC<ApproachCardProps> = ({
   id,
   title,
   description,
-  isRedBadge,
+  isAccentBadge,
   hoverRadiusClass,
 }) => {
   return (
@@ -52,8 +52,8 @@ const ApproachCard: React.FC<ApproachCardProps> = ({
       {/* Badge Element */}
       <div
         className={`flex w-9 h-9 items-center justify-center rounded-lg text-[16px]   font-bold leading-[24px] ${
-          isRedBadge
-            ? "bg-[#EF4444]/10 text-[#EF4444] font-normal"
+          isAccentBadge
+            ? "bg-[#16A34A]/10 text-[#16A34A] font-normal"
             : "bg-[#0D5C3F] text-white"
         }`}
       >
@@ -86,14 +86,14 @@ const WhyChoose: React.FC = () => {
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3  ">
               <div className="w-8 h-[2px] rounded-full bg-[#166534]" />
-              <span className="text-[#EF4444]   font-bold text-[16px] leading-[24px] tracking-[3.2px] capitalize">
+              <span className="text-[#16A34A]   font-bold text-[16px] leading-[24px] tracking-[3.2px] capitalize">
                 WHY cHOOSE REDCon Ltd.
               </span>
             </div>
             
             <h2 className="text-white   font-semibold text-3xl md:text-4xl lg:text-[48px] lg:leading-[50px] tracking-[-1.2px]">
               Our Approach to{" "}
-              <span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#FF0000_54.33%,#16A34A_100%)]">
+              <span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_54.33%,#16A34A_100%)]">
                 Excellence
               </span>
             </h2>

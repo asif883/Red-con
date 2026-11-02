@@ -223,7 +223,7 @@ export default function AddTeamModal({
         </div>
 
         {errorLog && (
-          <div className="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-semibold flex items-center gap-2 animate-pulse">
+          <div className="mb-6 p-4 rounded-xl bg-white/5 border border-white/10 text-white/70 text-xs font-semibold flex items-center gap-2 animate-pulse">
             <AlertCircle className="w-4 h-4 shrink-0" /> <span>{errorLog}</span>
           </div>
         )}
@@ -412,7 +412,7 @@ export default function AddTeamModal({
                         <button
                           type="button"
                           onClick={() => handleRemoveFieldRow(index)}
-                          className="p-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 transition-colors cursor-pointer shrink-0"
+                          className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/70 transition-colors cursor-pointer shrink-0"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>
@@ -450,10 +450,9 @@ export default function AddTeamModal({
               <button
                 type="submit"
                 disabled={loading}
-                className="px-6 py-2.5 rounded-[10px] text-xs font-bold text-white hover:opacity-90 transition-all cursor-pointer  "
+                className="px-6 py-2.5 rounded-[10px] text-xs font-bold text-black hover:opacity-90 transition-all cursor-pointer  "
                 style={{
-                  background:
-                    "linear-gradient(270deg, #16A34A 0%, #0D5C3F 100%)",
+                  background: "linear-gradient(270deg, #ffffff 0%, #00a63e 100%)",
                 }}
               >
                 {loading

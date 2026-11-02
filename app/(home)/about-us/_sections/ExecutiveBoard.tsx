@@ -21,7 +21,7 @@ const ExecutiveBoard = () => {
       name: "Chairman",
       roleTag: "INSTITUTIONAL LEADERSHIP",
       roleLabel: "Chairman",
-      roleColorClass: "text-[#DCA54E]",
+      roleColorClass: "text-[#16A34A]",
       description: "Providing strategic direction, institutional leadership, and long-term organizational growth frameworks.",
       imageSrc: "/images/director/director1long.png",
     },
@@ -39,7 +39,7 @@ const ExecutiveBoard = () => {
       name: "Chief Executive Officer",
       roleTag: "OPERATIONAL EXCELLENCE",
       roleLabel: "Chief Executive Officer",
-      roleColorClass: "text-[#F43F5E]",
+      roleColorClass: "text-[#16A34A]",
       description: "Ensuring operational excellence, strict quality assurance protocols, master project management, and performance optimization.",
       imageSrc: "/images/director/director3.png",
     },
@@ -55,7 +55,7 @@ const ExecutiveBoard = () => {
           {/* Top Tag Sub-indicator */}
           <div className="flex items-center gap-3">
             <div className="w-8 h-[2px] rounded-full bg-[#166534]" />
-            <span className="text-[#EF4444] font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
+            <span className="text-[#16A34A] font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
               executive board
             </span>
           </div>
@@ -74,7 +74,7 @@ const ExecutiveBoard = () => {
           {boardData.map((member) => (
             <div
               key={member.id}
-              className="w-full rounded-[40px] border border-[rgba(22,163,74,0.20)] bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(69,10,10,0.40)_100%)] p-6 flex flex-col gap-6 text-left"
+              className="w-full rounded-[40px] border border-[rgba(22,163,74,0.20)] bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(2,44,34,0.40)_100%)] p-6 flex flex-col gap-6 text-left"
             >
               {/* Profile Image Frame with Exact Figma Height Definition */}
               <div className="relative w-full h-[273.33px] rounded-2xl overflow-hidden bg-neutral-900/40">

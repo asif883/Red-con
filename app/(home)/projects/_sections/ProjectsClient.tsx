@@ -94,14 +94,14 @@ export default function ProjectsClient({
 
   return (
     <section className="relative w-full py-24 overflow-hidden flex flex-col justify-center bg-black">
-      <div className="absolute mix-blend-screen left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1279px] h-[600px] rounded-full bg-[linear-gradient(225deg,rgba(22,163,74,0.10)_0%,rgba(22,163,74,0.10)_50%,rgba(255,0,0,0.15)_100%)] blur-[75px] z-0" />
+      <div className="absolute mix-blend-screen left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1279px] h-[600px] rounded-full bg-[linear-gradient(225deg,rgba(22,163,74,0.10)_0%,rgba(22,163,74,0.10)_50%,rgba(0,151,56,0.15)_100%)] blur-[75px] z-0" />
 
       <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-12">
         <div className="w-full flex flex-col gap-8">
           <div className="flex flex-col gap-5 max-w-[850px]">
             <div className="flex items-center gap-3  ">
               <div className="w-8 h-[2px] rounded-full bg-[#166534]" />
-              <span className="text-[#EF4444] font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
+              <span className="text-[#16A34A] font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
                 high-impact architecture
               </span>
             </div>

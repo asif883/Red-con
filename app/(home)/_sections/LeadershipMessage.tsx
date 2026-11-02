@@ -19,7 +19,7 @@ const messageData: MessageCardProps[] = [
     avatar: "/images/director/director1.png",
     name: "Chairman's Message",
     role: "REDCon Board",
-    roleColorClass: "text-[#EF4444]",
+    roleColorClass: "text-[#16A34A]",
     quote: "“Research Engineering & Development Consultant Ltd. (REDCon) is built on a commitment to innovation, excellence, and sustainable development. We drive strategic development forward.”",
     footerLabel: "Strategic Innovation",
     footerStatus: "Verified",
@@ -33,7 +33,7 @@ const messageData: MessageCardProps[] = [
     quote: "“Our future goals focus on expansion, robust growth strategies, and a relentless commitment to delivering impactful engineering and advisory solutions.”",
     footerLabel: "Future-focused Growth",
     footerStatus: "Strategic",
-    statusColorClass: "text-[#EF4444]",
+    statusColorClass: "text-[#16A34A]",
   },
 ];
 
@@ -103,14 +103,14 @@ const LeadershipMessage: React.FC = () => {
           <div className="flex items-center gap-3">
             {/* Green Segment Accent Bar */}
             <div className="w-8 h-[2px] rounded-full bg-[#166534]" />
-            <span className="text-[#EF4444]  font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
+            <span className="text-[#16A34A]  font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
               LEADERSHIP MESSAGE
             </span>
           </div>
           
           <h2 className="text-white  font-semibold text-3xl md:text-4xl lg:text-[48px] lg:leading-[50px] tracking-[-1.2px]">
             Guided by Vision &{" "}
-            <span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#FF0000_27.4%,#16A34A_78.85%)]">
+            <span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_27.4%,#16A34A_78.85%)]">
               Excellence
             </span>
           </h2>

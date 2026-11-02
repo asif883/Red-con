@@ -35,7 +35,7 @@ const TeamHero = () => {
             />
             <span 
               style={{
-                color: "#EF4444",
+                color: "#16A34A",
                 fontFamily: "Inter, sans-serif",
                 fontSize: "16px",
                 fontStyle: "normal",

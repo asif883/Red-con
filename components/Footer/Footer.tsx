@@ -120,13 +120,7 @@ const Footer: React.FC = () => {
         {/* MIDDLE SECTION: HORIZONTAL SPLIT DIVIDER */}
         <div className="w-full h-[1px] bg-white/[0.05] mt-6" />
 
-        {/* MASSIVE BRANDING WATERMARK SHOWCASE */}
-        <div className="w-full flex items-center justify-center   py-4 overflow-hidden">
-          <h1 className="text-center  font-black tracking-[4px] md:tracking-[8px] lg:tracking-[12.08px] text-[44px] sm:text-[90px] md:text-[130px] lg:text-[185px] leading-none bg-clip-text text-transparent bg-[linear-gradient(270deg,rgba(22,163,74,0.30)_0%,rgba(255,0,0,0.30)_100%)] uppercase transition-all">
-            REDCon Ltd.
-          </h1>
-        </div>
-
+      
         {/* BOTTOM UTILITY REGISTRATION FOOTER BAR */}
         <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 pt-4 border-t border-white/[0.03]">
           

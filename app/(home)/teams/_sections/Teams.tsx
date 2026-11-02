@@ -55,8 +55,8 @@ export default async function Teams() {
   return (
     <section className="relative w-full py-24 overflow-hidden bg-[#050505] text-white">
       {/* Background Ambient Vector Glow Shapes */}
-      <div className="absolute pointer-events-none   mix-blend-screen left-1/4 top-1/4 w-[800px] h-[500px] rounded-full bg-[linear-gradient(270deg,rgba(0,151,56,0.06)_0%,rgba(255,0,0,0.06)_100%)] blur-[150px]" />
-      <div className="absolute pointer-events-none   mix-blend-screen right-1/4 bottom-1/4 w-[800px] h-[500px] rounded-full bg-[linear-gradient(270deg,rgba(0,151,56,0.06)_0%,rgba(255,0,0,0.06)_100%)] blur-[150px]" />
+      <div className="absolute pointer-events-none   mix-blend-screen left-1/4 top-1/4 w-[800px] h-[500px] rounded-full bg-[linear-gradient(270deg,rgba(0,151,56,0.06)_0%,rgba(0,151,56,0.06)_100%)] blur-[150px]" />
+      <div className="absolute pointer-events-none   mix-blend-screen right-1/4 bottom-1/4 w-[800px] h-[500px] rounded-full bg-[linear-gradient(270deg,rgba(0,151,56,0.06)_0%,rgba(0,151,56,0.06)_100%)] blur-[150px]" />
 
       <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col gap-20">
         {/* Main Section Header */}
@@ -72,7 +72,7 @@ export default async function Teams() {
             />
             <span
               style={{
-                color: "#EF4444",
+                color: "#16A34A",
                 fontFamily: "Inter, sans-serif",
                 fontSize: "16px",
                 fontWeight: 700,
@@ -122,7 +122,7 @@ export default async function Teams() {
                     style={{
                       fontFamily: "Inter, sans-serif",
                       backgroundImage:
-                        "linear-gradient(270deg, #FF0000 0%, #16A34A 100%)",
+                        "linear-gradient(270deg, #16A34A 0%, #16A34A 100%)",
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                     }}

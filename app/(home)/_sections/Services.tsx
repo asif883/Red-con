@@ -144,13 +144,13 @@ const Services = () => {
     <section className="relative w-full py-20 overflow-hidden  flex items-center justify-center">
       {/* Figma Ambient Background Glow Spot 1 (Top Left) */}
       {/* Figma Ambient Background Glow Spot 1 (Top Left) */}
-      <div className="absolute pointer-events-none     left-[-73px] top-[62px] w-[504px] h-[504px] rounded-[504px] bg-[linear-gradient(270deg,rgba(0,151,56,0.30)_0%,rgba(255,0,0,0.30)_100%)] blur-[250px]" />
+      <div className="absolute pointer-events-none     left-[-73px] top-[62px] w-[504px] h-[504px] rounded-[504px] bg-[linear-gradient(270deg,rgba(0,151,56,0.30)_0%,rgba(0,151,56,0.30)_100%)] blur-[250px]" />
 
       {/* Figma Ambient Background Glow Spot 2 (Top Right) */}
-      <div className="absolute pointer-events-none     right-[-143px] top-[3px] w-[512px] h-[504px] rounded-[512px] bg-[linear-gradient(270deg,rgba(0,151,56,0.30)_0%,rgba(255,0,0,0.30)_100%)] blur-[250px]" />
+      <div className="absolute pointer-events-none     right-[-143px] top-[3px] w-[512px] h-[504px] rounded-[512px] bg-[linear-gradient(270deg,rgba(0,151,56,0.30)_0%,rgba(0,151,56,0.30)_100%)] blur-[250px]" />
 
       {/* Figma Ambient Background Glow Spot 3 (Below Image Section) */}
-      <div className="absolute pointer-events-none    left-[712px] bottom-[130px] w-[1280px] h-[349px] rounded-[1280px] bg-[linear-gradient(270deg,rgba(0,151,56,0.30)_0%,rgba(255,0,0,0.30)_100%)] blur-[250px]" />
+      <div className="absolute pointer-events-none    left-[712px] bottom-[130px] w-[1280px] h-[349px] rounded-[1280px] bg-[linear-gradient(270deg,rgba(0,151,56,0.30)_0%,rgba(0,151,56,0.30)_100%)] blur-[250px]" />
 
       <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-16">
         {/* Header Section */}
@@ -159,7 +159,7 @@ const Services = () => {
             {/* Top Indicator Subheader */}
             <div className="flex items-center gap-3">
               <div className="w-8 h-[2px] rounded-full bg-[#166534]" />
-              <span className="text-[#EF4444]  font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
+              <span className="text-[#16A34A]  font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
                 Services
               </span>
             </div>
@@ -171,7 +171,7 @@ const Services = () => {
                 className="italic bg-clip-text text-transparent"
                 style={{
                   background:
-                    "linear-gradient(270deg, #16A34A 33.65%, #FF0000 100%)",
+                    "linear-gradient(270deg, #16A34A 33.65%, #16A34A 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}

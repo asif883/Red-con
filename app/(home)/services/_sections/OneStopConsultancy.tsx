@@ -33,14 +33,14 @@ export default function OneStopConsultancy() {
       {/* Background atmospheric lighting */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[600px] w-[1000px] max-w-none -translate-x-1/2 -translate-y-1/2 rounded-full bg-[linear-gradient(45deg,rgba(52,211,153,0.10)_0%,rgba(10,10,10,0.20)_50%,rgba(244,63,94,0.10)_100%)] blur-[75px] mix-blend-screen"
+        className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[600px] w-[1000px] max-w-none -translate-x-1/2 -translate-y-1/2 rounded-full bg-[linear-gradient(45deg,rgba(52,211,153,0.10)_0%,rgba(10,10,10,0.20)_50%,rgba(22,163,74,0.10)_100%)] blur-[75px] mix-blend-screen"
       />
 
       <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-4 sm:gap-16 sm:px-6 lg:px-8">
         <div className="flex w-full flex-col gap-4">
           <div className="flex items-center gap-3">
             <div className="h-[2px] w-8 rounded-full bg-[#166534]" />
-            <span className="text-[12px] font-bold uppercase leading-6 tracking-[3.2px] text-[#EF4444] sm:text-[16px]">
+            <span className="text-[12px] font-bold uppercase leading-6 tracking-[3.2px] text-[#16A34A] sm:text-[16px]">
               One-stop consultancy
             </span>
           </div>

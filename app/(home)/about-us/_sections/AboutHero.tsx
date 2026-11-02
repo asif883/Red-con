@@ -9,7 +9,7 @@ const AboutHero = () => {
       <Navbar />
 
       {/* FIRST GLOW: Positioned at the very top start of the section with 35% opacity */}
-      <div className="absolute pointer-events-none   mix-blend-screen left-1/2 -translate-x-1/2 -top-40 w-[1488px] h-[581px] rounded-[1488px] bg-[linear-gradient(270deg,rgba(0,151,56,0.35)_0%,rgba(255,0,0,0.35)_100%)] blur-[250px] z-0" />
+      <div className="absolute pointer-events-none   mix-blend-screen left-1/2 -translate-x-1/2 -top-40 w-[1488px] h-[581px] rounded-[1488px] bg-[linear-gradient(270deg,rgba(0,151,56,0.35)_0%,rgba(0,151,56,0.35)_100%)] blur-[250px] z-0" />
 
       {/* Main Content Layout Container */}
       <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-16 xl:gap-24 flex-grow justify-center">
@@ -31,7 +31,7 @@ const AboutHero = () => {
             {/* Top Tag Sub-indicator */}
             <div className="flex items-center gap-3">
               <div className="w-8 h-[2px] rounded-full bg-[#166534]" />
-              <span className="text-[#EF4444]   font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
+              <span className="text-[#16A34A]   font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
                 about our practice
               </span>
             </div>

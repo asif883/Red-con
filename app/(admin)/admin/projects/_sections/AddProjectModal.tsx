@@ -210,7 +210,7 @@ export default function AddProjectModal({
                 <button
                   type="button"
                   onClick={handleRemoveThumbnail}
-                  className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center text-red-400 transition-opacity duration-200 cursor-pointer rounded-[12px]"
+                  className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white/70 transition-opacity duration-200 cursor-pointer rounded-[12px]"
                 >
                   <Trash2 className="w-5 h-5" />
                 </button>
@@ -233,7 +233,7 @@ export default function AddProjectModal({
                 Gallery Attachments ({remoteGalleryPaths.length + localGalleryFiles.length}/2)
               </label>
               {galleryWarning && (
-                <span className="text-[10px] text-amber-400 font-medium flex items-center gap-1 animate-pulse">
+                <span className="text-[10px] text-white/70 font-medium flex items-center gap-1 animate-pulse">
                   <AlertCircle className="w-3 h-3" /> {galleryWarning}
                 </span>
               )}
@@ -248,7 +248,7 @@ export default function AddProjectModal({
                   <button
                     type="button"
                     onClick={() => removeRemoteGalleryImage(idx)}
-                    className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 flex items-center justify-center text-red-400 transition-opacity duration-150 cursor-pointer"
+                    className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white/70 transition-opacity duration-150 cursor-pointer"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -263,7 +263,7 @@ export default function AddProjectModal({
                   <button
                     type="button"
                     onClick={() => removeLocalGalleryImage(idx)}
-                    className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 flex items-center justify-center text-red-400 transition-opacity duration-150 cursor-pointer"
+                    className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white/70 transition-opacity duration-150 cursor-pointer"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -301,7 +301,7 @@ export default function AddProjectModal({
           </div>
 
           <div className="p-4 rounded-[14px] bg-neutral-950/60 border border-neutral-800/80 flex flex-col gap-3">
-            <span className="text-[10px] font-extrabold text-[#EF4444] tracking-wider uppercase">Secondary Metric Node</span>
+            <span className="text-[10px] font-extrabold text-[#16A34A] tracking-wider uppercase">Secondary Metric Node</span>
             <input type="text" placeholder="Label (e.g. Capacity)" value={formData.metric2Title} onChange={(e) => setFormData({ ...formData, metric2Title: e.target.value })} className="w-full rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 text-xs focus:outline-none focus:border-emerald-500/50 text-white" />
             <input type="text" placeholder="Data Payload (e.g. 10 CPC)" value={formData.metric2Value} onChange={(e) => setFormData({ ...formData, metric2Value: e.target.value })} className="w-full rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 text-xs focus:outline-none focus:border-emerald-500/50 text-white" />
           </div>
@@ -310,7 +310,7 @@ export default function AddProjectModal({
             <button type="button" onClick={onClose} className="px-5 py-2.5 rounded-[10px] text-xs font-semibold bg-neutral-800 hover:bg-neutral-700 transition-colors cursor-pointer">
               Cancel
             </button>
-            <button type="submit" disabled={formLoading} className="px-6 py-2.5 rounded-[10px] text-xs font-bold text-white hover:opacity-90 transition-all cursor-pointer" style={{ background: "linear-gradient(270deg, #16A34A 0%, #0D5C3F 100%)" }}>
+            <button type="submit" disabled={formLoading} className="px-6 py-2.5 rounded-[10px] text-xs font-bold text-black hover:opacity-90 transition-all cursor-pointer" style={{ background: "linear-gradient(270deg, #ffffff 0%, #00a63e 100%)" }}>
               {formLoading ? "Syncing..." : editingProject ? "Save Blueprint Modifications" : "Initialize Global Production Deploy"}
             </button>
           </div>

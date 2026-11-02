@@ -52,7 +52,7 @@ const toolsData: ToolItem[] = [
 
 const ToolCard: React.FC<{ tool: ToolItem }> = ({ tool }) => {
   return (
-    <div className="flex flex-col justify-center items-center p-6 rounded-[16px] bg-[#EF4444]/[0.10] shadow-[0_0_10px_0_rgba(239,68,68,0.40)] border border-transparent hover:border-[#EF4444]/30 transition-all duration-300 group w-full aspect-square sm:aspect-auto sm:h-[180px]">
+    <div className="flex flex-col justify-center items-center p-6 rounded-[16px] bg-[#16A34A]/[0.10] shadow-[0_0_10px_0_rgba(22,163,74,0.40)] border border-transparent hover:border-[#16A34A]/30 transition-all duration-300 group w-full aspect-square sm:aspect-auto sm:h-[180px]">
       {/* Tool Icon Container */}
       <div className="relative w-14 h-14 shrink-0 mb-4 transition-transform duration-300 group-hover:scale-110">
         <Image
@@ -89,7 +89,7 @@ const Technology: React.FC = () => {
             <div className="flex items-center gap-3">
               {/* Green Accent Brand Bar */}
               <div className="w-8 h-[2px] rounded-full bg-[#166534]" />
-              <span className="text-[#EF4444]  font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
+              <span className="text-[#16A34A]  font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
                 Technology we use
               </span>
             </div>
@@ -97,7 +97,7 @@ const Technology: React.FC = () => {
             {/* Core Header Segment Typography */}
             <h2 className="text-white  font-semibold text-3xl md:text-4xl lg:text-[44px] lg:leading-[50px] tracking-[-1.2px]">
               Powered By{" "}
-              <span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#FF0000_0%,#16A34A_100%)]">
+              <span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_0%,#16A34A_100%)]">
                 Technology & Tools
               </span>
             </h2>

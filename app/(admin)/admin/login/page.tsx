@@ -64,7 +64,7 @@ const AdminLogin = () => {
           width: "1200px",
           height: "450px",
           borderRadius: "1200px",
-          background: "linear-gradient(270deg, rgba(0, 151, 56, 0.22) 0%, rgba(255, 0, 0, 0.22) 100%)",
+          background: "linear-gradient(270deg, rgba(0, 151, 56, 0.22) 0%, rgba(0, 151, 56, 0.22) 100%)",
           filter: "blur(200px)",
         }}
       />
@@ -81,7 +81,7 @@ const AdminLogin = () => {
         <div className="flex flex-col gap-2 items-center text-center mb-8  ">
           <div className="flex items-center gap-2 mb-1">
             <div className="w-6 h-[2px] rounded-full bg-[#166534]" />
-            <span className="text-[#EF4444] font-bold text-[12px] leading-[18px] tracking-[2.4px] uppercase">
+            <span className="text-[#16A34A] font-bold text-[12px] leading-[18px] tracking-[2.4px] uppercase">
               REDCon Control Center
             </span>
           </div>
@@ -91,7 +91,7 @@ const AdminLogin = () => {
             <span 
               className="italic bg-clip-text text-transparent"
               style={{
-                background: "linear-gradient(270deg, #FF0000 25.48%, #16A34A 100%)",
+                background: "linear-gradient(270deg, #16A34A 25.48%, #16A34A 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -105,8 +105,8 @@ const AdminLogin = () => {
         </div>
 
         {(formError || error) && (
-          <div className="mb-6 flex items-start gap-3 p-4 bg-red-500/10 border border-red-500/20 rounded-[12px] text-red-400 text-sm animate-fadeIn">
-            <ShieldAlert className="w-5 h-5 shrink-0 text-[#EF4444]" />
+          <div className="mb-6 flex items-start gap-3 p-4 bg-white/5 border border-white/10 rounded-[12px] text-white/70 text-sm animate-fadeIn">
+            <ShieldAlert className="w-5 h-5 shrink-0 text-[#16A34A]" />
             <span className="leading-tight font-medium">{formError || error}</span>
           </div>
         )}
@@ -155,14 +155,14 @@ const AdminLogin = () => {
           <button
             type="submit"
             disabled={localLoading}
-            className="flex items-center justify-center gap-2 w-full mt-3 px-6 py-3.5 rounded-[12px] text-white text-[14px] font-bold leading-[20px] transition-all hover:opacity-95 active:scale-[0.99] disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
+            className="flex items-center justify-center gap-2 w-full mt-3 px-6 py-3.5 rounded-[12px] text-black text-[14px] font-bold leading-[20px] transition-all hover:opacity-95 active:scale-[0.99] disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
             style={{
-              background: "linear-gradient(270deg, rgba(0, 151, 56, 0.85) 0%, rgba(255, 0, 0, 0.85) 100%)",
+              background: "linear-gradient(270deg, #ffffff 0%, #00a63e 100%)",
               boxShadow: "0 4px 12px 0 rgba(22, 101, 52, 0.15)",
             }}
           >
             {localLoading ? (
-              <Loader2 className="w-5 h-5 animate-spin text-white" />
+              <Loader2 className="w-5 h-5 animate-spin text-black" />
             ) : (
               <>
                 <span>Authenticate Session</span>

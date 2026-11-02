@@ -52,7 +52,7 @@ export default function AdminLayout({
         <header className="w-full md:hidden flex items-center justify-between px-6 py-4 bg-[#090909] border-b border-neutral-800/60 sticky top-0 z-30">
           <div className="flex items-center gap-2  ">
             <ShieldCheck className="w-5 h-5 text-[#16A34A]" />
-            <span className="font-bold text-sm tracking-wider uppercase bg-clip-text text-transparent bg-[linear-gradient(270deg,#FF0000_40%,#16A34A_100%)]">
+            <span className="font-bold text-sm tracking-wider uppercase bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_40%,#16A34A_100%)]">
               REDCon Admin
             </span>
           </div>
@@ -90,7 +90,7 @@ export default function AdminLayout({
                 </div>
                 <div className="flex flex-col">
                   <span className="font-bold text-xs tracking-[1.5px] uppercase text-white">REDCon Ltd.</span>
-                  <span className="text-[9px] font-extrabold tracking-widest text-[#EF4444] uppercase">Control Panel</span>
+                  <span className="text-[9px] font-extrabold tracking-widest text-[#16A34A] uppercase">Control Panel</span>
                 </div>
               </div>
               
@@ -139,7 +139,7 @@ export default function AdminLayout({
             {/* User Meta Identity Badge */}
             {user && (
               <div className="flex items-center gap-3 px-2 py-1  ">
-                <div className="w-9 h-9 rounded-full bg-[linear-gradient(270deg,rgba(0,151,56,0.15)_0%,rgba(255,0,0,0.15)_100%)] border border-neutral-800 flex items-center justify-center text-xs font-bold tracking-wider text-emerald-400">
+                <div className="w-9 h-9 rounded-full bg-[linear-gradient(270deg,rgba(0,151,56,0.15)_0%,rgba(0,151,56,0.15)_100%)] border border-neutral-800 flex items-center justify-center text-xs font-bold tracking-wider text-emerald-400">
                   {user.name ? user.name.substring(0, 2).toUpperCase() : "AD"}
                 </div>
                 <div className="flex flex-col min-w-0">
@@ -152,9 +152,9 @@ export default function AdminLayout({
             {/* Logout Action Trigger Pin */}
             <button
               onClick={logout}
-              className="flex items-center gap-3 w-full px-3 py-3 rounded-[12px] text-[13px] font-medium text-red-400/80 hover:text-red-400 hover:bg-red-500/5 border border-transparent hover:border-red-500/10 transition-all cursor-pointer"
+              className="flex items-center gap-3 w-full px-3 py-3 rounded-[12px] text-[13px] font-medium text-white/60 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 transition-all cursor-pointer"
             >
-              <LogOut className="w-[18px] h-[18px] text-red-400/50 group-hover:text-red-400" />
+              <LogOut className="w-[18px] h-[18px] text-white/40 group-hover:text-white" />
               <span>Terminate Session</span>
             </button>
           </div>

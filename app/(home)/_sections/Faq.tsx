@@ -93,7 +93,7 @@ const Faq: React.FC = () => {
   return (
     <section className="relative w-full bg-black py-20 px-4 md:px-8 lg:px-16 flex flex-col items-center justify-center overflow-hidden min-h-screen gap-24">
       {/* Massive Top Background Glow Effect Element */}
-      <div className="absolute pointer-events-none   z-0 right-[5.266px] top-[-792px] w-[1453.444px] h-[100.398px] rounded-[1453.444px] bg-[linear-gradient(0deg,rgba(239,68,68,0.30)_0%,rgba(239,68,68,0.30)_100%)] blur-[250px]" />
+      <div className="absolute pointer-events-none   z-0 right-[5.266px] top-[-792px] w-[1453.444px] h-[100.398px] rounded-[1453.444px] bg-[linear-gradient(0deg,rgba(22,163,74,0.30)_0%,rgba(22,163,74,0.30)_100%)] blur-[250px]" />
 
       {/* UPPER CONTAINER GRID: FAQ Titles + Quick Call CTA & Accordion Items */}
       <div className="max-w-[1440px] w-full grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10 items-start">
@@ -103,7 +103,7 @@ const Faq: React.FC = () => {
           <div className="flex flex-col gap-4  ">
             <div className="flex items-center gap-3">
               <div className="w-8 h-[2px] rounded-full bg-[#166534]" />
-              <span className="text-[#EF4444]   font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
+              <span className="text-[#16A34A]   font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
                 FAQ
               </span>
             </div>
@@ -114,7 +114,7 @@ const Faq: React.FC = () => {
           </div>
 
           {/* Call Booking CTA Card Block with updated Figma Background/Shadow Matrix tokens */}
-          <div className="w-full rounded-[24px] border border-[#16a34a]/20 bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(69,10,10,0.40)_100%)] p-8 flex flex-col gap-6 shadow-xl backdrop-blur-[2px]">
+          <div className="w-full rounded-[24px] border border-[#16a34a]/20 bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(2,44,34,0.40)_100%)] p-8 flex flex-col gap-6 shadow-xl backdrop-blur-[2px]">
             <div className="flex items-center gap-4">
               <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 border border-neutral-800">
                 <Image
@@ -135,7 +135,7 @@ const Faq: React.FC = () => {
               before starting your project.
             </p>
 
-            <button className="w-full py-3 text-center bg-[#DC2626] hover:bg-red-700 active:scale-[0.99] transition-all text-white   font-bold text-[14px] leading-[20px] rounded-[16px] shadow-lg shadow-red-900/20">
+            <button className="w-full py-3 text-center bg-[#16A34A] hover:bg-[#15803d] active:scale-[0.99] transition-all text-white   font-bold text-[14px] leading-[20px] rounded-[16px] shadow-lg shadow-emerald-900/20">
               Book a Free Call
             </button>
           </div>
@@ -160,7 +160,7 @@ const Faq: React.FC = () => {
         <div className="flex flex-col gap-3 max-w-[480px] lg:shrink-0">
           <h2 className="  text-[32px] xl:text-[36px] font-bold leading-[38px] xl:leading-[40px] tracking-[0.9px] text-white">
             Ready To Start{" "}
-            <span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_0%,#FF0000_100%)]">
+            <span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_0%,#16A34A_100%)]">
               Your Next Project?
             </span>
           </h2>

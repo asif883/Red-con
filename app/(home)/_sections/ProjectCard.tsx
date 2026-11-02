@@ -36,7 +36,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 className="px-4 py-1 rounded-full text-[12px] font-medium leading-[16px] text-white/90 border border-white/5"
                 style={{
                   background:
-                    "linear-gradient(270deg, rgba(0, 151, 56, 0.20) 0%, rgba(255, 0, 0, 0.20) 100%)",
+                    "linear-gradient(270deg, rgba(0, 151, 56, 0.20) 0%, rgba(0, 151, 56, 0.20) 100%)",
                 }}
               >
                 {tag}
@@ -111,7 +111,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                   background: "rgba(23, 23, 23, 0.30)",
                 }}
               >
-                <span className="text-[24px] font-extrabold leading-[32px] text-[#EF4444]">
+                <span className="text-[24px] font-extrabold leading-[32px] text-[#16A34A]">
                   {project.metric2Value}
                 </span>
                 <span className="text-white/60 text-[12px] font-medium leading-[16px]">

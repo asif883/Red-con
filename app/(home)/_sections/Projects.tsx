@@ -35,20 +35,20 @@ export default function Projects() {
       className="relative w-full overflow-hidden py-24"
       style={{ background: "rgba(22, 101, 52, 0.08)" }}
     >
-      <div className="pointer-events-none absolute left-1/2 top-32 h-[581px] w-[1488px] max-w-none -translate-x-1/2 rounded-full bg-[linear-gradient(270deg,rgba(0,151,56,0.30)_0%,rgba(255,0,0,0.30)_100%)] blur-[250px]" />
+      <div className="pointer-events-none absolute left-1/2 top-32 h-[581px] w-[1488px] max-w-none -translate-x-1/2 rounded-full bg-[linear-gradient(270deg,rgba(0,151,56,0.30)_0%,rgba(0,151,56,0.30)_100%)] blur-[250px]" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-4 sm:px-6 lg:px-8">
         <div className="flex w-full flex-col gap-4">
           <div className="flex items-center gap-3">
             <div className="h-[2px] w-8 rounded-full bg-[#166534]" />
-            <span className="text-[16px] font-bold uppercase leading-6 tracking-[3.2px] text-[#EF4444]">
+            <span className="text-[16px] font-bold uppercase leading-6 tracking-[3.2px] text-[#16A34A]">
               projects
             </span>
           </div>
 
           <h2 className="text-3xl font-semibold tracking-[-1.2px] text-white sm:text-4xl lg:text-[48px] lg:leading-[1.1]">
             Transforming Ideas into{" "}
-            <span className="bg-[linear-gradient(270deg,#FF0000_35.58%,#16A34A_100%)] bg-clip-text italic text-transparent">
+            <span className="bg-[linear-gradient(270deg,#16A34A_35.58%,#16A34A_100%)] bg-clip-text italic text-transparent">
               Impactful Projects
             </span>
           </h2>

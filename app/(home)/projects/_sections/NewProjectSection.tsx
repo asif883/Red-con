@@ -179,7 +179,7 @@ export default function NewProjectSection() {
                         className={`shrink-0 rounded-full px-3 py-1.5 text-[11px] font-semibold ${
                           project.status.toLowerCase().includes("complete")
                             ? "bg-white text-emerald-800"
-                            : "bg-amber-300 text-slate-900"
+                            : "bg-white text-black"
                         }`}
                       >
                         {project.status}

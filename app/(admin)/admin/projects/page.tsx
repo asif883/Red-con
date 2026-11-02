@@ -91,7 +91,7 @@ export default function AdminProjectsManagement() {
   return (
     <div className="relative w-full min-h-screen bg-[#050505] p-6 lg:p-12 overflow-hidden text-white">
       {/* Dynamic Background Ambient Vector Glow */}
-      <div className="absolute pointer-events-none   mix-blend-screen left-1/4 top-1/4 w-[800px] h-[400px] rounded-[800px] bg-[linear-gradient(270deg,rgba(0,151,56,0.12)_0%,rgba(255,0,0,0.12)_100%)] blur-[160px]" />
+      <div className="absolute pointer-events-none   mix-blend-screen left-1/4 top-1/4 w-[800px] h-[400px] rounded-[800px] bg-[linear-gradient(270deg,rgba(0,151,56,0.12)_0%,rgba(0,151,56,0.12)_100%)] blur-[160px]" />
 
       <div className="max-w-[1440px] mx-auto z-10 relative">
         
@@ -100,10 +100,10 @@ export default function AdminProjectsManagement() {
           <div>
             <div className="flex items-center gap-2 mb-1">
               <div className="w-6 h-[2px] rounded-full bg-[#166534]" />
-              <span className="text-[#EF4444] font-bold text-[11px] tracking-[2.4px] uppercase">Control System</span>
+              <span className="text-[#16A34A] font-bold text-[11px] tracking-[2.4px] uppercase">Control System</span>
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-white">
-              Repository{" "}<span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#FF0000_25%,#16A34A_100%)]">Dashboard</span>
+              Repository{" "}<span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_25%,#16A34A_100%)]">Dashboard</span>
             </h1>
           </div>
 
@@ -112,15 +112,15 @@ export default function AdminProjectsManagement() {
               onClick={() => { setEditingCategory(null); setIsCategoryModalOpen(true); }}
               className="flex items-center gap-2 px-5 py-3 rounded-[10px] text-[13px] font-semibold bg-neutral-900 border border-neutral-800 hover:bg-neutral-800/50 transition-colors cursor-pointer"
             >
-              <FolderPlus className="w-4 h-4 text-[#EF4444]" />
+              <FolderPlus className="w-4 h-4 text-[#16A34A]" />
               <span>Add Category</span>
             </button>
             <button
               onClick={() => { setEditingProject(null); setIsProjectModalOpen(true); }}
-              className="flex items-center gap-2 px-5 py-3 rounded-[10px] text-[13px] font-bold transition-all hover:opacity-95 active:scale-[0.99] cursor-pointer"
-              style={{ background: "linear-gradient(270deg, rgba(0,151,56,0.85) 0%, rgba(255, 0, 0, 0.85) 100%)" }}
+              className="flex items-center gap-2 px-5 py-3 rounded-[10px] text-[13px] font-bold text-black transition-all hover:opacity-95 active:scale-[0.99] cursor-pointer"
+              style={{ background: "linear-gradient(270deg, #ffffff 0%, #00a63e 100%)" }}
             >
-              <Plus className="w-4 h-4 text-white" />
+              <Plus className="w-4 h-4 text-black" />
               <span>Deploy Project</span>
             </button>
           </div>
@@ -186,7 +186,7 @@ export default function AdminProjectsManagement() {
                             <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-neutral-800 text-white/80 border border-white/5">
                               {project.category?.name || "Uncategorized"}
                             </span>
-                            <span className={`text-[9px] font-extrabold tracking-wide uppercase px-2 py-0.5 rounded ${project.status === "PUBLISHED" ? "bg-emerald-500/10 text-emerald-400" : "bg-amber-500/10 text-amber-400"}`}>
+                            <span className={`text-[9px] font-extrabold tracking-wide uppercase px-2 py-0.5 rounded ${project.status === "PUBLISHED" ? "bg-emerald-500/10 text-emerald-400" : "bg-white/5 text-white/70"}`}>
                               {project.status}
                             </span>
                           </div>
@@ -215,7 +215,7 @@ export default function AdminProjectsManagement() {
                             <button onClick={() => handleEditProjectClick(project)} className="p-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-white transition-colors cursor-pointer">
                               <Edit2 className="w-3.5 h-3.5" />
                             </button>
-                            <button onClick={() => handleProjectDelete(project.id)} className="p-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 transition-colors cursor-pointer">
+                            <button onClick={() => handleProjectDelete(project.id)} className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/70 transition-colors cursor-pointer">
                               <Trash2 className="w-3.5 h-3.5" />
                             </button>
                           </div>
@@ -291,7 +291,7 @@ export default function AdminProjectsManagement() {
                         <div className="flex flex-col min-w-0">
                           <h4 className="text-white font-bold text-base truncate">{category.name}</h4>
                           <div className="flex items-center gap-1.5 text-xs text-white/40">
-                            <LinkIcon className="w-3 h-3 text-[#EF4444]/60" />
+                            <LinkIcon className="w-3 h-3 text-[#16A34A]/60" />
                             <span className="truncate">{category.slug}</span>
                           </div>
                         </div>
@@ -309,7 +309,7 @@ export default function AdminProjectsManagement() {
                         <button onClick={() => handleEditCategoryClick(category)} className="p-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-white transition-colors cursor-pointer">
                           <Edit2 className="w-3 h-3" />
                         </button>
-                        <button onClick={() => handleCategoryDelete(category.id)} className="p-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 transition-colors cursor-pointer">
+                        <button onClick={() => handleCategoryDelete(category.id)} className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/70 transition-colors cursor-pointer">
                           <Trash2 className="w-3 h-3" />
                         </button>
                       </div>

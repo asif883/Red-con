@@ -8,11 +8,10 @@ interface FeatureCardProps {
   icon: React.ComponentType<{ className?: string }>;
   title: string;
   subtitle: string;
-  theme: "green" | "red";
   fullWidth?: boolean;
 }
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ icon: IconComponent, title, subtitle, theme, fullWidth }) => {
+const FeatureCard: React.FC<FeatureCardProps> = ({ icon: IconComponent, title, subtitle, fullWidth }) => {
   return (
     <div
       className={`flex items-center gap-4 p-5 transition-all duration-300 hover:border-neutral-700 ${
@@ -28,21 +27,12 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: IconComponent, title, s
       {/* Dynamic Themed Icon Box Wrapper */}
       <div
         className="w-12 h-12 shrink-0 rounded-full flex items-center justify-center"
-        style={
-          theme === "green"
-            ? {
-                border: "1px solid rgba(16, 185, 129, 0.20)",
-                background: "rgba(16, 185, 129, 0.10)",
-              }
-            : {
-                border: "1px solid rgba(239, 68, 68, 0.20)",
-                background: "rgba(239, 68, 68, 0.10)",
-              }
-        }
+        style={{
+          border: "1px solid rgba(16, 185, 129, 0.20)",
+          background: "rgba(16, 185, 129, 0.10)",
+        }}
       >
-        <IconComponent
-          className={`w-5 h-5 ${theme === "green" ? "text-[#10B981]" : "text-[#EF4444]"}`}
-        />
+        <IconComponent className="w-5 h-5 text-[#10B981]" />
       </div>
 
       {/* Typography Block */}
@@ -73,7 +63,7 @@ const About = () => {
           width: "1440px",
           height: "500px",
           borderRadius: "1540px",
-          background: "linear-gradient(270deg, rgba(0, 151, 56, 0.25) 0%, rgba(255, 0, 0, 0.25) 100%)",
+          background: "linear-gradient(270deg, rgba(0, 151, 56, 0.25) 0%, rgba(0, 151, 56, 0.25) 100%)",
           filter: "blur(250px)",
         }}
       />
@@ -88,7 +78,7 @@ const About = () => {
             {/* Component Action Subheader indicator tag */}
             <div className="flex items-center gap-3">
               <div className="w-8 h-[2px] rounded-full bg-[#166534]" />
-              <span className="text-[#EF4444]  font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
+              <span className="text-[#16A34A]  font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
                 ABOUT REDCon Ltd.
               </span>
             </div>
@@ -99,7 +89,7 @@ const About = () => {
               <span
                 className="italic bg-clip-text text-transparent"
                 style={{
-                  background: "linear-gradient(270deg, #FF0000 25.48%, #16A34A 100%)",
+                  background: "linear-gradient(270deg, #16A34A 25.48%, #16A34A 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
@@ -123,31 +113,26 @@ const About = () => {
                 icon={Calendar}
                 title="Founded 2018"
                 subtitle="Establishment"
-                theme="green"
               />
               <FeatureCard
                 icon={Users2}
                 title="25+ Professionals"
                 subtitle="Expert Team"
-                theme="red"
               />
               <FeatureCard
                 icon={CheckCircle2}
                 title="50+ Projects"
                 subtitle="Completed & Ongoing"
-                theme="green"
               />
               <FeatureCard
                 icon={Globe2}
                 title="Nationwide"
                 subtitle="Project Experience"
-                theme="red"
               />
               <FeatureCard
                 icon={Layers}
                 title="Multi-Sector Expertise"
                 subtitle="Broad Industry Consulting Services"
-                theme="green"
                 fullWidth
               />
             </div>

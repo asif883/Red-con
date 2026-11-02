@@ -25,7 +25,7 @@ const OurFootprint = () => {
     <section className="relative w-full py-24 overflow-hidden flex flex-col justify-center bg-black">
       
       {/* BACKGROUND ATMOSPHERIC LIGHTING */}
-      <div className="absolute pointer-events-none   mix-blend-screen left-1/2 -translate-x-1/2 top-0 w-[1488px] h-[581px] rounded-[1488px] bg-[linear-gradient(270deg,rgba(0,151,56,0.15)_0%,rgba(255,0,0,0.15)_100%)] blur-[250px] z-0" />
+      <div className="absolute pointer-events-none   mix-blend-screen left-1/2 -translate-x-1/2 top-0 w-[1488px] h-[581px] rounded-[1488px] bg-[linear-gradient(270deg,rgba(0,151,56,0.15)_0%,rgba(0,151,56,0.15)_100%)] blur-[250px] z-0" />
 
       {/* ========================================== */}
       {/* 01. TOP HEADER FOOTPRINT SEGMENT           */}
@@ -35,7 +35,7 @@ const OurFootprint = () => {
           <div className="flex flex-col gap-5 lg:max-w-[60%]">
             <div className="flex items-center gap-3">
               <div className="w-8 h-[2px] rounded-full bg-[#166534]" />
-              <span className="text-[#EF4444] font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
+              <span className="text-[#16A34A] font-bold text-[16px] leading-[24px] tracking-[3.2px] uppercase">
                 our footprint
               </span>
             </div>
@@ -72,12 +72,12 @@ const OurFootprint = () => {
           {/* LEFT SIDEBAR COLUMN: Control Triggers */}
           <div className="flex flex-col gap-6 lg:col-span-5 w-full max-w-[384px]">
             <div className="flex flex-col gap-2">
-              <span className="text-[#F43F5E] font-bold text-[12px] leading-[16px] tracking-[3px] uppercase">
+              <span className="text-[#16A34A] font-bold text-[12px] leading-[16px] tracking-[3px] uppercase">
                 institutional pillars
               </span>
               <h3 className="text-white font-extrabold text-[36px] leading-[40px] tracking-[-0.9px]">
                 Strategic<br />
-                <span className="italic text-[#DCA54E]">Foundations</span>
+                <span className="italic text-[#16A34A]">Foundations</span>
               </h3>
             </div>
             
@@ -112,7 +112,7 @@ const OurFootprint = () => {
           </div>
 
           {/* RIGHT PANELS INTERACTIVE DISPLAY PANEL */}
-          <div className="lg:col-span-7 w-full rounded-[50px_50px_2px_2px] border border-[rgba(22,163,74,0.50)] bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(69,10,10,0.40)_100%)] backdrop-blur-[20px] p-6 sm:p-10 lg:p-12 min-h-[520px] flex flex-col justify-between gap-8">
+          <div className="lg:col-span-7 w-full rounded-[50px_50px_2px_2px] border border-[rgba(22,163,74,0.50)] bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(2,44,34,0.40)_100%)] backdrop-blur-[20px] p-6 sm:p-10 lg:p-12 min-h-[520px] flex flex-col justify-between gap-8">
             
             {/* ========================================== */}
             {/* CONDITIONAL RENDER: TAB 01 (OUR JOURNEY)  */}
@@ -120,7 +120,7 @@ const OurFootprint = () => {
             {activeTab === "01" && (
               <>
                 <div className="w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div className="w-10 h-10 flex items-center justify-center rounded-[16px] border border-[rgba(220,165,78,0.20)] bg-[rgba(220,165,78,0.10)] text-[#DCA54E]">
+                  <div className="w-10 h-10 flex items-center justify-center rounded-[16px] border border-[rgba(22,163,74,0.20)] bg-[rgba(22,163,74,0.10)] text-[#16A34A]">
                     <History className="w-5 h-5" />
                   </div>
                   <span className="font-mono text-[12px] font-semibold text-[rgba(255,255,255,0.30)] tracking-[1.2px] uppercase sm:text-center flex-1 sm:pr-10 text-right">
@@ -131,7 +131,7 @@ const OurFootprint = () => {
                 <div className="w-full flex flex-col xl:flex-row items-start gap-8 justify-between">
                   <div className="flex flex-col gap-4 flex-1">
                     <h4 className="text-white font-black text-[30px] leading-[36px] tracking-[-0.75px]">
-                      Charting structural <span className="italic text-[#DCA54E]">progress & trust.</span>
+                      Charting structural <span className="italic text-[#16A34A]">progress & trust.</span>
                     </h4>
                     <p className="text-[rgba(255,255,255,0.70)] font-light text-[14px] leading-[22.75px] max-w-[420px]">
                       Founded in Dhaka, REDCon. Limited originated as an elite gathering of multidisciplinary engineers striving to redefine regional feasibility studies and geological reporting. Backed by state accreditation, our reach extends to complex national logistics and highway systems.
@@ -146,7 +146,7 @@ const OurFootprint = () => {
 
                 <div className="w-full border-t border-[rgba(22,163,74,0.50)] pt-6 flex flex-wrap gap-x-12 gap-y-4">
                   <div className="flex flex-col gap-1">
-                    <span className="font-extrabold text-[24px] leading-[32px] text-[#DCA54E]">2018</span>
+                    <span className="font-extrabold text-[24px] leading-[32px] text-[#16A34A]">2018</span>
                     <span className="text-[rgba(255,255,255,0.40)] font-normal text-[10px] leading-[15px] tracking-[0.5px] uppercase">INCEPTION YEAR</span>
                   </div>
                   <div className="flex flex-col gap-1">
@@ -189,7 +189,7 @@ const OurFootprint = () => {
                       </div>
 
                       <div className="rounded-[12px] border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.02)] p-4 flex flex-col gap-1.5">
-                        <span className="text-[#DCA54E] font-bold text-[12px] leading-[16px] tracking-[1.2px] uppercase">
+                        <span className="text-[#16A34A] font-bold text-[12px] leading-[16px] tracking-[1.2px] uppercase">
                           OUR VISION
                         </span>
                         <p className="text-[rgba(255,255,255,0.70)] font-light text-[12px] leading-[19.5px]">
@@ -271,7 +271,7 @@ const OurFootprint = () => {
                     <Image src={currentAsset.imageSrc} alt="Core Benchmarks Verification Graphic" fill className="object-cover filter grayscale" sizes="294px" />
                     <div className="absolute inset-0 bg-[linear-gradient(0deg,#000_0%,rgba(0,0,0,0.00)_21.98%,rgba(0,0,0,0.30)_33.5%)] pointer-events-none" />
                     <div className="absolute bottom-3 left-4 z-20">
-                      <span className="font-mono text-[#F43F5E] text-[10px] font-normal tracking-[1px] uppercase">
+                      <span className="font-mono text-[#16A34A] text-[10px] font-normal tracking-[1px] uppercase">
                         03 // HIGH BENCHMARKS
                       </span>
                     </div>
