@@ -19,6 +19,7 @@ export default function AddProjectModal({
   const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "";
 
   const [formLoading, setFormLoading] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   
   // Thumbnail File & Preview States
   const [thumbnailFile, setThumbnailFile] = useState<File | null>(null);
@@ -121,45 +122,62 @@ export default function AddProjectModal({
     setGalleryWarning(null);
   };
 
+  const handleClose = () => {
+    setSubmitError(null);
+    onClose();
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormLoading(true);
+    setSubmitError(null);
 
-    const multiPartForm = new FormData();
-    
-    // Process JSON fields
-    Object.entries(formData).forEach(([key, val]) => {
-      if (key !== "tags") multiPartForm.append(key, val);
-    });
+    try {
+      const multiPartForm = new FormData();
 
-    // Handle tag parsing arrays safely
-    const tagsArray = formData.tags.split(",").map((t) => t.trim()).filter((t) => t.length > 0);
-    tagsArray.forEach((tag) => multiPartForm.append("tags", tag));
+      // Process JSON fields
+      Object.entries(formData).forEach(([key, val]) => {
+        if (key !== "tags") multiPartForm.append(key, val);
+      });
 
-    // Handle thumbnail payloads
-    if (thumbnailFile) {
-      multiPartForm.append("thumbnail", thumbnailFile);
-    } else if (!thumbnailPreview && editingProject) {
-      // If the administrator cleared the image block layout completely
-      multiPartForm.append("thumbnail", "");
+      // Handle tag parsing arrays safely
+      const tagsArray = formData.tags.split(",").map((t) => t.trim()).filter((t) => t.length > 0);
+      tagsArray.forEach((tag) => multiPartForm.append("tags", tag));
+
+      // Handle thumbnail payloads
+      if (thumbnailFile) {
+        multiPartForm.append("thumbnail", thumbnailFile);
+      } else if (!thumbnailPreview && editingProject) {
+        // If the administrator cleared the image block layout completely
+        multiPartForm.append("thumbnail", "");
+      }
+
+      // Append remaining remote strings so the backend knows what to keep
+      remoteGalleryPaths.forEach((path) => {
+        multiPartForm.append("existingGallery", path);
+      });
+
+      // Append newly introduced raw binary attachment tracks
+      if (localGalleryFiles.length > 0) {
+        localGalleryFiles.forEach((file) => multiPartForm.append("gallery", file));
+      }
+
+      const outcome = editingProject
+        ? await updateProject(editingProject.id, multiPartForm)
+        : await createProject(multiPartForm);
+
+      if (outcome.success) {
+        onClose();
+      } else {
+        setSubmitError(outcome.message || "Failed to save project. Please try again.");
+      }
+    } catch (error: unknown) {
+      setSubmitError(
+        error instanceof Error ? error.message : "Failed to save project. Please try again.",
+      );
+    } finally {
+      setFormLoading(false);
     }
-
-    // Append remaining remote strings so the backend knows what to keep
-    remoteGalleryPaths.forEach((path) => {
-      multiPartForm.append("existingGallery", path);
-    });
-
-    // Append newly introduced raw binary attachment tracks
-    if (localGalleryFiles.length > 0) {
-      localGalleryFiles.forEach((file) => multiPartForm.append("gallery", file));
-    }
-
-    const outcome = editingProject
-      ? await updateProject(editingProject.id, multiPartForm)
-      : await createProject(multiPartForm);
-
-    setFormLoading(false);
-    if (outcome.success) onClose();
   };
 
   return (
@@ -170,12 +188,20 @@ export default function AddProjectModal({
           <h2 className="text-xl font-bold">
             {editingProject ? "Modify Architectural Record" : "Deploy Project To Public Nodes"}
           </h2>
-          <button type="button" onClick={onClose} className="text-white/40 hover:text-white transition-colors cursor-pointer">
+          <button type="button" onClick={handleClose} className="text-white/40 hover:text-white transition-colors cursor-pointer">
             <X className="w-5 h-5" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {submitError && (
+            <p
+              role="alert"
+              className="sm:col-span-2 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300"
+            >
+              {submitError}
+            </p>
+          )}
           
           <div className="sm:col-span-2 flex flex-col gap-1.5">
             <label className="text-[11px] font-bold text-white/60 uppercase tracking-wider">Project Title</label>
@@ -307,7 +333,7 @@ export default function AddProjectModal({
           </div>
 
           <div className="sm:col-span-2 flex justify-end gap-4 border-t border-neutral-800 pt-6 mt-4">
-            <button type="button" onClick={onClose} className="px-5 py-2.5 rounded-[10px] text-xs font-semibold bg-neutral-800 hover:bg-neutral-700 transition-colors cursor-pointer">
+            <button type="button" onClick={handleClose} className="px-5 py-2.5 rounded-[10px] text-xs font-semibold bg-neutral-800 hover:bg-neutral-700 transition-colors cursor-pointer">
               Cancel
             </button>
             <button type="submit" disabled={formLoading} className="px-6 py-2.5 rounded-[10px] text-xs font-bold text-black hover:opacity-90 transition-all cursor-pointer" style={{ background: "linear-gradient(270deg, #ffffff 0%, #00a63e 100%)" }}>

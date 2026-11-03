@@ -1,5 +1,19 @@
 import { create } from "zustand";
+import axios from "axios";
 import { axiosPrivate } from "@/lib/axios";
+
+const getProjectErrorMessage = (error: unknown, fallback: string) => {
+  if (axios.isAxiosError<{ message?: unknown }>(error)) {
+    const message = error.response?.data?.message;
+    if (typeof message === "string" && message.trim()) return message;
+    if (Array.isArray(message) && message.every((item) => typeof item === "string")) {
+      return message.join(", ");
+    }
+    if (error.message) return error.message;
+  }
+
+  return error instanceof Error ? error.message : fallback;
+};
 
 export interface ProjectCategory {
   id: string;
@@ -40,11 +54,13 @@ interface ProjectState {
   deleteCategory: (id: string) => Promise<{ success: boolean }>;
 
   fetchProjects: (page?: number, limit?: number) => Promise<void>;
-  createProject: (formData: FormData) => Promise<{ success: boolean }>;
+  createProject: (
+    formData: FormData,
+  ) => Promise<{ success: boolean; message?: string }>;
   updateProject: (
     id: string,
     formData: FormData,
-  ) => Promise<{ success: boolean }>;
+  ) => Promise<{ success: boolean; message?: string }>;
   deleteProject: (id: string) => Promise<{ success: boolean }>;
 }
 
@@ -116,25 +132,27 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
 
   createProject: async (formData) => {
     try {
-      await axiosPrivate.post("/projects", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      await axiosPrivate.post("/projects", formData);
       await get().fetchProjects();
       return { success: true };
-    } catch (err: any) {
-      return { success: false };
+    } catch (err: unknown) {
+      return {
+        success: false,
+        message: getProjectErrorMessage(err, "Failed to create project"),
+      };
     }
   },
 
   updateProject: async (id, formData) => {
     try {
-      await axiosPrivate.patch(`/projects/${id}`, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      await axiosPrivate.patch(`/projects/${id}`, formData);
       await get().fetchProjects();
       return { success: true };
-    } catch (err: any) {
-      return { success: false };
+    } catch (err: unknown) {
+      return {
+        success: false,
+        message: getProjectErrorMessage(err, "Failed to update project"),
+      };
     }
   },
 

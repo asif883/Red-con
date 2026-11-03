@@ -121,7 +121,7 @@ export default function AdminProjectsManagement() {
               style={{ background: "linear-gradient(270deg, #ffffff 0%, #00a63e 100%)" }}
             >
               <Plus className="w-4 h-4 text-black" />
-              <span>Deploy Project</span>
+              <span>Add Project</span>
             </button>
           </div>
         </div>
