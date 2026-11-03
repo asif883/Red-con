@@ -3,11 +3,11 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { projects } from "./project";
+import { Project, imageUrl, formatDate } from "@/lib/api/projects";
 
 const ALL_CATEGORIES = "All Projects";
 
-export default function NewProjectSection() {
+export default function NewProjectSection({ projects }: { projects: Project[] }) {
   const [activeCategory, setActiveCategory] = useState(ALL_CATEGORIES);
   const [visibleCount, setVisibleCount] = useState(9);
   const [isMobile, setIsMobile] = useState(false);
@@ -36,10 +36,10 @@ export default function NewProjectSection() {
     () => [
       ALL_CATEGORIES,
       ...Array.from(
-        new Set(projects.map((project) => project.category))
+        new Set(projects.map((project) => project.category.name))
       ).sort((a, b) => a.localeCompare(b)),
     ],
-    []
+    [projects]
   );
 
   // Filter projects by selected category
@@ -48,9 +48,9 @@ export default function NewProjectSection() {
       activeCategory === ALL_CATEGORIES
         ? projects
         : projects.filter(
-            (project) => project.category === activeCategory
+            (project) => project.category.name === activeCategory
           ),
-    [activeCategory]
+    [activeCategory, projects]
   );
 
   // Projects currently visible
@@ -91,6 +91,26 @@ export default function NewProjectSection() {
           </p>
         </div>
 
+        {projects.length === 0 ? (
+          /* No published projects at all */
+          <div className="flex flex-col items-center rounded-2xl border border-dashed border-white/20 bg-[#03170B]/40 px-6 py-16 text-center sm:py-20">
+            <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-[#16A34A]/30 bg-[#16A34A]/10">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-[#16A34A]">
+                <path
+                  d="M3 7.5A1.5 1.5 0 0 1 4.5 6h4.38a1.5 1.5 0 0 1 1.06.44L11.5 8h8A1.5 1.5 0 0 1 21 9.5v8a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-10Z"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <p className="text-lg font-semibold text-white">No projects to show yet</p>
+            <p className="mt-2 max-w-md text-sm leading-6 text-slate-300">
+              We&apos;re updating our portfolio. Please check back soon, or get in touch to learn about our work.
+            </p>
+          </div>
+        ) : (
+        <>
         {/* Category dropdown and result count */}
         <div className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-center sm:justify-between">
           <div>
@@ -162,7 +182,7 @@ export default function NewProjectSection() {
                   <div className="relative aspect-[16/9] overflow-hidden bg-black">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={project.imageMain}
+                      src={imageUrl(project.imageMain) || "/images/projects/project1_1.png"}
                       alt={`${project.title} project view`}
                       loading="lazy"
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -172,17 +192,17 @@ export default function NewProjectSection() {
 
                     <div className="absolute inset-x-3 bottom-3 z-10 flex items-end justify-between gap-3">
                       <span className="max-w-[75%] rounded-full border border-white/25 bg-black/20 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
-                        {project.category}
+                        {project.category.name}
                       </span>
 
                       <span
                         className={`shrink-0 rounded-full px-3 py-1.5 text-[11px] font-semibold ${
-                          project.status.toLowerCase().includes("complete")
+                          project.projectStatus === "Completed"
                             ? "bg-white text-emerald-800"
                             : "bg-white text-black"
                         }`}
                       >
-                        {project.status}
+                        {project.projectStatus}
                       </span>
                     </div>
                   </div>
@@ -228,11 +248,8 @@ export default function NewProjectSection() {
                       </span>
 
                       <span>
-                        {project.startDate}
-                        {project.endDate &&
-                        project.endDate !== "Ongoing"
-                          ? ` – ${project.endDate}`
-                          : ""}
+                        {formatDate(project.startDate)}
+                        {project.endDate ? ` – ${formatDate(project.endDate)}` : ""}
                       </span>
                     </div>
 
@@ -306,6 +323,8 @@ export default function NewProjectSection() {
               View all projects
             </button>
           </div>
+        )}
+        </>
         )}
       </div>
     </section>

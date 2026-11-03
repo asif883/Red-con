@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, MapPin, Calendar, Tag, User } from "lucide-react";
 import Navbar from "@/components/Navbar/Navbar";
-import { projects as portfolioProjects } from "../_sections/project";
+import { fetchPublishedProjectBySlug, imageUrl, formatDate } from "@/lib/api/projects";
 
 /* ---------- HERO: text only, compact ---------- */
 function ProjectHero({
@@ -68,6 +68,7 @@ function ProjectCover({ cover, title }: { cover: string; title: string }) {
             alt={title}
             fill
             priority
+            unoptimized
             className="object-cover"
             sizes="(max-width: 1152px) 100vw, 1152px"
           />
@@ -84,12 +85,15 @@ function ProjectGallery({
   steps,
 }: {
   title: string;
-  images: string[];
+  images: (string | null)[];
   steps: string[];
 }) {
-  const validImages = images.filter(Boolean).slice(0, 3);
+  // Keep each image paired with its step label, skipping steps without an image
+  const items = images
+    .map((image, index) => ({ image, label: steps[index] || `Project Step ${index + 1}` }))
+    .filter((item): item is { image: string; label: string } => Boolean(item.image));
 
-  if (validImages.length === 0) return null;
+  if (items.length === 0) return null;
 
   return (
     <section className="mt-16 ">
@@ -104,7 +108,7 @@ function ProjectGallery({
       </div>
 
       <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
-        {validImages.map((image, index) => (
+        {items.map(({ image, label }, index) => (
           <div
             key={`${image}-${index}`}
             className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] transition-colors duration-300 hover:border-[#16A34A]/30"
@@ -112,8 +116,9 @@ function ProjectGallery({
             <div className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-900">
               <Image
                 src={image}
-                alt={`${title} - ${steps[index] ?? `Step ${index + 1}`}`}
+                alt={`${title} - ${label}`}
                 fill
+                unoptimized
                 className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
@@ -127,7 +132,7 @@ function ProjectGallery({
               </span>
 
               <h3 className="text-lg font-medium text-white">
-                {steps[index] ?? `Project Step ${index + 1}`}
+                {label}
               </h3>
             </div>
           </div>
@@ -143,22 +148,18 @@ export default async function ProjectDetailsPage({
 }: PageProps<"/projects/[slug]">) {
   const { slug } = await params;
 
-  // শুধু static portfolio থেকে খোঁজো
-  const project = portfolioProjects.find((item) => item.slug === slug);
+  const project = await fetchPublishedProjectBySlug(slug);
 
   if (!project) notFound();
 
   const details = [
-    { icon: User, label: "Client", value: project.client },
-    { icon: MapPin, label: "Location", value: project.location },
-    { icon: Tag, label: "Category", value: project.category },
+    { icon: User, label: "Client", value: project.client || "—" },
+    { icon: MapPin, label: "Location", value: project.location || "—" },
+    { icon: Tag, label: "Category", value: project.category.name },
     {
       icon: Calendar,
       label: "Timeline",
-      value:
-        project.endDate && project.endDate !== "Ongoing"
-          ? `${project.startDate} – ${project.endDate}`
-          : `${project.startDate} – Ongoing`,
+      value: `${formatDate(project.startDate) || "—"} – ${formatDate(project.endDate) || "Ongoing"}`,
     },
   ];
 
@@ -169,12 +170,16 @@ export default async function ProjectDetailsPage({
       {/* 1. Text hero */}
       <ProjectHero
         title={project.title}
-        description={project.description}
-        category={project.category}
+        description={project.description || ""}
+        category={project.category.name}
+        status={project.projectStatus}
       />
 
       {/* 2. Small framed cover */}
-      <ProjectCover cover={project.imageMain} title={project.title} />
+      <ProjectCover
+        cover={imageUrl(project.imageMain) || "/images/projects/project1_1.png"}
+        title={project.title}
+      />
 
       {/* 3. Details */}
       <div className="mx-auto max-w-[1440px] px-5 pb-20 pt-12 sm:px-8">
@@ -228,7 +233,7 @@ export default async function ProjectDetailsPage({
         {/* Gallery */}
         <ProjectGallery
           title={project.title}
-          images={[project.stepImg1, project.stepImg2, project.stepImg3]}
+          images={[project.stepImg1, project.stepImg2, project.stepImg3].map(imageUrl)}
           steps={project.steps}
         />
       </div>

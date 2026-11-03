@@ -2,17 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-
-type Stat = { value: number; suffix?: string; label: string };
-
-const STATS: Stat[] = [
-  { value: 8, suffix: "+", label: "Years of Experience" },
-  { value: 29, label: "Projects Completed" },
-  { value: 25, suffix: "+", label: "Professional Experts" },
-  { value: 30, suffix: "+", label: "Clients Served" },
-  { value: 20, suffix: "+", label: "Ongoing Projects" },
-  { value: 35, suffix: "+", label: "Districts Coverage" },
-];
+import { DEFAULT_STATS as STATS, type Stat } from "@/lib/stats";
 
 const TARGETS = STATS.map((s) => s.value);
 const COUNT_DURATION = 2000;

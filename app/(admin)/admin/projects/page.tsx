@@ -4,20 +4,21 @@ import React, { useEffect, useState } from "react";
 import { useProjectStore, Project, ProjectCategory } from "@/store/useProjectStore";
 import AddProjectCategoryModal from "./_sections/AddProjectCategoryModal";
 import AddProjectModal from "./_sections/AddProjectModal";
+import { imageUrl, formatDate } from "@/lib/api/projects";
 import { Plus, FolderPlus, Edit2, Trash2, Loader2, Image as ImageIcon, Briefcase, Layers, Link as LinkIcon, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function AdminProjectsManagement() {
   const {
-    projects,
+    projects: projectsList,
+    meta: storeMeta,
     categories,
     isLoading,
+    error,
     fetchCategories,
     fetchProjects,
     deleteProject,
     deleteCategory,
   } = useProjectStore();
-
-  const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "";
 
   // Core Functional Tab View Routing States
   const [activeTab, setActiveTab] = useState<"projects" | "categories">( "projects" );
@@ -39,13 +40,7 @@ export default function AdminProjectsManagement() {
     }
   }, [fetchCategories, fetchProjects, activeTab, currentPage]);
 
-  // 💡 THE FIX: Safely unpack raw project records and metadata properties from the response object
-  const projectsData = projects as any;
-  const projectsList: Project[] = Array.isArray(projectsData)
-    ? projectsData
-    : projectsData?.data || [];
-
-  const meta = projectsData?.meta || {
+  const meta = storeMeta || {
     total: projectsList.length,
     page: 1,
     limit: itemsPerPage,
@@ -66,7 +61,11 @@ export default function AdminProjectsManagement() {
 
   const handleProjectDelete = async (id: string) => {
     if (confirm("Are you sure you want to completely remove this project profile record?")) {
-      await deleteProject(id);
+      const outcome = await deleteProject(id);
+      if (!outcome.success) {
+        alert(outcome.message || "Failed to delete project.");
+        return;
+      }
       // Fallback page recalculation if the last remaining item on a page is deleted
       if (projectsList.length === 1 && currentPage > 1) {
         setCurrentPage((prev) => prev - 1);
@@ -158,6 +157,11 @@ export default function AdminProjectsManagement() {
             {/* TAB VIEW 1: PROJECTS DATAGRID */}
             {activeTab === "projects" && (
               <div className="flex flex-col gap-8 animate-fadeIn">
+                {error && (
+                  <p role="alert" className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300 whitespace-pre-line">
+                    {error}
+                  </p>
+                )}
                 {projectsList.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {projectsList.map((project: Project) => (
@@ -167,10 +171,10 @@ export default function AdminProjectsManagement() {
                       >
                         <div>
                           <div className="relative w-full aspect-[16/10] bg-neutral-950 rounded-[14px] overflow-hidden mb-4 border border-neutral-800/50">
-                            {project.thumbnail ? (
+                            {project.imageMain ? (
                               // eslint-disable-next-line @next/next/no-img-element
                               <img
-                                src={`${API_BASE_URL}${project.thumbnail}`}
+                                src={imageUrl(project.imageMain)!}
                                 alt={project.title}
                                 className="w-full h-full object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
                               />
@@ -199,9 +203,9 @@ export default function AdminProjectsManagement() {
                           </p>
 
                           <div className="flex flex-wrap gap-1.5 mb-6">
-                            {project.tags.map((tag, idx) => (
+                            {[project.client, project.location, project.projectStatus].filter(Boolean).map((info, idx) => (
                               <span key={idx} className="text-[10px] font-medium px-2 py-0.5 rounded bg-neutral-800/50 text-white/40 border border-neutral-800">
-                                #{tag}
+                                {info}
                               </span>
                             ))}
                           </div>
@@ -209,7 +213,9 @@ export default function AdminProjectsManagement() {
 
                         <div className="flex items-center justify-between border-t border-neutral-800/60 pt-4 mt-auto">
                           <div className="text-[11px] text-white/40 font-medium truncate max-w-[150px]">
-                            {project.metric1Value ? `${project.metric1Title}: ${project.metric1Value}` : "No metrics linked"}
+                            {formatDate(project.startDate) || "No start date"}
+                            {" – "}
+                            {formatDate(project.endDate) || "Ongoing"}
                           </div>
                           <div className="flex items-center gap-2">
                             <button onClick={() => handleEditProjectClick(project)} className="p-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-white transition-colors cursor-pointer">

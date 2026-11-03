@@ -1,47 +1,26 @@
 import { create } from "zustand";
-import axios from "axios";
 import { axiosPrivate } from "@/lib/axios";
+import {
+  Project,
+  ProjectCategory,
+  PaginatedProjects,
+  getProjects,
+  getCategories,
+  createProject as apiCreateProject,
+  updateProject as apiUpdateProject,
+  deleteProject as apiDeleteProject,
+  getErrorMessage,
+} from "@/lib/api/projects";
 
-const getProjectErrorMessage = (error: unknown, fallback: string) => {
-  if (axios.isAxiosError<{ message?: unknown }>(error)) {
-    const message = error.response?.data?.message;
-    if (typeof message === "string" && message.trim()) return message;
-    if (Array.isArray(message) && message.every((item) => typeof item === "string")) {
-      return message.join(", ");
-    }
-    if (error.message) return error.message;
-  }
+export type { Project, ProjectCategory } from "@/lib/api/projects";
 
-  return error instanceof Error ? error.message : fallback;
-};
-
-export interface ProjectCategory {
-  id: string;
-  name: string;
-  slug: string;
-  _count?: { projects: number };
-}
-
-export interface Project {
-  id: string;
-  title: string;
-  slug: string;
-  tags: string[];
-  description: string | null;
-  metric1Title: string | null;
-  metric1Value: string | null;
-  metric2Title: string | null;
-  metric2Value: string | null;
-  thumbnail: string | null;
-  gallery: string[];
-  status: "DRAFT" | "PUBLISHED";
-  categoryId: string;
-  category?: ProjectCategory;
-  createdAt: string;
-}
+type ProjectsMeta = PaginatedProjects["meta"];
 
 interface ProjectState {
   projects: Project[];
+  meta: ProjectsMeta | null;
+  page: number;
+  limit: number;
   categories: ProjectCategory[];
   isLoading: boolean;
   error: string | null;
@@ -61,25 +40,23 @@ interface ProjectState {
     id: string,
     formData: FormData,
   ) => Promise<{ success: boolean; message?: string }>;
-  deleteProject: (id: string) => Promise<{ success: boolean }>;
+  deleteProject: (id: string) => Promise<{ success: boolean; message?: string }>;
 }
 
 export const useProjectStore = create<ProjectState>((set, get) => ({
   projects: [],
+  meta: null,
+  page: 1,
+  limit: 9,
   categories: [],
   isLoading: false,
   error: null,
 
   fetchCategories: async () => {
-    set({ isLoading: true, error: null });
     try {
-      const res = await axiosPrivate.get("/project-categories");
-      set({ categories: res.data, isLoading: false });
-    } catch (err: any) {
-      set({
-        error: err.response?.data?.message || "Failed to load categories",
-        isLoading: false,
-      });
+      set({ categories: await getCategories() });
+    } catch (err: unknown) {
+      set({ error: getErrorMessage(err, "Failed to load categories") });
     }
   },
 
@@ -88,7 +65,7 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
       const res = await axiosPrivate.post("/project-categories", { name });
       await get().fetchCategories();
       return { success: true, data: res.data };
-    } catch (err: any) {
+    } catch {
       return { success: false };
     }
   },
@@ -99,7 +76,7 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
       await get().fetchCategories();
       await get().fetchProjects(); // Synchronize layout views
       return { success: true };
-    } catch (err) {
+    } catch {
       return { success: false };
     }
   },
@@ -110,21 +87,20 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
       await get().fetchCategories();
       await get().fetchProjects(); // Safely clear dynamic cascades
       return { success: true };
-    } catch (err) {
+    } catch {
       return { success: false };
     }
   },
 
-  fetchProjects: async (page: number = 1, limit: number = 9) => {
-    set({ isLoading: true, error: null });
+  // Defaults to the last requested page so refreshes after mutations stay in place
+  fetchProjects: async (page = get().page, limit = get().limit) => {
+    set({ isLoading: true, error: null, page, limit });
     try {
-      const res = await axiosPrivate.get(
-        `/projects?page=${page}&limit=${limit}`,
-      );
-      set({ projects: res.data, isLoading: false });
-    } catch (err: any) {
+      const res = await getProjects(page, limit);
+      set({ projects: res.data, meta: res.meta, isLoading: false });
+    } catch (err: unknown) {
       set({
-        error: err.response?.data?.message || "Failed to parse projects grid",
+        error: getErrorMessage(err, "Failed to load projects"),
         isLoading: false,
       });
     }
@@ -132,37 +108,39 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
 
   createProject: async (formData) => {
     try {
-      await axiosPrivate.post("/projects", formData);
+      await apiCreateProject(formData);
       await get().fetchProjects();
       return { success: true };
     } catch (err: unknown) {
       return {
         success: false,
-        message: getProjectErrorMessage(err, "Failed to create project"),
+        message: getErrorMessage(err, "Failed to create project"),
       };
     }
   },
 
   updateProject: async (id, formData) => {
     try {
-      await axiosPrivate.patch(`/projects/${id}`, formData);
+      await apiUpdateProject(id, formData);
       await get().fetchProjects();
       return { success: true };
     } catch (err: unknown) {
       return {
         success: false,
-        message: getProjectErrorMessage(err, "Failed to update project"),
+        message: getErrorMessage(err, "Failed to update project"),
       };
     }
   },
 
   deleteProject: async (id) => {
     try {
-      await axiosPrivate.delete(`/projects/${id}`);
-      set({ projects: get().projects.filter((p) => p.id !== id) });
+      await apiDeleteProject(id);
       return { success: true };
-    } catch (err: any) {
-      return { success: false };
+    } catch (err: unknown) {
+      return {
+        success: false,
+        message: getErrorMessage(err, "Failed to delete project"),
+      };
     }
   },
 }));

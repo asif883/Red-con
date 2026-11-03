@@ -2,7 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import { useProjectStore, Project } from "@/store/useProjectStore";
-import { Tag, X, UploadCloud, AlertCircle, Trash2 } from "lucide-react";
+import {
+  ProjectImageKey as ImageKey,
+  PROJECT_IMAGE_KEYS as IMAGE_KEYS,
+  imageUrl,
+  toFormData,
+  validateImageFile,
+} from "@/lib/api/projects";
+import { X, UploadCloud, Trash2 } from "lucide-react";
 
 interface AddProjectModalProps {
   isOpen: boolean;
@@ -10,116 +17,109 @@ interface AddProjectModalProps {
   editingProject: Project | null;
 }
 
+type ImageSlot = { file: File | null; preview: string | null };
+
+const STEP_KEYS: ImageKey[] = ["stepImg1", "stepImg2", "stepImg3"];
+
+const emptyForm = {
+  title: "",
+  slug: "",
+  categoryId: "",
+  client: "",
+  location: "",
+  projectStatus: "Ongoing" as Project["projectStatus"],
+  startDate: "",
+  endDate: "",
+  status: "DRAFT" as Project["status"],
+  description: "",
+  scopeOfWork: "",
+  engineeringHighlights: "",
+};
+
+const emptyImages = (): Record<ImageKey, ImageSlot> => ({
+  imageMain: { file: null, preview: null },
+  stepImg1: { file: null, preview: null },
+  stepImg2: { file: null, preview: null },
+  stepImg3: { file: null, preview: null },
+});
+
+// Backend dates arrive as ISO strings; <input type="date"> needs yyyy-mm-dd
+const toDateInput = (value: string | null) => (value ? value.slice(0, 10) : "");
+
+const inputClass =
+  "w-full rounded-[10px] border border-neutral-800 bg-neutral-950 px-4 py-3 text-sm focus:outline-none focus:border-emerald-500/50 text-white disabled:opacity-40";
+const labelClass = "text-[11px] font-bold text-white/60 uppercase tracking-wider";
+const sectionClass = "sm:col-span-2 text-[10px] font-extrabold text-emerald-400 tracking-wider uppercase border-b border-neutral-800 pb-2 mt-2";
+
 export default function AddProjectModal({
   isOpen,
   onClose,
   editingProject,
 }: AddProjectModalProps) {
   const { categories, createProject, updateProject } = useProjectStore();
-  const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "";
-
   const [formLoading, setFormLoading] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  
-  // Thumbnail File & Preview States
-  const [thumbnailFile, setThumbnailFile] = useState<File | null>(null);
-  const [thumbnailPreview, setThumbnailPreview] = useState<string | null>(null);
 
-  // Gallery Granular Asset Management Arrays
-  const [remoteGalleryPaths, setRemoteGalleryPaths] = useState<string[]>([]);
-  const [localGalleryFiles, setGalleryFiles] = useState<File[]>([]);
-  const [galleryWarning, setGalleryWarning] = useState<string | null>(null);
-
-  const [formData, setFormData] = useState({
-    title: "",
-    tags: "",
-    description: "",
-    categoryId: "",
-    status: "DRAFT",
-    metric1Title: "",
-    metric1Value: "",
-    metric2Title: "",
-    metric2Value: "",
-  });
+  const [formData, setFormData] = useState(emptyForm);
+  const [steps, setSteps] = useState<string[]>(["", "", ""]);
+  const [images, setImages] = useState<Record<ImageKey, ImageSlot>>(emptyImages);
 
   useEffect(() => {
     if (editingProject) {
       setFormData({
         title: editingProject.title,
-        tags: editingProject.tags.join(", "),
-        description: editingProject.description || "",
+        slug: editingProject.slug || "",
         categoryId: editingProject.categoryId,
+        client: editingProject.client || "",
+        location: editingProject.location || "",
+        projectStatus: editingProject.projectStatus || "Ongoing",
+        startDate: toDateInput(editingProject.startDate),
+        endDate: toDateInput(editingProject.endDate),
         status: editingProject.status,
-        metric1Title: editingProject.metric1Title || "",
-        metric1Value: editingProject.metric1Value || "",
-        metric2Title: editingProject.metric2Title || "",
-        metric2Value: editingProject.metric2Value || "",
+        description: editingProject.description || "",
+        scopeOfWork: editingProject.scopeOfWork || "",
+        engineeringHighlights: editingProject.engineeringHighlights || "",
       });
-      setThumbnailPreview(
-        editingProject.thumbnail ? `${API_BASE_URL}${editingProject.thumbnail}` : null
-      );
-      // Track remote images independently from fresh uploads
-      setRemoteGalleryPaths(editingProject.gallery || []);
+      setSteps([0, 1, 2].map((i) => editingProject.steps?.[i] || ""));
+
+      const loaded = emptyImages();
+      IMAGE_KEYS.forEach((key) => {
+        loaded[key].preview = imageUrl(editingProject[key]);
+      });
+      setImages(loaded);
     } else {
-      setFormData({
-        title: "", tags: "", description: "", categoryId: "", status: "DRAFT",
-        metric1Title: "", metric1Value: "", metric2Title: "", metric2Value: "",
-      });
-      setThumbnailPreview(null);
-      setRemoteGalleryPaths([]);
+      setFormData(emptyForm);
+      setSteps(["", "", ""]);
+      setImages(emptyImages());
     }
-    setThumbnailFile(null);
-    setGalleryFiles([]);
-    setGalleryWarning(null);
-  }, [editingProject, isOpen, API_BASE_URL]);
+  }, [editingProject, isOpen]);
 
   if (!isOpen) return null;
 
-  const handleThumbnailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const setField = <K extends keyof typeof emptyForm>(key: K, value: (typeof emptyForm)[K]) =>
+    setFormData((prev) => ({ ...prev, [key]: value }));
+
+  const handleImageChange = (key: ImageKey, e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      setThumbnailFile(file);
-      setThumbnailPreview(URL.createObjectURL(file));
-    }
-  };
-
-  const handleRemoveThumbnail = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setThumbnailFile(null);
-    setThumbnailPreview(null);
-  };
-
-  const handleGalleryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const incomingFiles = Array.from(e.target.files || []);
-    setGalleryWarning(null);
-
-    // Calculate maximum threshold allocation dynamically
-    const currentTotalCount = remoteGalleryPaths.length + localGalleryFiles.length;
-    const availableSlots = 2 - currentTotalCount;
-
-    if (availableSlots <= 0) {
-      setGalleryWarning("Maximum storage limit of 2 gallery slots filled.");
+    e.target.value = "";
+    if (!file) return;
+    const invalid = validateImageFile(file);
+    if (invalid) {
+      setSubmitError(invalid);
       return;
     }
-
-    if (incomingFiles.length > availableSlots) {
-      setGalleryWarning(`Slots capped: Only accepted first ${availableSlots} files.`);
-    }
-
-    const validIncomingFiles = incomingFiles.slice(0, availableSlots);
-    setGalleryFiles((prev) => [...prev, ...validIncomingFiles]);
+    setSubmitError(null);
+    setImages((prev) => ({ ...prev, [key]: { file, preview: URL.createObjectURL(file) } }));
   };
 
-  // Granular Deletion Subroutines
-  const removeRemoteGalleryImage = (indexToRemove: number) => {
-    setRemoteGalleryPaths((prev) => prev.filter((_, idx) => idx !== indexToRemove));
-    setGalleryWarning(null);
+  const handleRemoveImage = (key: ImageKey, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setImages((prev) => ({ ...prev, [key]: { file: null, preview: null } }));
   };
 
-  const removeLocalGalleryImage = (indexToRemove: number) => {
-    setGalleryFiles((prev) => prev.filter((_, idx) => idx !== indexToRemove));
-    setGalleryWarning(null);
+  const handleStepChange = (index: number, value: string) => {
+    setSteps((prev) => prev.map((s, i) => (i === index ? value : s)));
   };
 
   const handleClose = () => {
@@ -133,34 +133,15 @@ export default function AddProjectModal({
     setSubmitError(null);
 
     try {
-      const multiPartForm = new FormData();
-
-      // Process JSON fields
-      Object.entries(formData).forEach(([key, val]) => {
-        if (key !== "tags") multiPartForm.append(key, val);
+      const imageChanges: Partial<Record<ImageKey, File | null>> = {};
+      IMAGE_KEYS.forEach((key) => {
+        const slot = images[key];
+        if (slot.file) imageChanges[key] = slot.file;
+        // Administrator removed an existing image
+        else if (!slot.preview && editingProject?.[key]) imageChanges[key] = null;
       });
 
-      // Handle tag parsing arrays safely
-      const tagsArray = formData.tags.split(",").map((t) => t.trim()).filter((t) => t.length > 0);
-      tagsArray.forEach((tag) => multiPartForm.append("tags", tag));
-
-      // Handle thumbnail payloads
-      if (thumbnailFile) {
-        multiPartForm.append("thumbnail", thumbnailFile);
-      } else if (!thumbnailPreview && editingProject) {
-        // If the administrator cleared the image block layout completely
-        multiPartForm.append("thumbnail", "");
-      }
-
-      // Append remaining remote strings so the backend knows what to keep
-      remoteGalleryPaths.forEach((path) => {
-        multiPartForm.append("existingGallery", path);
-      });
-
-      // Append newly introduced raw binary attachment tracks
-      if (localGalleryFiles.length > 0) {
-        localGalleryFiles.forEach((file) => multiPartForm.append("gallery", file));
-      }
+      const multiPartForm = toFormData({ ...formData, steps, images: imageChanges });
 
       const outcome = editingProject
         ? await updateProject(editingProject.id, multiPartForm)
@@ -180,13 +161,38 @@ export default function AddProjectModal({
     }
   };
 
+  const renderImageSlot = (key: ImageKey, emptyLabel: string, heightClass: string) => {
+    const preview = images[key].preview;
+    return preview ? (
+      <div className={`relative group w-full ${heightClass} border border-neutral-800 bg-neutral-950/40 rounded-[12px] flex items-center justify-center p-2 overflow-hidden`}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={preview} alt="Preview" className="w-full h-full object-cover rounded-lg" />
+        <button
+          type="button"
+          onClick={(e) => handleRemoveImage(key, e)}
+          className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white/70 transition-opacity duration-200 cursor-pointer rounded-[12px]"
+        >
+          <Trash2 className="w-5 h-5" />
+        </button>
+      </div>
+    ) : (
+      <label className={`group flex flex-col items-center justify-center w-full ${heightClass} border border-dashed border-neutral-800 hover:border-neutral-700 bg-neutral-950/40 rounded-[12px] cursor-pointer transition-colors p-3`}>
+        <div className="flex flex-col items-center text-center text-white/40 gap-1">
+          <UploadCloud className="w-5 h-5 group-hover:text-emerald-400 transition-colors" />
+          <span className="text-[10px] font-medium">{emptyLabel}</span>
+        </div>
+        <input type="file" accept="image/*" className="hidden" onChange={(e) => handleImageChange(key, e)} />
+      </label>
+    );
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4 overflow-y-auto animate-scaleUp">
-      <div className="w-full max-w-2xl bg-neutral-900 border border-neutral-800 rounded-[24px] p-6 lg:p-8 my-8 text-white max-h-[90vh] overflow-y-auto shadow-2xl">
-        
+      <div className="w-full max-w-3xl bg-neutral-900 border border-neutral-800 rounded-[24px] p-6 lg:p-8 my-8 text-white max-h-[90vh] overflow-y-auto shadow-2xl">
+
         <div className="flex items-center justify-between mb-6 pb-4 border-b border-neutral-800  ">
           <h2 className="text-xl font-bold">
-            {editingProject ? "Modify Architectural Record" : "Deploy Project To Public Nodes"}
+            {editingProject ? "Edit Project" : "Add New Project"}
           </h2>
           <button type="button" onClick={handleClose} className="text-white/40 hover:text-white transition-colors cursor-pointer">
             <X className="w-5 h-5" />
@@ -197,21 +203,29 @@ export default function AddProjectModal({
           {submitError && (
             <p
               role="alert"
-              className="sm:col-span-2 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300"
+              className="sm:col-span-2 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300 whitespace-pre-line"
             >
               {submitError}
             </p>
           )}
-          
+
+          {/* BASIC INFO */}
+          <span className={sectionClass}>Basic Info</span>
+
           <div className="sm:col-span-2 flex flex-col gap-1.5">
-            <label className="text-[11px] font-bold text-white/60 uppercase tracking-wider">Project Title</label>
-            <input type="text" required value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} className="w-full rounded-[10px] border border-neutral-800 bg-neutral-950 px-4 py-3 text-sm focus:outline-none focus:border-emerald-500/50 text-white" />
+            <label className={labelClass}>Project Title</label>
+            <input type="text" required value={formData.title} onChange={(e) => setField("title", e.target.value)} className={inputClass} />
+          </div>
+
+          <div className="sm:col-span-2 flex flex-col gap-1.5">
+            <label className={labelClass}>Slug (Optional)</label>
+            <input type="text" placeholder="Auto-generated from title if left empty" value={formData.slug} onChange={(e) => setField("slug", e.target.value)} className={inputClass} />
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <label className="text-[11px] font-bold text-white/60 uppercase tracking-wider">Structural Category</label>
-            <select required value={formData.categoryId} onChange={(e) => setFormData({ ...formData, categoryId: e.target.value })} className="w-full rounded-[10px] border border-neutral-800 bg-neutral-950 px-4 py-3 text-sm focus:outline-none focus:border-emerald-500/50 text-white">
-              <option value="" disabled>Select parent category...</option>
+            <label className={labelClass}>Category</label>
+            <select required value={formData.categoryId} onChange={(e) => setField("categoryId", e.target.value)} className={inputClass}>
+              <option value="" disabled>Select category...</option>
               {categories.map((cat) => (
                 <option key={cat.id} value={cat.id}>{cat.name}</option>
               ))}
@@ -219,117 +233,89 @@ export default function AddProjectModal({
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <label className="text-[11px] font-bold text-white/60 uppercase tracking-wider">Status</label>
-            <select value={formData.status} onChange={(e) => setFormData({ ...formData, status: e.target.value })} className="w-full rounded-[10px] border border-neutral-800 bg-neutral-950 px-4 py-3 text-sm focus:outline-none focus:border-emerald-500/50 text-white">
+            <label className={labelClass}>Visibility</label>
+            <select value={formData.status} onChange={(e) => setField("status", e.target.value as Project["status"])} className={inputClass}>
               <option value="DRAFT">DRAFT</option>
               <option value="PUBLISHED">PUBLISHED</option>
             </select>
           </div>
 
-          {/* THUMBNAIL COMPONENT SLOT */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-[11px] font-bold text-white/60 uppercase tracking-wider">Thumbnail Capture</label>
-            {thumbnailPreview ? (
-              <div className="relative group w-full min-h-[105px] border border-neutral-800 bg-neutral-950/40 rounded-[12px] flex items-center justify-center p-3 overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={thumbnailPreview} alt="Preview" className="w-auto h-16 object-contain rounded-lg" />
-                <button
-                  type="button"
-                  onClick={handleRemoveThumbnail}
-                  className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white/70 transition-opacity duration-200 cursor-pointer rounded-[12px]"
-                >
-                  <Trash2 className="w-5 h-5" />
-                </button>
-              </div>
+            <label className={labelClass}>Client</label>
+            <input type="text" required placeholder="e.g. Military Institute of Science and Technology" value={formData.client} onChange={(e) => setField("client", e.target.value)} className={inputClass} />
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label className={labelClass}>Location</label>
+            <input type="text" required placeholder="e.g. Dhaka" value={formData.location} onChange={(e) => setField("location", e.target.value)} className={inputClass} />
+          </div>
+
+          {/* TIMELINE */}
+          <span className={sectionClass}>Timeline</span>
+
+          <div className="sm:col-span-2 flex flex-col gap-1.5">
+            <label className={labelClass}>Project Status</label>
+            <select value={formData.projectStatus} onChange={(e) => setField("projectStatus", e.target.value as Project["projectStatus"])} className={inputClass}>
+              <option value="Ongoing">Ongoing</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label className={labelClass}>Start Date</label>
+            <input type="date" required value={formData.startDate} onChange={(e) => setField("startDate", e.target.value)} className={`${inputClass} [color-scheme:dark]`} />
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label className={labelClass}>End Date</label>
+            {formData.projectStatus === "Ongoing" ? (
+              <input type="text" disabled value="Ongoing" className={inputClass} />
             ) : (
-              <label className="group flex flex-col items-center justify-center w-full min-h-[105px] border border-dashed border-neutral-800 hover:border-neutral-700 bg-neutral-950/40 rounded-[12px] cursor-pointer transition-colors p-3">
-                <div className="flex flex-col items-center text-center text-white/40 gap-1">
-                  <UploadCloud className="w-5 h-5 group-hover:text-emerald-400 transition-colors" />
-                  <span className="text-[10px] font-medium">Select Hero Image</span>
-                </div>
-                <input type="file" accept="image/*" className="hidden" onChange={handleThumbnailChange} />
-              </label>
+              <input type="date" required min={formData.startDate || undefined} value={formData.endDate} onChange={(e) => setField("endDate", e.target.value)} className={`${inputClass} [color-scheme:dark]`} />
             )}
           </div>
 
-          {/* DYNAMIC MULTI-FILE PREVIEW GALLERY WITH GRANULAR EXTRACTION */}
-          <div className="flex flex-col gap-1.5">
-            <div className="flex items-center justify-between">
-              <label className="text-[11px] font-bold text-white/60 uppercase tracking-wider">
-                Gallery Attachments ({remoteGalleryPaths.length + localGalleryFiles.length}/2)
-              </label>
-              {galleryWarning && (
-                <span className="text-[10px] text-white/70 font-medium flex items-center gap-1 animate-pulse">
-                  <AlertCircle className="w-3 h-3" /> {galleryWarning}
-                </span>
-              )}
-            </div>
+          {/* IMAGES */}
+          <span className={sectionClass}>Main Image</span>
 
-            <div className="grid grid-cols-3 gap-2 w-full min-h-[105px]">
-              {/* Loop and list remaining remote files fetched from database */}
-              {remoteGalleryPaths.map((path, idx) => (
-                <div key={`remote-${idx}`} className="relative group rounded-[12px] bg-neutral-950 border border-neutral-800 overflow-hidden aspect-square flex items-center justify-center p-1.5">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={`${API_BASE_URL}${path}`} alt="Remote Preview" className="w-full h-full object-cover rounded-lg" />
-                  <button
-                    type="button"
-                    onClick={() => removeRemoteGalleryImage(idx)}
-                    className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white/70 transition-opacity duration-150 cursor-pointer"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
-                </div>
-              ))}
+          <div className="sm:col-span-2 flex flex-col gap-1.5">
+            {renderImageSlot("imageMain", "Select Main Cover Image", "h-[180px]")}
+          </div>
 
-              {/* Loop and list new raw files selected in current browsing session */}
-              {localGalleryFiles.map((file, idx) => (
-                <div key={`local-${idx}`} className="relative group rounded-[12px] bg-neutral-950 border border-neutral-800 overflow-hidden aspect-square flex items-center justify-center p-1.5">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={URL.createObjectURL(file)} alt="Local Preview" className="w-full h-full object-cover rounded-lg" />
-                  <button
-                    type="button"
-                    onClick={() => removeLocalGalleryImage(idx)}
-                    className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white/70 transition-opacity duration-150 cursor-pointer"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
-                </div>
-              ))}
+          <span className={sectionClass}>Project Steps (3)</span>
 
-              {/* Upload prompt selector tile (renders only if remaining allocation space exists) */}
-              {remoteGalleryPaths.length + localGalleryFiles.length < 2 && (
-                <label className="group flex flex-col items-center justify-center border border-dashed border-neutral-800 hover:border-neutral-700 bg-neutral-950/40 rounded-[12px] cursor-pointer transition-colors aspect-square p-2">
-                  <UploadCloud className="w-5 h-5 text-white/30 group-hover:text-emerald-400 transition-colors" />
-                  <span className="text-[9px] font-medium text-white/30 mt-1 uppercase text-center">Add Image</span>
-                  <input type="file" accept="image/*" multiple className="hidden" onChange={handleGalleryChange} />
-                </label>
-              )}
-            </div>
+          <div className="sm:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {STEP_KEYS.map((key, idx) => (
+              <div key={key} className="p-3 rounded-[14px] bg-neutral-950/60 border border-neutral-800/80 flex flex-col gap-3">
+                <span className="text-[10px] font-extrabold text-white/50 tracking-wider uppercase">Step {idx + 1}</span>
+                {renderImageSlot(key, "Step Image", "h-[110px]")}
+                <input
+                  type="text"
+                  placeholder={["e.g. Project Area Map", "e.g. Noise Level Measurement", "e.g. Final Implementation"][idx]}
+                  value={steps[idx]}
+                  onChange={(e) => handleStepChange(idx, e.target.value)}
+                  className="w-full rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 text-xs focus:outline-none focus:border-emerald-500/50 text-white"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* CONTENT */}
+          <span className={sectionClass}>Project Details</span>
+
+          <div className="sm:col-span-2 flex flex-col gap-1.5">
+            <label className={labelClass}>Description</label>
+            <textarea rows={4} required value={formData.description} onChange={(e) => setField("description", e.target.value)} className={`${inputClass} resize-none`} />
           </div>
 
           <div className="sm:col-span-2 flex flex-col gap-1.5">
-            <label className="text-[11px] font-bold text-white/60 uppercase tracking-wider">Tags (Comma-Separated)</label>
-            <div className="relative">
-              <Tag className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20" />
-              <input type="text" placeholder="Demand, Traffic, 2026" value={formData.tags} onChange={(e) => setFormData({ ...formData, tags: e.target.value })} className="w-full rounded-[10px] border border-neutral-800 bg-neutral-950 pl-10 pr-4 py-3 text-sm focus:outline-none focus:border-emerald-500/50 text-white" />
-            </div>
+            <label className={labelClass}>Scope of Work</label>
+            <textarea rows={4} value={formData.scopeOfWork} onChange={(e) => setField("scopeOfWork", e.target.value)} className={`${inputClass} resize-none`} />
           </div>
 
           <div className="sm:col-span-2 flex flex-col gap-1.5">
-            <label className="text-[11px] font-bold text-white/60 uppercase tracking-wider">Operational Abstract Description</label>
-            <textarea rows={3} value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} className="w-full rounded-[10px] border border-neutral-800 bg-neutral-950 px-4 py-3 text-sm focus:outline-none focus:border-emerald-500/50 text-white resize-none" />
-          </div>
-
-          <div className="p-4 rounded-[14px] bg-neutral-950/60 border border-neutral-800/80 flex flex-col gap-3">
-            <span className="text-[10px] font-extrabold text-emerald-400 tracking-wider uppercase">Primary Metric Node</span>
-            <input type="text" placeholder="Label (e.g. Accessibility)" value={formData.metric1Title} onChange={(e) => setFormData({ ...formData, metric1Title: e.target.value })} className="w-full rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 text-xs focus:outline-none focus:border-emerald-500/50 text-white" />
-            <input type="text" placeholder="Data Payload (e.g. +50%)" value={formData.metric1Value} onChange={(e) => setFormData({ ...formData, metric1Value: e.target.value })} className="w-full rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 text-xs focus:outline-none focus:border-emerald-500/50 text-white" />
-          </div>
-
-          <div className="p-4 rounded-[14px] bg-neutral-950/60 border border-neutral-800/80 flex flex-col gap-3">
-            <span className="text-[10px] font-extrabold text-[#16A34A] tracking-wider uppercase">Secondary Metric Node</span>
-            <input type="text" placeholder="Label (e.g. Capacity)" value={formData.metric2Title} onChange={(e) => setFormData({ ...formData, metric2Title: e.target.value })} className="w-full rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 text-xs focus:outline-none focus:border-emerald-500/50 text-white" />
-            <input type="text" placeholder="Data Payload (e.g. 10 CPC)" value={formData.metric2Value} onChange={(e) => setFormData({ ...formData, metric2Value: e.target.value })} className="w-full rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 text-xs focus:outline-none focus:border-emerald-500/50 text-white" />
+            <label className={labelClass}>Engineering Highlights</label>
+            <textarea rows={4} value={formData.engineeringHighlights} onChange={(e) => setField("engineeringHighlights", e.target.value)} className={`${inputClass} resize-none`} />
           </div>
 
           <div className="sm:col-span-2 flex justify-end gap-4 border-t border-neutral-800 pt-6 mt-4">
@@ -337,7 +323,7 @@ export default function AddProjectModal({
               Cancel
             </button>
             <button type="submit" disabled={formLoading} className="px-6 py-2.5 rounded-[10px] text-xs font-bold text-black hover:opacity-90 transition-all cursor-pointer" style={{ background: "linear-gradient(270deg, #ffffff 0%, #00a63e 100%)" }}>
-              {formLoading ? "Syncing..." : editingProject ? "Save Blueprint Modifications" : "Initialize Global Production Deploy"}
+              {formLoading ? "Saving..." : editingProject ? "Save Changes" : "Create Project"}
             </button>
           </div>
         </form>

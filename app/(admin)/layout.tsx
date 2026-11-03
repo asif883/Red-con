@@ -12,7 +12,8 @@ import {
   Menu, 
   X, 
   ShieldCheck,
-  ChevronRight
+  ChevronRight,
+  BarChart3
 } from "lucide-react";
 
 export default function AdminLayout({
@@ -26,7 +27,8 @@ export default function AdminLayout({
 
   const navigationItems = [
     { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
-    { name: "Projects Repo", href: "/admin/projects", icon: Briefcase },
+    { name: "Projects", href: "/admin/projects", icon: Briefcase },
+    { name: "Stats", href: "/admin/stats", icon: BarChart3 },
     { name: "Teams", href: "/admin/teams", icon: ShieldCheck },
   ];
 

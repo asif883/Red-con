@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
-import { projects } from "../projects/_sections/project";
+import { ArrowRight, ArrowUpRight, FolderOpen, MapPin } from "lucide-react";
+import { fetchPublishedProjects, imageUrl } from "@/lib/api/projects";
 
 export interface BackendProject {
   id: string;
@@ -27,8 +27,8 @@ export interface BackendProject {
   };
 }
 
-export default function Projects() {
-  const featuredProjects = projects.slice(0, 6);
+export default async function Projects() {
+  const featuredProjects = (await fetchPublishedProjects()).slice(0, 6);
 
   return (
     <section
@@ -54,6 +54,18 @@ export default function Projects() {
           </h2>
         </div>
 
+        {featuredProjects.length === 0 ? (
+          /* No published projects at all */
+          <div className="flex flex-col items-center rounded-2xl border border-dashed border-white/20 bg-neutral-950/50 px-6 py-16 text-center sm:py-20">
+            <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-[#16A34A]/30 bg-[#16A34A]/10">
+              <FolderOpen className="h-6 w-6 text-[#16A34A]" aria-hidden="true" />
+            </div>
+            <p className="text-lg font-semibold text-white">No projects to show yet</p>
+            <p className="mt-2 max-w-md text-sm leading-6 text-white/60">
+              We&apos;re updating our portfolio. Please check back soon, or get in touch to learn about our work.
+            </p>
+          </div>
+        ) : (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredProjects.map((project) => (
             <article
@@ -66,20 +78,21 @@ export default function Projects() {
                 aria-label={`View ${project.title}`}
               >
                 <Image
-                  src={project.imageMain}
+                  src={imageUrl(project.imageMain) || "/images/projects/project1_1.png"}
                   alt={project.title}
                   fill
+                  unoptimized
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
-                  {project.status}
+                  {project.projectStatus}
                 </span>
               </Link>
 
               <div className="flex flex-col gap-4 p-5 sm:p-6">
                 <p className="text-xs font-semibold uppercase tracking-wider text-[#34D399]">
-                  {project.category}
+                  {project.category.name}
                 </p>
                 <h3 className="line-clamp-2 min-h-14 text-lg font-semibold leading-7 text-white">
                   {project.title}
@@ -104,7 +117,9 @@ export default function Projects() {
             </article>
           ))}
         </div>
+        )}
 
+        {featuredProjects.length > 0 && (
         <div className="flex justify-center">
           <Link
             href="/projects"
@@ -114,6 +129,7 @@ export default function Projects() {
             <ArrowRight className="h-4 w-4 text-[#34D399] transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
+        )}
       </div>
     </section>
   );

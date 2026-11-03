@@ -2,14 +2,15 @@ import Contact from "../_sections/Contact";
 import ReadyToDeliver from "../about-us/_sections/ReadyToDeliver";
 import NewProjectSection from "./_sections/NewProjectSection";
 import ProjectHero from "./_sections/ProjectHero";
-import ProjectsSection from "./_sections/ProjectsSection";
+import { fetchPublishedProjects } from "@/lib/api/projects";
 
-const page = () => {
+const page = async () => {
+  const projects = await fetchPublishedProjects();
+
   return (
     <div>
       <ProjectHero />
-      <NewProjectSection/>
-      {/* <ProjectsSection /> */}
+      <NewProjectSection projects={projects} />
       <ReadyToDeliver />
       <Contact />
     </div>
