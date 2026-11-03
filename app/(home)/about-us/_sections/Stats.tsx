@@ -20,8 +20,8 @@ const Stats = () => {
     },
     {
       id: 2,
-      value: "50+",
-      label: "DESHBYAPI PROJECTS",
+      value: "29",
+      label: "PROJECTS COMPLETED",
       colorClass: "text-[#34D399]",
     },
     {

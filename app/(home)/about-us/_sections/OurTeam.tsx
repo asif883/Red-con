@@ -110,7 +110,7 @@ const OurTeam = () => {
             {/* Core Segment Heading Typography */}
             <h2 className="text-white font-semibold text-3xl sm:text-4xl lg:text-[48px] lg:leading-[50px] tracking-[-1.2px]">
               A Multidisciplinary Team{" "}
-              <span className="italic text-[#16A34A]">
+              <span className="text-[#16A34A]">
                 of Professionals
               </span>
             </h2>

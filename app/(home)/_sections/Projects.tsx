@@ -48,7 +48,7 @@ export default function Projects() {
 
           <h2 className="text-3xl font-semibold tracking-[-1.2px] text-white sm:text-4xl lg:text-[48px] lg:leading-[1.1]">
             Transforming Ideas into{" "}
-            <span className="bg-[linear-gradient(270deg,#16A34A_35.58%,#16A34A_100%)] bg-clip-text italic text-transparent">
+            <span className="bg-[linear-gradient(270deg,#16A34A_35.58%,#16A34A_100%)] bg-clip-text text-transparent">
               Impactful Projects
             </span>
           </h2>

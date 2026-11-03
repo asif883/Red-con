@@ -97,7 +97,7 @@ const Technology: React.FC = () => {
             {/* Core Header Segment Typography */}
             <h2 className="text-white  font-semibold text-3xl md:text-4xl lg:text-[44px] lg:leading-[50px] tracking-[-1.2px]">
               Powered By{" "}
-              <span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_0%,#16A34A_100%)]">
+              <span className="bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_0%,#16A34A_100%)]">
                 Technology & Tools
               </span>
             </h2>

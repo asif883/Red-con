@@ -28,15 +28,12 @@ const ProjectHero = () => {
 
           {/* Core Segment Heading Typography */}
           <h1 className="text-white font-semibold text-3xl sm:text-4xl lg:text-[48px] lg:leading-[50px] tracking-[-1.2px] max-w-3xl">
-            Architecting resilient &{" "}
-            <span className="italic text-[#16A34A]">
-              sustainabl footprints
-            </span>
+            Projects
           </h1>
 
           {/* Content Narrative Summary Block */}
           <p className="text-[rgba(255,255,255,0.70)] text-base sm:text-lg lg:text-[20px] lg:leading-[28px] font-medium max-w-3xl mt-1">
-            Explore our comprehensive multidisciplinary works spanning structural designs, high-precision drone mapping, and deep environmental sanitation studies across South Asia.
+            Explore our comprehensive multidisciplinary works spanning structural designs, high-precision drone mapping, and deep environmental sanitation studies across Bangladesh.
           </p>
 
         </div>

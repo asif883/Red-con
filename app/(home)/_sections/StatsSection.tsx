@@ -7,7 +7,7 @@ type Stat = { value: number; suffix?: string; label: string };
 
 const STATS: Stat[] = [
   { value: 8, suffix: "+", label: "Years of Experience" },
-  { value: 50, suffix: "+", label: "Projects Completed" },
+  { value: 29, label: "Projects Completed" },
   { value: 25, suffix: "+", label: "Professional Experts" },
   { value: 30, suffix: "+", label: "Clients Served" },
   { value: 20, suffix: "+", label: "Ongoing Projects" },
@@ -127,7 +127,7 @@ export default function StatsSection() {
       className="relative w-full overflow-hidden pt-12 md:pt-16"
     >
     <h2 
-        className="text-white  font-semibold text-3xl sm:text-4xl  lg:leading-[50px] tracking-[-1.2px] text-center"
+        className="text-white  font-semibold text-3xl sm:text-4xl  lg:leading-[50px] tracking-[-1.2px] text-center pb-3 md:pb-0 px-2 md:px-0"
     >
         Transforming Real Estate <span className="text-[#16A34A]">Across Bangladesh</span>
       </h2>

@@ -52,6 +52,9 @@ async function getTeamCategories(): Promise<DBTeamCategory[]> {
 export default async function Teams() {
   const categories = await getTeamCategories();
 
+  // Hide the whole section until personnel are added from the admin panel
+  if (!categories.some((category) => category.members?.length)) return null;
+
   return (
     <section className="relative w-full py-24 overflow-hidden bg-[#050505] text-white">
       {/* Background Ambient Vector Glow Shapes */}
@@ -81,7 +84,7 @@ export default async function Teams() {
                 textTransform: "uppercase",
               }}
             >
-              executive boards
+              our people
             </span>
           </div>
 
@@ -89,9 +92,9 @@ export default async function Teams() {
             className="text-white text-3xl sm:text-4xl lg:text-[48px] lg:leading-[50px] tracking-[-1.2px]"
             style={{ fontFamily: "Inter, sans-serif", fontWeight: 600 }}
           >
-            Guiding development projects with{" "}
-            <span className="italic text-[#16A34A]">
-              accuracy & structural precision
+            Meet the professionals{" "}
+            <span className="text-[#16A34A]">
+              behind REDCon
             </span>
           </h2>
         </div>
@@ -118,7 +121,7 @@ export default async function Teams() {
                     }}
                   />
                   <h3
-                    className="text-2xl sm:text-3xl tracking-[3.2px] bg-clip-text text-transparent italic font-semibold uppercase"
+                    className="text-2xl sm:text-3xl tracking-[3.2px] bg-clip-text text-transparent font-semibold uppercase"
                     style={{
                       fontFamily: "Inter, sans-serif",
                       backgroundImage:

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 const ReadyToDeliver = () => {
@@ -19,7 +20,7 @@ const ReadyToDeliver = () => {
           {/* Headline Typography Content Architecture */}
           <h2 className="text-white font-semibold text-3xl sm:text-4xl lg:text-[48px] lg:leading-[54px] tracking-[-1.75px] max-w-[780px]">
             Ready to deliver{" "}
-            <span className="italic text-[#16A34A] tracking-[-0.9px]">
+            <span className="text-[#16A34A] tracking-[-0.9px]">
               resilient & future-ready outcomes.
             </span>
           </h2>
@@ -30,14 +31,14 @@ const ReadyToDeliver = () => {
           </p>
 
           {/* Interactive Global Consultation Action Anchor Trigger */}
-          <button className="flex items-center gap-4 pl-6 pr-2 py-2 mt-2 rounded-full text-black bg-[linear-gradient(270deg,#ffffff_0%,#00a63e_100%)] border border-neutral-800/60 transition-all duration-300 hover:scale-[1.02] hover:border-neutral-700/80 group shrink-0 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
+          <Link href="/contact" className="flex items-center gap-4 pl-6 pr-2 py-2 mt-2 rounded-full text-black bg-[linear-gradient(270deg,#ffffff_0%,#00a63e_100%)] border border-neutral-800/60 transition-all duration-300 hover:scale-[1.02] hover:border-neutral-700/80 group shrink-0 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
             <span className="text-[12px] font-bold leading-[16px] tracking-[1.2px] uppercase">
               get consultation
             </span>
             <div className="w-9 h-9 rounded-full bg-[#16A34A] flex items-center justify-center transition-transform duration-300 group-hover:rotate-45">
               <ArrowUpRight className="w-4 h-4 text-white" strokeWidth={2.5} />
             </div>
-          </button>
+          </Link>
 
         </div>
 

@@ -47,7 +47,7 @@ export default function OneStopConsultancy() {
 
           <h2 className="max-w-[950px] text-3xl font-semibold tracking-[-1.2px] text-white sm:text-4xl lg:text-[48px] lg:leading-[1.08]">
             Transforming ambitious ideas into{" "}
-            <span className="italic text-[#16A34A]">
+            <span className="text-[#16A34A]">
               sustainable structures &amp; data-driven solutions
             </span>
           </h2>
@@ -59,9 +59,10 @@ export default function OneStopConsultancy() {
             const IconComponent = serviceIcons[index] ?? ClipboardList;
 
             return (
-              <article
+              <a
                 key={service.id}
-                className="group flex w-full flex-col items-center justify-center gap-4 rounded-[16px] border border-white/5 bg-white/[0.02] p-6 text-center transition-all duration-300 hover:border-white/10 hover:bg-[rgba(5,150,105,0.30)] sm:p-8"
+                href={`#${service.slug}`}
+                className="group flex w-full flex-col items-center justify-center gap-4 rounded-[16px] border border-white/5 bg-white/[0.02] p-6 text-center transition-all duration-300 hover:border-white/10 hover:bg-[rgba(5,150,105,0.30)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#16A34A] sm:p-8"
               >
                 <div className="flex h-11 w-11 items-center justify-center rounded-[12px] border border-white/10 bg-white/5 text-white/60 transition-all duration-300 group-hover:border-white/30 group-hover:bg-[#16A34A] group-hover:text-white">
                   <IconComponent className="h-5 w-5" aria-hidden="true" />
@@ -78,7 +79,7 @@ export default function OneStopConsultancy() {
                 {/* <span className="mt-1 text-[11px] font-semibold uppercase tracking-[1.5px] text-[#16A34A]">
                   {service.coreCapabilities.length} Core Capabilities
                 </span> */}
-              </article>
+              </a>
             );
           })}
         </div>

@@ -80,7 +80,7 @@ export default function AdminTeamsManagement() {
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-white">
               REDCon HR{" "}
-              <span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_25%,#16A34A_100%)]">
+              <span className="bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_25%,#16A34A_100%)]">
                 Control Center
               </span>
             </h1>

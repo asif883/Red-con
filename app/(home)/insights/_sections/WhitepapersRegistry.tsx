@@ -40,7 +40,7 @@ const WhitepapersRegistry = () => {
             {/* Core Segment Heading Typography */}
             <h2 className="text-white font-semibold text-3xl sm:text-4xl lg:text-[36px] lg:leading-[40px] tracking-[-0.9px] max-w-[700px] mt-2">
               Stay updated with our latest{" "}
-              <span className="italic text-[#16A34A]">
+              <span className="text-[#16A34A]">
                 engineering whitepapers.
               </span>
             </h2>

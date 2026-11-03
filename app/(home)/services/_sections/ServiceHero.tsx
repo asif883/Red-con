@@ -28,10 +28,7 @@ const ServiceHero = () => {
 
           {/* Core Segment Heading Typography */}
           <h1 className="text-white font-semibold text-3xl sm:text-4xl lg:text-[48px] lg:leading-[50px] tracking-[-1.2px] max-w-4xl">
-            Engineering resilient &{" "}
-            <span className="italic text-[#16A34A]">
-              sustainable infrastructure
-            </span>
+            Services
           </h1>
 
           {/* Content Narrative Summary Block */}

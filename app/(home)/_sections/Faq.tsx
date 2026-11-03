@@ -109,7 +109,7 @@ const Faq: React.FC = () => {
             </div>
             <h2 className="text-white   font-semibold text-[44px] leading-[50px] tracking-[-1.2px]">
               Frequently Asked <br />
-              <span className="italic text-[#16A34A]">Question</span>
+              <span className="text-[#16A34A]">Question</span>
             </h2>
           </div>
 
@@ -158,9 +158,9 @@ const Faq: React.FC = () => {
       <div className="max-w-[1440px] w-full border border-neutral-900/60 bg-gradient-to-r from-neutral-950 via-[#0a160f]/60 to-neutral-950 p-8 md:p-12 rounded-[24px] flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 lg:gap-12 relative z-10 shadow-xl">
         {/* Left Aspect Header Layout Block */}
         <div className="flex flex-col gap-3 max-w-[480px] lg:shrink-0">
-          <h2 className="  text-[32px] xl:text-[36px] font-bold leading-[38px] xl:leading-[40px] tracking-[0.9px] text-white">
+          <h2 className=" text-[32px] xl:text-[36px] font-bold leading-[38px] xl:leading-[40px] tracking-[0.9px] text-white">
             Ready To Start{" "}
-            <span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_0%,#16A34A_100%)]">
+            <span className="bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_0%,#16A34A_100%)]">
               Your Next Project?
             </span>
           </h2>

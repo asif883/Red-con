@@ -1,14 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, ChevronDown } from "lucide-react";
+import { servicesData } from "../services/_sections/services-data";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     emailAddress: "",
     phoneNumber: "",
-    serviceRequired: "Survey & Monitoring",
+    serviceRequired: servicesData[0].title,
     projectDetails: "",
     message: "",
   });
@@ -33,7 +34,7 @@ const Contact: React.FC = () => {
 
           <h2 className="text-white   font-semibold text-3xl md:text-4xl lg:text-[48px] lg:leading-[50px] tracking-[-1.2px]">
             Let’s Build the{" "}
-            <span className="italic bg-clip-text text-transparent bg-[linear-gradient(90deg,#16A34A_0%,#16A34A_100%)]">
+            <span className="bg-clip-text text-transparent bg-[linear-gradient(90deg,#16A34A_0%,#16A34A_100%)]">
               Future Together
             </span>
           </h2>
@@ -121,9 +122,21 @@ const Contact: React.FC = () => {
                 Our Business Hours
               </h3>
               <div className="flex flex-col gap-1 text-white/70   font-medium text-[12px] leading-[16px]">
-                <p>Sunday - Thursday: 9:00 AM - 6:00 PM</p>
-                <p>Friday & Saturday: Closed</p>
+                <p>Saturday - Thursday: 9:00 AM - 6:00 PM</p>
+                <p>Friday: Closed</p>
               </div>
+            </div>
+
+            {/* Card 3: Office Location Map */}
+            <div className="w-full h-[280px] md:h-[320px] rounded-[24px] overflow-hidden border border-[#16a34a]/20 bg-neutral-900">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d228.2122157921239!2d90.36810666626646!3d23.76892842491569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c1004a4f7d25%3A0x28c656682afbddc5!2sHappy.%20House!5e0!3m2!1sen!2sbd!4v1793693584952!5m2!1sen!2sbd"
+                title="REDCon Headquarters location on Google Maps"
+                className="w-full h-full border-0"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
             </div>
           </div>
 
@@ -189,27 +202,25 @@ const Contact: React.FC = () => {
                 <label className="text-white/70   text-[12px] font-bold leading-[16px] tracking-[0.6px] uppercase mb-2 block">
                   Service Required
                 </label>
-                <select
-                  value={formData.serviceRequired}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      serviceRequired: e.target.value,
-                    })
-                  }
-                  className="w-full rounded-[12px] border border-gray-600 px-4 py-3 text-white text-[14px] focus:outline-none focus:border-[#16a34a]/40 transition-colors cursor-pointer appearance-none bg-[url bg-[length:12px_12px] bg-[right_16px_center] bg-no-repeat"
-                >
-                  <option value="Survey & Monitoring" className="bg-neutral-900">
-                    Survey & Monitoring
-                  </option>
-                  <option value="Feasibility Study" className="bg-neutral-900">Feasibility Study</option>
-                  <option value="Structural Engineering" className="bg-neutral-900">
-                    Structural Engineering
-                  </option>
-                  <option value="Traffic & Highway Design" className="bg-neutral-900">
-                    Traffic & Highway Design
-                  </option>
-                </select>
+                <div className="relative">
+                  <select
+                    value={formData.serviceRequired}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        serviceRequired: e.target.value,
+                      })
+                    }
+                    className="w-full rounded-[12px] border border-gray-600 bg-[rgba(87,86,86,0.05)] pl-4 pr-10 py-3 text-white text-[14px] focus:outline-none focus:border-[#16a34a]/40 transition-colors cursor-pointer appearance-none"
+                  >
+                    {servicesData.map((service) => (
+                      <option key={service.slug} value={service.title} className="bg-neutral-900">
+                        {service.title}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60" />
+                </div>
               </div>
             </div>
 

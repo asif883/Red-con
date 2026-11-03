@@ -110,7 +110,7 @@ const LeadershipMessage: React.FC = () => {
           
           <h2 className="text-white  font-semibold text-3xl md:text-4xl lg:text-[48px] lg:leading-[50px] tracking-[-1.2px]">
             Guided by Vision &{" "}
-            <span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_27.4%,#16A34A_78.85%)]">
+            <span className="bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_27.4%,#16A34A_78.85%)]">
               Excellence
             </span>
           </h2>

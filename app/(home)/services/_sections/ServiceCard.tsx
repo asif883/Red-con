@@ -21,7 +21,7 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
   const isEvenService = service.id % 2 === 0;
 
   return (
-    <article className="group/card w-full mt-12">
+    <article id={service.slug} className="group/card w-full mt-12 scroll-mt-28">
       {/* Main Card Container */}
       <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent p-6 lg:p-10 transition-all duration-500 hover:border-[#16A34A]/40 hover:shadow-[0_0_60px_-20px_rgba(22,163,74,0.35)]">
         {/* Decorative gradient glow on hover */}

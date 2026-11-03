@@ -168,7 +168,7 @@ const Services = () => {
             <h2 className="text-white  font-semibold text-3xl sm:text-4xl lg:text-[48px] lg:leading-[50px] tracking-[-1.2px]">
               Comprehensive Engineering &{" "}
               <span
-                className="italic bg-clip-text text-transparent"
+                className="bg-clip-text text-transparent"
                 style={{
                   background:
                     "linear-gradient(270deg, #16A34A 33.65%, #16A34A 100%)",

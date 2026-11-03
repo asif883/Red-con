@@ -103,7 +103,7 @@ export default function AdminProjectsManagement() {
               <span className="text-[#16A34A] font-bold text-[11px] tracking-[2.4px] uppercase">Control System</span>
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-white">
-              Repository{" "}<span className="italic bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_25%,#16A34A_100%)]">Dashboard</span>
+              Repository{" "}<span className="bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_25%,#16A34A_100%)]">Dashboard</span>
             </h1>
           </div>
 

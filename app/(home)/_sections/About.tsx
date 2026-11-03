@@ -87,7 +87,7 @@ const About = () => {
             <h2 className="text-white  font-semibold text-3xl sm:text-4xl lg:text-[48px] lg:leading-[50px] tracking-[-1.2px]">
               Building Tomorrow Through{" "}
               <span
-                className="italic bg-clip-text text-transparent"
+                className="bg-clip-text text-transparent"
                 style={{
                   background: "linear-gradient(270deg, #16A34A 25.48%, #16A34A 100%)",
                   WebkitBackgroundClip: "text",
@@ -121,8 +121,8 @@ const About = () => {
               />
               <FeatureCard
                 icon={CheckCircle2}
-                title="50+ Projects"
-                subtitle="Completed & Ongoing"
+                title="29 Projects"
+                subtitle="Completed"
               />
               <FeatureCard
                 icon={Globe2}

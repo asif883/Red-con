@@ -39,7 +39,7 @@ const AboutHero = () => {
             {/* Core Segment Heading Typography */}
             <h1 className="text-white   font-semibold text-3xl sm:text-4xl lg:text-[48px] lg:leading-[50px] tracking-[-1.2px]">
               Engineering Excellence Through Research,{" "}
-              <span className="italic text-[#16A34A]">
+              <span className="text-[#16A34A]">
                 Innovation & Sustainable Development
               </span>
             </h1>
@@ -49,7 +49,7 @@ const AboutHero = () => {
           <div className="lg:col-span-5 lg:mt-11 border-l-2 border-[#16A34A] pl-6 lg:pl-8 py-1">
             <p className="text-[rgba(255,255,255,0.60)]   font-normal text-base sm:text-lg lg:text-[20px] lg:leading-[28px]">
               Since 2018, REDCon. Limited has stood as a robust structural and
-              engineering cornerstone across South Asia built on uncompromising
+              engineering cornerstone across Bangladesh built on uncompromising
               integrity, guided by scientific datasets, and driven by
               engineering excellence.
             </p>

@@ -1,23 +1,16 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
+import { clients } from "./clients-data";
 
 const TrustedClients = () => {
-  // 12 client logos based on the image reference provided
-  const clients = Array.from({ length: 12 }, (_, i) => ({
-    id: i + 1,
-    src: `/images/clients/client${i + 1}.png`, 
-    alt: `Client Logo ${i + 1}`,
-  }));
-
   return (
     <section className="relative w-full bg-black py-16 overflow-hidden flex flex-col items-center justify-center">
       
       {/* Styled Heading Content */}
       <div className="max-w-[1440px] w-full px-4 mx-auto mb-12 z-10 relative  ">
         <h2 
-          className="text-center   italic font-bold text-[30px] leading-[48px] tracking-[3.8px] bg-clip-text text-transparent"
+          className="text-center   font-bold text-[30px] leading-[48px] tracking-[3.8px] bg-clip-text text-transparent"
           style={{
             background: "linear-gradient(270deg, #16A34A 0%, #009738 100%)",
             WebkitBackgroundClip: "text",
@@ -61,12 +54,12 @@ const TrustedClients = () => {
           <div className="animate-marquee-right flex items-center gap-12 sm:gap-16 pr-12 sm:pr-16">
             {[...clients, ...clients].map((client, index) => (
               <div 
-                key={`l2r-${client.id}-${index}`} 
+                key={`l2r-${client.logo}-${index}`} 
                 className="w-24 h-16 sm:w-32 sm:h-20 relative flex items-center justify-center shrink-0 brightness-90 contrast-125 hover:brightness-100 transition-all duration-300"
               >
                 <Image
-                  src={client.src}
-                  alt={client.alt}
+                  src={client.logo}
+                  alt={client.name}
                   fill
                   className="object-contain"
                   sizes="(max-width: 640px) 96px, 128px"

@@ -59,7 +59,7 @@ const TeamHero = () => {
           >
             A multidisciplinary league of{" "}
             <span 
-              className="italic"
+              className=""
               style={{
                 color: "#16A34A",
                 fontFamily: "Inter, sans-serif",
@@ -81,7 +81,7 @@ const TeamHero = () => {
           >
             Meet the administrative heads, senior analysts, and GIS specialists
             managing the design approval grids and environmental safety
-            metrics across South Asia.
+            metrics across Bangladesh.
           </p>
 
         </div>

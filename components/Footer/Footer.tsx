@@ -1,20 +1,30 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
+import { siteContact, socialLinks } from "@/lib/site";
+import { servicesData } from "@/app/(home)/services/_sections/services-data";
+
+const quickLinks = [
+  { name: "Home", href: "/" },
+  { name: "About REDCon", href: "/about-us" },
+  { name: "Services", href: "/services" },
+  { name: "Projects", href: "/projects" },
+  { name: "Our Team", href: "/our-team" },
+  { name: "Life at REDCon", href: "/life-at-redcon" },
+  { name: "News & Events", href: "/news-events" },
+  { name: "Careers", href: "/careers" },
+  { name: "Contact", href: "/contact" },
+];
 
 const Footer: React.FC = () => {
-  // Safe handling for Server-Side Rendering hydration matching
-  
-
   return (
     <footer className="w-full bg-[#030303] pt-20 pb-8 px-4 md:px-8 lg:px-16 flex flex-col items-center justify-center border-t border-neutral-900 overflow-hidden">
       <div className="max-w-[1440px] w-full flex flex-col gap-12">
-        
+
         {/* TOP MULTI-COLUMN LINK GRID MATRIX */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-8 lg:gap-6 items-start w-full">
-          
+
           {/* Column 1: Brand Identifier & Descriptive Profile (SPAN 4) */}
           <div className="lg:col-span-4 flex flex-col gap-6">
             <div className="flex items-center gap-3">
@@ -26,12 +36,33 @@ const Footer: React.FC = () => {
                   className="object-contain"
                 />
               </div>
-             
             </div>
-            
+
             <p className="text-white/60  font-normal text-[12px] leading-[19.5px] max-w-[320px]">
               Research Engineering & Development Consultant Limited (REDCon Ltd.) is a premier multidisciplinary engineering consultancy partner based in Bangladesh.
             </p>
+
+            {/* Social Profiles */}
+            <div className="flex items-center gap-3">
+              <a
+                href={socialLinks.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="REDCon on Facebook"
+                className="w-9 h-9 rounded-full border border-white/10 bg-white/[0.03] flex items-center justify-center text-white/70 hover:text-white hover:bg-[#16A34A] hover:border-[#16A34A] transition-all"
+              >
+                <FaFacebookF className="w-4 h-4" />
+              </a>
+              <a
+                href={socialLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="REDCon on LinkedIn"
+                className="w-9 h-9 rounded-full border border-white/10 bg-white/[0.03] flex items-center justify-center text-white/70 hover:text-white hover:bg-[#16A34A] hover:border-[#16A34A] transition-all"
+              >
+                <FaLinkedinIn className="w-4 h-4" />
+              </a>
+            </div>
           </div>
 
           {/* Column 2: Quick Links Directory (SPAN 2) */}
@@ -40,90 +71,63 @@ const Footer: React.FC = () => {
               QUICK LINKS
             </h4>
             <ul className="flex flex-col gap-2.5">
-              {["Home", "About", "Services", "Projects", "Team", "Contact"].map((link) => (
-                <li key={`quick-${link}`}>
-                  <a href={`#${link.toLowerCase()}`} className="text-white/60  font-normal text-[12px] leading-[16px] hover:text-[#16A34A] transition-colors">
-                    {link}
-                  </a>
+              {quickLinks.map((link) => (
+                <li key={`quick-${link.name}`}>
+                  <Link href={link.href} className="text-white/60  font-normal text-[12px] leading-[16px] hover:text-[#16A34A] transition-colors">
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 3: Functional Services Area (SPAN 2) */}
-          <div className="lg:col-span-2 flex flex-col gap-4">
+          {/* Column 3: Functional Services Area (SPAN 4) */}
+          <div className="lg:col-span-3 flex flex-col gap-4">
             <h4 className="text-[#16A34A]  font-bold text-[12px] leading-[16px] tracking-[0.6px] uppercase  ">
               SERVICES
             </h4>
             <ul className="flex flex-col gap-2.5">
-              {[
-                "Infrastructure Design",
-                "Environmental Consulting",
-                "Transportation Planning",
-                "Survey & Monitoring",
-                "Urban Planning",
-              ].map((service) => (
-                <li key={`service-${service}`}>
-                  <a href="#" className="text-white/60  font-normal text-[12px] leading-[16px] hover:text-[#16A34A] transition-colors">
-                    {service}
-                  </a>
+              {servicesData.map((service) => (
+                <li key={`service-${service.slug}`}>
+                  <Link href={`/services/${service.slug}`} className="text-white/60  font-normal text-[12px] leading-[16px] hover:text-[#16A34A] transition-colors">
+                    {service.title}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 4: Core Industries Domain (SPAN 2) */}
-          <div className="lg:col-span-2 flex flex-col gap-4">
-            <h4 className="text-[#16A34A]  font-bold text-[12px] leading-[16px] tracking-[0.6px] uppercase  ">
-              INDUSTRIES
-            </h4>
-            <ul className="flex flex-col gap-2.5">
-              {[
-                "Roads & Highways",
-                "Bridges & Structures",
-                "Urban Development",
-                "Public Utilities",
-              ].map((industry) => (
-                <li key={`industry-${industry}`}>
-                  <a href="#" className="text-white/60  font-normal text-[12px] leading-[16px] hover:text-[#16A34A] transition-colors">
-                    {industry}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 5: Direct Contact Details Row (SPAN 2) */}
-          <div className="lg:col-span-2 flex flex-col gap-4">
+          {/* Column 4: Direct Contact Details Row (SPAN 3) */}
+          <div className="lg:col-span-3 flex flex-col gap-4">
             <h4 className="text-[#16A34A]  font-bold text-[12px] leading-[16px] tracking-[0.6px] uppercase  ">
               CONTACT DETAILS
             </h4>
             <ul className="flex flex-col gap-2.5 text-white/60  font-normal text-[12px] leading-[16px]">
-              <li>4/20 Happy House</li>
-              <li>Mohammadpur, Dhaka</li>
+              {siteContact.addressLines.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
               <li>
-                <a href="mailto:info.redconbd@gmail.com" className="hover:text-[#16A34A] transition-colors">
-                  info.redconbd@gmail.com
+                <a href={`mailto:${siteContact.email}`} className="hover:text-[#16A34A] transition-colors">
+                  {siteContact.email}
                 </a>
               </li>
-              <li>
-                <a href="tel:+8801989211290" className="hover:text-[#16A34A] transition-colors">
-                  +8801989211290
-                </a>
-              </li>
-              <li className="text-white/40 italic">Customer service</li>
+              {siteContact.phones.map((phone) => (
+                <li key={phone.tel}>
+                  <a href={`tel:${phone.tel}`} className="hover:text-[#16A34A] transition-colors">
+                    {phone.display}
+                  </a>
+                </li>
+              ))}
+              <li className="text-white/40">{siteContact.businessHours[0]}</li>
             </ul>
           </div>
 
         </div>
 
-        {/* MIDDLE SECTION: HORIZONTAL SPLIT DIVIDER */}
-        <div className="w-full h-[1px] bg-white/[0.05] mt-6" />
 
-      
         {/* BOTTOM UTILITY REGISTRATION FOOTER BAR */}
         <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 pt-4 border-t border-white/[0.03]">
-          
+
           {/* Left Area: Dynamic Copyright Statement */}
           <span className="text-white/40  font-medium text-[12px] leading-[16px] text-center md:text-left  ">
             © {new Date().getFullYear()} REDCon Ltd. All rights reserved.
@@ -131,13 +135,10 @@ const Footer: React.FC = () => {
 
           {/* Right Area: Policy Agreements and Platform Credits */}
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
-            <a href="#" className="text-white/40  font-medium text-[12px] leading-[16px] hover:text-white/80 transition-colors">
-              Terms of Policy
-            </a>
-            <a href="#" className="text-white/40  font-medium text-[12px] leading-[16px] hover:text-white/80 transition-colors">
+            <Link href="/privacy-policy" className="text-white/40  font-medium text-[12px] leading-[16px] hover:text-white/80 transition-colors">
               Privacy Policy
-            </a>
-            
+            </Link>
+
             {/* Creator Attribution Tag Integration */}
             <Link href="https://webbriks.com" target="_blank" className="flex items-center gap-2  ">
               <span className="text-white  font-bold text-[10px] leading-[16.5px] tracking-wide" style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}>

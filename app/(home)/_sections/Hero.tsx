@@ -2,12 +2,13 @@
 
 import React from "react";
 import { ArrowRight, Building2, CheckCircle2, Users, Zap, Clock, MapPin } from "lucide-react";
+import Link from "next/link";
 import Navbar from "@/components/Navbar/Navbar";
 
 const Hero = () => {
   const stats = [
     { icon: Building2, value: "8+", label: "Years of Experience" },
-    { icon: CheckCircle2, value: "50+", label: "Projects Completed" },
+    { icon: CheckCircle2, value: "29", label: "Projects Completed" },
     { icon: Users, value: "25+", label: "Professional Experts" },
     { icon: Zap, value: "30+", label: "Clients Served" },
     { icon: Clock, value: "20+", label: "Ongoing Projects" },
@@ -43,7 +44,8 @@ const Hero = () => {
 
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-4 mt-4">
-          <button
+          <Link
+            href="/services"
             className="flex items-center gap-2 px-6 py-3 rounded-[8px] text-black text-[14px] font-medium leading-[20px] transition-all hover:opacity-95 cursor-pointer"
             style={{
               background: "linear-gradient(270deg, #ffffff 0%, #00a63e 100%)",
@@ -52,9 +54,10 @@ const Hero = () => {
           >
             <span>Explore Our Services</span>
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </Link>
 
-            <button
+            <Link
+              href="/projects"
               className="flex items-center gap-2 px-6 py-3 rounded-[8px] text-white text-[14px] font-medium leading-[20px] border border-[#009738] transition-all hover:bg-white/5 cursor-pointer"
               style={{
                 background: "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.30) 50%, rgba(0, 0, 0, 0.95) 100%)",
@@ -62,7 +65,7 @@ const Hero = () => {
             >
               <span>View Our Projects</span>
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </div>
         </div>
       </div>

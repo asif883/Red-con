@@ -52,8 +52,11 @@ export const servicesData: ServiceData[] = [
       "Wastewater & Effluent Treatment Plant (ETP) Assessment",
       "Wastewater Management & Treatment Planning",
       "Solid Waste Management",
-      "Brine, Sludge & Residual Waste Management",
-      "WASH Infrastructure Planning & Development"
+      "Residual Waste Management",
+      "WASH Infrastructure Planning & Development",
+      "Fecal Sludge Management (FSM)",
+      "Water Development",
+      "Water Resource Development"
     ]
   },
   {
@@ -70,7 +73,6 @@ export const servicesData: ServiceData[] = [
       "Climate-Smart Agriculture",
       "Resilient Water Resource Management",
       "Coastal & Salinity Risk Assessment",
-      "Climate Impact & Risk Analysis",
       "Nature-Based Solutions",
       "Climate Resilience Strategy & Action Planning"
     ]
@@ -101,18 +103,18 @@ export const servicesData: ServiceData[] = [
     "imageSrc": "/images/services/service6.png",
     "description": "REDCon Ltd. provides research, survey, baseline, evaluation, and evidence-generation services to support informed decision-making, program me design, policy development and project improvement. Our multidisciplinary research teams apply robust quantitative and qualitative methodologies to generate reliable, actionable, and context-specific evidence.",
     "coreCapabilities": [
-      "Baseline & Endline Studies",
+      "Baseline, Midline & Endline Studies",
       "Impact & Outcome Assessments",
-      "Needs & Situation Assessments",
-      "Feasibility & Diagnostic Studies",
+      "Feasibility Studies",
       "Socioeconomic & Household Surveys",
       "Quantitative & Qualitative Research",
-      "Key Informant Interviews (KII)",
-      "Focus Group Discussions (FGD)",
       "Monitoring & Evaluation (M&E)",
       "Research Tool & Questionnaire Development",
       "Data Analysis & Interpretation",
-      "Evidence-Based Reporting & Recommendations"
+      "Land Acquisition",
+      "Resettlement Action Plan (RAP)",
+      "Land Survey",
+      "Topography Survey"
     ]
   },
   {

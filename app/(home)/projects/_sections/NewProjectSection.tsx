@@ -80,7 +80,7 @@ export default function NewProjectSection() {
           </p>
 
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Projects That <span className="italic text-[#16A34A]">
+            Projects That <span className="text-[#16A34A]">
               Make an Impact 
             </span>
           </h2>

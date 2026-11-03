@@ -89,7 +89,7 @@ const AdminLogin = () => {
           <h2 className="text-white font-semibold text-2xl sm:text-3xl tracking-[-0.8px]">
             Administrative{" "}
             <span 
-              className="italic bg-clip-text text-transparent"
+              className="bg-clip-text text-transparent"
               style={{
                 background: "linear-gradient(270deg, #16A34A 25.48%, #16A34A 100%)",
                 WebkitBackgroundClip: "text",

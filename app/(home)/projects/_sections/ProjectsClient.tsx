@@ -108,7 +108,7 @@ export default function ProjectsClient({
 
             <h2 className="text-white font-semibold text-3xl sm:text-4xl lg:text-[48px] lg:leading-[50px] tracking-[-1.2px]">
               Proven results delivered with{" "}
-              <span className="italic text-[#16A34A]">
+              <span className="text-[#16A34A]">
                 accuracy & regional compliance
               </span>
             </h2>
