@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { siteContact, socialLinks } from "@/lib/site";
 import { servicesData } from "@/app/(home)/services/_sections/services-data";
@@ -23,10 +24,10 @@ const Footer: React.FC = () => {
       <div className="max-w-[1440px] w-full flex flex-col gap-12">
 
         {/* TOP MULTI-COLUMN LINK GRID MATRIX */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-8 lg:gap-6 items-start w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 items-start w-full">
 
-          {/* Column 1: Brand Identifier & Descriptive Profile (SPAN 4) */}
-          <div className="lg:col-span-4 flex flex-col gap-6">
+          {/* Column 1: Brand Identifier & Descriptive Profile */}
+          <div className="flex flex-col gap-6">
             <div className="flex items-center gap-3">
               <div className="relative w-40 h-10 shrink-0">
                 <Image
@@ -41,8 +42,84 @@ const Footer: React.FC = () => {
             <p className="text-white/60  font-normal text-[12px] leading-[19.5px] max-w-[320px]">
               Research Engineering & Development Consultant Limited (REDCon Ltd.) is a premier multidisciplinary engineering consultancy partner based in Bangladesh.
             </p>
+          </div>
 
-            {/* Social Profiles */}
+          {/* Column 2: Quick Links Directory (SPAN 2) */}
+          {/* <div className="lg:col-span-2 flex flex-col gap-4">
+            <h4 className="text-[#16A34A]  font-bold text-[12px] leading-[16px] tracking-[0.6px] uppercase  ">
+              QUICK LINKS
+            </h4>
+            <ul className="flex flex-col gap-2.5">
+              {quickLinks.map((link) => (
+                <li key={`quick-${link.name}`}>
+                  <Link href={link.href} className="text-white/60  font-normal text-[12px] leading-[16px] hover:text-[#16A34A] transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div> */}
+
+          {/* Column 3: Functional Services Area (SPAN 4) */}
+          {/* <div className="lg:col-span-3 flex flex-col gap-4">
+            <h4 className="text-[#16A34A]  font-bold text-[12px] leading-[16px] tracking-[0.6px] uppercase  ">
+              SERVICES
+            </h4>
+            <ul className="flex flex-col gap-2.5">
+              {servicesData.map((service) => (
+                <li key={`service-${service.slug}`}>
+                  <Link href={`/services/${service.slug}`} className="text-white/60  font-normal text-[12px] leading-[16px] hover:text-[#16A34A] transition-colors">
+                    {service.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div> */}
+
+            
+
+          {/* Column 2: Direct Contact Details */}
+          <div className="flex flex-col gap-4">
+            <h4 className="text-[#16A34A]  font-bold text-[12px] leading-[16px] tracking-[0.6px] uppercase  ">
+              CONTACT DETAILS
+            </h4>
+            <ul className="flex flex-col gap-3 text-white/60  font-normal text-[12px] leading-[16px]">
+              <li className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 shrink-0 text-[#16A34A]" />
+                <div className="flex flex-col gap-1">
+                  {siteContact.addressLines.map((line) => (
+                    <span key={line}>{line}</span>
+                  ))}
+                </div>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <Mail className="w-4 h-4 shrink-0 text-[#16A34A]" />
+                <a href={`mailto:${siteContact.email}`} className="hover:text-[#16A34A] transition-colors">
+                  {siteContact.email}
+                </a>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <Phone className="w-4 h-4 shrink-0 text-[#16A34A]" />
+                <div className="flex flex-col gap-1">
+                  {siteContact.phones.map((phone) => (
+                    <a key={phone.tel} href={`tel:${phone.tel}`} className="hover:text-[#16A34A] transition-colors">
+                      {phone.display}
+                    </a>
+                  ))}
+                </div>
+              </li>
+              <li className="flex items-start gap-2.5 text-white/40">
+                <Clock className="w-4 h-4 shrink-0 text-[#16A34A]" />
+                <span>{siteContact.businessHours[0]}</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Social Profiles */}
+          <div className="flex flex-col gap-4">
+            <h4 className="text-[#16A34A]  font-bold text-[12px] leading-[16px] tracking-[0.6px] uppercase  ">
+              FOLLOW US
+            </h4>
             <div className="flex items-center gap-3">
               <a
                 href={socialLinks.facebook}
@@ -63,63 +140,6 @@ const Footer: React.FC = () => {
                 <FaLinkedinIn className="w-4 h-4" />
               </a>
             </div>
-          </div>
-
-          {/* Column 2: Quick Links Directory (SPAN 2) */}
-          <div className="lg:col-span-2 flex flex-col gap-4">
-            <h4 className="text-[#16A34A]  font-bold text-[12px] leading-[16px] tracking-[0.6px] uppercase  ">
-              QUICK LINKS
-            </h4>
-            <ul className="flex flex-col gap-2.5">
-              {quickLinks.map((link) => (
-                <li key={`quick-${link.name}`}>
-                  <Link href={link.href} className="text-white/60  font-normal text-[12px] leading-[16px] hover:text-[#16A34A] transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 3: Functional Services Area (SPAN 4) */}
-          <div className="lg:col-span-3 flex flex-col gap-4">
-            <h4 className="text-[#16A34A]  font-bold text-[12px] leading-[16px] tracking-[0.6px] uppercase  ">
-              SERVICES
-            </h4>
-            <ul className="flex flex-col gap-2.5">
-              {servicesData.map((service) => (
-                <li key={`service-${service.slug}`}>
-                  <Link href={`/services/${service.slug}`} className="text-white/60  font-normal text-[12px] leading-[16px] hover:text-[#16A34A] transition-colors">
-                    {service.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 4: Direct Contact Details Row (SPAN 3) */}
-          <div className="lg:col-span-3 flex flex-col gap-4">
-            <h4 className="text-[#16A34A]  font-bold text-[12px] leading-[16px] tracking-[0.6px] uppercase  ">
-              CONTACT DETAILS
-            </h4>
-            <ul className="flex flex-col gap-2.5 text-white/60  font-normal text-[12px] leading-[16px]">
-              {siteContact.addressLines.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-              <li>
-                <a href={`mailto:${siteContact.email}`} className="hover:text-[#16A34A] transition-colors">
-                  {siteContact.email}
-                </a>
-              </li>
-              {siteContact.phones.map((phone) => (
-                <li key={phone.tel}>
-                  <a href={`tel:${phone.tel}`} className="hover:text-[#16A34A] transition-colors">
-                    {phone.display}
-                  </a>
-                </li>
-              ))}
-              <li className="text-white/40">{siteContact.businessHours[0]}</li>
-            </ul>
           </div>
 
         </div>
