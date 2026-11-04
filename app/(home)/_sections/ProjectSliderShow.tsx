@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { projects } from "../projects/_sections/project";
 
 // Defines the data structure for a single project
 interface ProjectItem {
@@ -14,63 +15,12 @@ interface ProjectItem {
   isUniversity?: boolean;
 }
 
-// Full dataset based on the requirements and provided images
-const projectData: ProjectItem[] = [
-  {
-    id: 1,
-    image: "/images/project-showcase/project1.png",
-    tag: "Government Project",
-    title: "Metro Rail Mirpur-12",
-  },
-  {
-    id: 2,
-    image: "/images/project-showcase/project2.png",
-    tag: "Corporate Project",
-    title: "University (BUP)",
-    isUniversity: true,
-  },
-  {
-    id: 3,
-    image: "/images/project-showcase/project3.png",
-    title: "Project Three Description",
-  },
-  {
-    id: 4,
-    image: "/images/project-showcase/project4.png",
-    tag: "Government Project",
-    title: "Metro Rail Mirpur-12",
-  },
-  {
-    id: 5,
-    image: "/images/project-showcase/project5.png",
-    tag: "Corporate Project",
-    title: "University (BUP)",
-    isUniversity: true,
-  },
-  {
-    id: 6,
-    image: "/images/project-showcase/project6.png",
-    title: "Project Three Description",
-  },
-  {
-    id: 7,
-    image: "/images/project-showcase/project4.png",
-    tag: "Government Project",
-    title: "Metro Rail Mirpur-12",
-  },
-  {
-    id: 8,
-    image: "/images/project-showcase/project2.png",
-    tag: "Corporate Project",
-    title: "University (BUP)",
-    isUniversity: true,
-  },
-  {
-    id: 9,
-    image: "/images/project-showcase/project3.png",
-    title: "Project Three Description",
-  },
-];
+const projectData: ProjectItem[] = projects.slice(0, 9).map((project) => ({
+  id: project.id,
+  image: project.imageMain,
+  tag: project.category,
+  title: project.title,
+}));
 
 // Split data into unique columns for independent animation
 const col1Data = projectData.slice(0, 3);
@@ -90,16 +40,12 @@ const ProjectCard: React.FC<{ item: ProjectItem }> = ({ item }) => (
       priority={item.id <= 3}
     />
     <div className="relative z-10 w-full">
-      {item.tag && (
-        <span className="text-[#34D399]   text-xs font-bold uppercase tracking-[1px] block mb-1">
-          {item.tag}
-        </span>
-      )}
+
       {item.isUniversity && (
         <div className="w-[80px] h-[1px] bg-neutral-600 mb-2" />
       )}
       {item.title && (
-        <h3 className="text-white   text-lg font-bold leading-tight group-hover:text-[#34D399] transition-colors">
+        <h3 className="text-white text-lg font-bold leading-tight line-clamp-1 group-hover:text-[#34D399] transition-colors">
           {item.title}
         </h3>
       )}

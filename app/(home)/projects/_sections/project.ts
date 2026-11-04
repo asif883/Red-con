@@ -222,32 +222,33 @@ const projectRecords: Project[] = [
     engineeringHighlights:
       "High-rise residential feasibility with emphasis on foundation strategy, structural planning, vertical circulation, utilities, site constraints and construction feasibility.",
   },
-  {
-    id: 8,
-    slug: "interior-design-of-md-azmal-s-dinning-living-room",
-    title: "Interior Design of Md. Azmal's Dinning &Living Room",
-    category: "Interior Design & Construction",
-    client: "Md. Azmal Hossain  & Family",
-    location: "Dhaka",
+{
+    id: 18,
+    slug: "road-safety-design-for-vatkura-intersection-shibpur-intersection-and-vawal-college",
+    title:
+      "Road Safety Design for Vatkura Intersection, Shibpur Intersection and Vawal College",
+    category: "Road Safety Engineering",
+    client: "RHD",
+    location: "Gazipur",
     status: "Completed",
-    startDate: "Not specified",
-    endDate: "Not specified",
-    imageMain: "/images/projects/project-8-img-3.png",
+    startDate: "01/06/2024",
+    endDate: "30/04/2025*",
+    imageMain: "/images/projects/project-18-img-1.jpg",
 
-    stepImg1: "/images/projects/project-8-img-1.png",
-    stepImg2: "/images/projects/project-8-img-2.png",
-    stepImg3: "/images/projects/project-8-img-3.png",
+    stepImg1: "/images/projects/project-18-img-1.jpg",
+    stepImg2: "/images/projects/project-18-img-2.png",
+    stepImg3: "/images/projects/project-18-img-3.png",
     steps: [
-      "Space Planning & Interior Concept",
-      "Material, Furniture & Lighting Selection",
-      "Interior Design Implementation",
+      "Intersection Safety Assessment",
+      "Traffic Conflict & Risk Analysis",
+      "Road Safety Design Solutions",
     ],
     description:
-      "The project covers interior design planning for the dining and living areas of a private residence in Dhaka, focusing on functional use, aesthetics and coordinated interior solutions.",
+      "The project develops road safety designs for selected intersections and Vawal College area in Gazipur, targeting safer traffic movement and improved protection of pedestrians and other vulnerable users.",
     scopeOfWork:
-      "Develop space planning and interior concepts; coordinate finishes, furniture and lighting requirements; optimize circulation and functionality; and provide design guidance for implementation.",
+      "Assess existing safety conditions; identify conflict points; develop intersection and roadside safety treatments; incorporate pedestrian and access requirements; and prepare design recommendations.",
     engineeringHighlights:
-      "Space optimization, interior detailing, material coordination, lighting considerations and practical constructability for residential interiors.",
+      "Practical intersection safety engineering emphasizing traffic conflicts, visibility, pedestrian movement, channelization and roadside safety.",
   },
   {
     id: 9,
@@ -303,6 +304,33 @@ const projectRecords: Project[] = [
       "Review existing intersection conditions; assess traffic and safety risks; undertake site verification; develop safety improvement concepts and design recommendations; and support implementation planning.",
     engineeringHighlights:
       "Intersection safety engineering addressing geometry, traffic movement, visibility, channelization, pedestrian considerations and practical safety treatments.",
+  },
+    {
+    id: 8,
+    slug: "interior-design-of-md-azmal-s-dinning-living-room",
+    title: "Interior Design of Md. Azmal's Dinning &Living Room",
+    category: "Interior Design & Construction",
+    client: "Md. Azmal Hossain  & Family",
+    location: "Dhaka",
+    status: "Completed",
+    startDate: "Not specified",
+    endDate: "Not specified",
+    imageMain: "/images/projects/project-8-img-3.png",
+
+    stepImg1: "/images/projects/project-8-img-1.png",
+    stepImg2: "/images/projects/project-8-img-2.png",
+    stepImg3: "/images/projects/project-8-img-3.png",
+    steps: [
+      "Space Planning & Interior Concept",
+      "Material, Furniture & Lighting Selection",
+      "Interior Design Implementation",
+    ],
+    description:
+      "The project covers interior design planning for the dining and living areas of a private residence in Dhaka, focusing on functional use, aesthetics and coordinated interior solutions.",
+    scopeOfWork:
+      "Develop space planning and interior concepts; coordinate finishes, furniture and lighting requirements; optimize circulation and functionality; and provide design guidance for implementation.",
+    engineeringHighlights:
+      "Space optimization, interior detailing, material coordination, lighting considerations and practical constructability for residential interiors.",
   },
   {
     id: 11,
