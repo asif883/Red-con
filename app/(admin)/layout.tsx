@@ -29,7 +29,7 @@ export default function AdminLayout({
     { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
     { name: "Projects", href: "/admin/projects", icon: Briefcase },
     { name: "Stats", href: "/admin/stats", icon: BarChart3 },
-    { name: "Teams", href: "/admin/teams", icon: ShieldCheck },
+    // { name: "Teams", href: "/admin/teams", icon: ShieldCheck },
   ];
 
   const isLoginPage = pathname === "/admin/login";

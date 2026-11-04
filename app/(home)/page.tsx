@@ -1,3 +1,4 @@
+import { fetchStats } from "@/lib/api/stats";
 import About from "./_sections/About";
 import Contact from "./_sections/Contact";
 import Faq from "./_sections/Faq";
@@ -10,11 +11,13 @@ import StatsSection from "./_sections/StatsSection";
 import TrustedClients from "./_sections/TrustedClients";
 import WhyChoose from "./_sections/WhyChoose";
 
-export default function Home() {
+export default async function Home() {
+  const stats = await fetchStats();
+
   return (
     <div>
       <Hero />
-      <StatsSection/>
+      <StatsSection stats={stats}/>
       <TrustedClients/>
       {/* <Services/> */}
       <About/>

@@ -27,12 +27,13 @@ import {
   imageUrl,
   formatDate,
 } from "@/lib/api/projects";
-import { DEFAULT_STATS } from "@/lib/stats";
+import { Stat, getStats } from "@/lib/api/stats";
 
 type DashboardData = {
   projects: Project[];
   categories: ProjectCategory[];
   teamCount: number | null;
+  stats: Stat[] | null;
 };
 
 async function fetchAllProjects() {
@@ -47,13 +48,14 @@ async function fetchAllProjects() {
 }
 
 async function loadDashboard(): Promise<DashboardData> {
-  const [projects, categories, teams] = await Promise.all([
+  const [projects, categories, teams, stats] = await Promise.all([
     fetchAllProjects(),
     getCategories(),
-    // Team count is a nice-to-have; don't fail the whole dashboard on it
+    // Team count and stats are nice-to-haves; don't fail the whole dashboard on them
     axiosPrivate.get<unknown[]>("/teams").then((r) => r.data).catch(() => null),
+    getStats().catch(() => null),
   ]);
-  return { projects, categories, teamCount: Array.isArray(teams) ? teams.length : null };
+  return { projects, categories, teamCount: Array.isArray(teams) ? teams.length : null, stats };
 }
 
 function StatCard({
@@ -115,7 +117,7 @@ export default function AdminDashboardPage() {
   const maxCategoryCount = Math.max(1, ...projectsPerCategory.map((c) => c.count));
 
   // Flag when the hand-entered homepage number drifts from the real data
-  const siteCompletedStat = DEFAULT_STATS.find((s) => s.label === "Projects Completed");
+  const siteCompletedStat = data?.stats?.find((s) => s.label === "Projects Completed");
   const showCompletedMismatch = data && siteCompletedStat && siteCompletedStat.value !== completed;
 
   const today = new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
@@ -297,23 +299,27 @@ export default function AdminDashboardPage() {
                       Edit <ArrowUpRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
-                    {DEFAULT_STATS.map((stat) => (
-                      <div key={stat.label} className="p-3 rounded-[12px] bg-neutral-950/60 border border-neutral-800/80">
-                        <p className="text-xl font-semibold text-[#0B9D41] tabular-nums">
-                          {stat.value}
-                          {stat.suffix}
-                        </p>
-                        <p className="text-[11px] text-white/50 leading-4 mt-0.5">{stat.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                  {showCompletedMismatch && (
+                  {data?.stats ? (
+                    <div className="grid grid-cols-2 gap-3">
+                      {data.stats.map((stat) => (
+                        <div key={stat.id} className="p-3 rounded-[12px] bg-neutral-950/60 border border-neutral-800/80">
+                          <p className="text-xl font-semibold text-[#0B9D41] tabular-nums">
+                            {stat.value}
+                            {stat.suffix}
+                          </p>
+                          <p className="text-[11px] text-white/50 leading-4 mt-0.5">{stat.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-sm text-white/40">Couldn&apos;t load the stats.</p>
+                  )}
+                  {/* {showCompletedMismatch && (
                     <p className="mt-4 flex items-start gap-2 text-[11px] leading-4 text-amber-300/90">
                       <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-px" />
                       The homepage says {siteCompletedStat.value} projects completed, but the database has {completed} completed projects.
                     </p>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>

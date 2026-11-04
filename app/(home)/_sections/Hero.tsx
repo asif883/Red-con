@@ -1,20 +1,11 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, Building2, CheckCircle2, Users, Zap, Clock, MapPin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar/Navbar";
 
 const Hero = () => {
-  const stats = [
-    { icon: Building2, value: "8+", label: "Years of Experience" },
-    { icon: CheckCircle2, value: "29", label: "Projects Completed" },
-    { icon: Users, value: "25+", label: "Professional Experts" },
-    { icon: Zap, value: "30+", label: "Clients Served" },
-    { icon: Clock, value: "20+", label: "Ongoing Projects" },
-    { icon: MapPin, value: "35+", label: "Districts Coverage" },
-  ];
-
   return (
     <div 
       className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-cover bg-center"

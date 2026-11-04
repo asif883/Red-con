@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import { DEFAULT_STATS as STATS, type Stat } from "@/lib/stats";
+import type { Stat } from "@/lib/api/stats";
 
-const TARGETS = STATS.map((s) => s.value);
 const COUNT_DURATION = 2000;
 
 const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
@@ -78,8 +77,6 @@ function StatItem({
   count: number;
   className?: string;
 }) {
-  const suffix = stat.suffix ?? "";
-
   return (
     <div
       className={`flex flex-col items-center text-center lg:mb-24 lg:last:mb-0 ${className}`}
@@ -88,11 +85,11 @@ function StatItem({
         {/* Animated value is decorative; screen readers get the final number */}
         <span aria-hidden="true">
           {count}
-          {suffix}
+          {stat.suffix}
         </span>
         <span className="sr-only">
           {stat.value}
-          {suffix}
+          {stat.suffix}
         </span>
       </p>
 
@@ -103,12 +100,13 @@ function StatItem({
   );
 }
 
-export default function StatsSection() {
+export default function StatsSection({ stats }: { stats: Stat[] }) {
   const [sectionRef, isVisible] = useInViewOnce<HTMLElement>(0.2);
-  const counts = useCountUp(TARGETS, isVisible);
+  const targets = useMemo(() => stats.map((s) => s.value), [stats]);
+  const counts = useCountUp(targets, isVisible);
 
-  const leftStats = STATS.slice(0, 3);
-  const rightStats = STATS.slice(3);
+  const leftStats = stats.filter((s) => s.order <= 3);
+  const rightStats = stats.filter((s) => s.order > 3);
 
   return (
     <section
@@ -132,9 +130,9 @@ export default function StatsSection() {
         <div className="contents lg:flex lg:flex-col lg:justify-center">
           {leftStats.map((stat, i) => (
             <StatItem
-              key={stat.label}
+              key={stat.id}
               stat={stat}
-              count={counts[i]}
+              count={counts[stats.indexOf(stat)]}
               className={i === 1 ? "lg:translate-x-8" : ""}
             />
           ))}
@@ -163,9 +161,9 @@ export default function StatsSection() {
         <div className="contents lg:flex lg:flex-col lg:justify-center">
           {rightStats.map((stat, i) => (
             <StatItem
-              key={stat.label}
+              key={stat.id}
               stat={stat}
-              count={counts[i + leftStats.length]}
+              count={counts[stats.indexOf(stat)]}
               className={i === 1 ? "lg:-translate-x-8" : ""}
             />
           ))}

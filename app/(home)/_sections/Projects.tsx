@@ -115,10 +115,10 @@ export default async function Projects() {
                 </div>
               </div>
             </article>
-          ))}
-        </div>
+          ))}  
+        </div> 
         )}
-
+        
         {featuredProjects.length > 0 && (
         <div className="flex justify-center">
           <Link
