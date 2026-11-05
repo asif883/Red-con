@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Calendar, Users2, CheckCircle2, Globe2, Layers } from "lucide-react";
+import type { Stat } from "@/lib/api/stats";
 
 interface FeatureCardProps {
   icon: React.ComponentType<{ className?: string }>;
@@ -48,7 +49,9 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: IconComponent, title, s
   );
 };
 
-const About = () => {
+const About = ({ stats }: { stats: Stat[] }) => {
+  const projectsStat = stats.find((s) => s.label === "Projects Completed");
+
   return (
     <section 
       className="relative w-full  py-24 overflow-hidden min-h-screen flex items-center justify-center"
@@ -121,7 +124,7 @@ const About = () => {
               />
               <FeatureCard
                 icon={CheckCircle2}
-                title="29 Projects"
+                title={projectsStat ? `${projectsStat.value}${projectsStat.suffix} Projects` : "Projects"}
                 subtitle="Completed"
               />
               <FeatureCard

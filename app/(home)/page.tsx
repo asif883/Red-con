@@ -20,7 +20,7 @@ export default async function Home() {
       <StatsSection stats={stats}/>
       <TrustedClients/>
       {/* <Services/> */}
-      <About/>
+      <About stats={stats}/>
       <Projects/>
       <ProjectSliderShow/>
       <WhyChoose/>
