@@ -46,7 +46,7 @@ const Contact: React.FC = () => {
           <div className="col-span-1 lg:col-span-5 flex flex-col gap-6 w-full">
             {/* Card 1: Headquarters Information Box */}
             <div className="w-full rounded-[24px] border border-[#16a34a]/20 bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(2,44,34,0.40)_100%)] backdrop-blur-[2px] p-6 md:p-8 flex flex-col gap-6">
-              <h3 className="text-white   font-bold text-[20px] leading-[28px]">
+              <h3 className="text-white font-bold text-[20px] leading-[28px]">
                 REDCon Headquarters
               </h3>
 
@@ -143,7 +143,7 @@ const Contact: React.FC = () => {
           {/* RIGHT AREA: INTERACTIVE CONSULTATION FORM SYSTEM (SPAN 7) */}
           <form
             onSubmit={handleSubmit}
-            className="col-span-1 lg:col-span-7 w-full rounded-[24px] border border-[rgba(22,163,74,0.40)] bg-[linear-gradient(270deg,rgba(0,151,56,0.35)_0%,rgba(0,151,56,0.35)_100%)] backdrop-blur-[2px] p-6 md:p-10 flex flex-col gap-6"
+            className="col-span-1 lg:col-span-7 w-full rounded-[24px] border border-[#16a34a]/20 bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(2,44,34,0.40)_100%)] backdrop-blur-[2px] p-6 md:p-10 flex flex-col gap-6"
           >
             {/* Row 1: Full Name & Email Address Split */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
