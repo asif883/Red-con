@@ -275,7 +275,6 @@ export default function AdminDashboardPage() {
                     {[
                       { href: "/admin/projects", icon: Briefcase, label: "Manage Projects" },
                       { href: "/admin/stats", icon: BarChart3, label: "Edit Stats" },
-                      { href: "/admin/teams", icon: Users, label: "Manage Team" },
                       { href: "/projects", icon: ExternalLink, label: "Public Projects", external: true },
                     ].map(({ href, icon: Icon, label, external }) => (
                       <Link

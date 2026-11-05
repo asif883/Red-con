@@ -59,10 +59,7 @@ const Hero = () => {
             </Link>
           </div>
         </div>
-      </div>
-
-      {/* Dynamic Grid Metrics Stats Bar Component */}
-  
+      </div>  
     </div>
   );
 };

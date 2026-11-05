@@ -13,7 +13,8 @@ import {
   X, 
   ShieldCheck,
   ChevronRight,
-  BarChart3
+  BarChart3,
+  LogOutIcon
 } from "lucide-react";
 
 export default function AdminLayout({
@@ -154,10 +155,12 @@ export default function AdminLayout({
             {/* Logout Action Trigger Pin */}
             <button
               onClick={logout}
-              className="flex items-center gap-3 w-full px-3 py-3 rounded-[12px] text-[13px] font-medium text-white/60 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 transition-all cursor-pointer"
+              className="flex items-center justify-center gap-3 w-full px-3 py-3 rounded-[12px] text-[13px] font-medium text-white/60 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 transition-all cursor-pointer"
             >
-              <LogOut className="w-[18px] h-[18px] text-white/40 group-hover:text-white" />
-              <span>Terminate Session</span>
+           
+            
+              <LogOut className="w-[18px] h-[18px]" />
+              <span>Logout</span>
             </button>
           </div>
         </aside>
