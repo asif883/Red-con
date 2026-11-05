@@ -8,7 +8,7 @@ import Navbar from "@/components/Navbar/Navbar";
 const Hero = () => {
   return (
     <div 
-      className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-cover bg-center"
+      className="relative h-[80vh] md:h-[90vh] w-full flex flex-col justify-between overflow-hidden bg-cover bg-center"
       style={{
         backgroundImage: `linear-gradient(270deg, rgba(0, 0, 0, 0.00) 31.65%, rgba(0, 0, 0, 0.30) 42.66%, rgba(0, 0, 0, 0.80) 100%), url('/images/hero.png')`,
       }}
