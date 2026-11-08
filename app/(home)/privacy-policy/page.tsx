@@ -1,7 +1,12 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/PageHero/PageHero";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Privacy Policy | REDCon" };
+export const metadata = buildMetadata({
+  title: "Privacy Policy",
+  description:
+    "How REDCon Ltd. collects, uses and protects information submitted through this website.",
+  path: "/privacy-policy",
+});
 
 const sections = [
   {

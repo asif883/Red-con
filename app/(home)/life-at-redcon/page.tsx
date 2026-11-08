@@ -1,10 +1,15 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Lightbulb, TrendingUp, Users2 } from "lucide-react";
 import PageHero from "@/components/PageHero/PageHero";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Life at REDCon | REDCon" };
+export const metadata = buildMetadata({
+  title: "Life at REDCon",
+  description:
+    "Inside REDCon Ltd.: our culture, our people and the values that guide how we work.",
+  path: "/life-at-redcon",
+});
 
 const pillars = [
   { icon: Users2, title: "Teamwork", text: "A professional and collaborative environment built on mutual respect." },

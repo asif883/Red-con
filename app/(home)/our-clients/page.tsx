@@ -1,9 +1,14 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/PageHero/PageHero";
 import OurClients from "../about-us/_sections/OurClients";
 import ReadyToDeliver from "../about-us/_sections/ReadyToDeliver";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Our Clients | REDCon" };
+export const metadata = buildMetadata({
+  title: "Our Clients",
+  description:
+    "Government agencies, development partners and institutions that REDCon Ltd. is proud to work with across Bangladesh.",
+  path: "/our-clients",
+});
 
 export default function OurClientsPage() {
   return (

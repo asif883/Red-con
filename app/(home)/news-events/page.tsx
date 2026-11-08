@@ -1,10 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero/PageHero";
 import { fetchPublishedNews, formatNewsDate } from "@/lib/api/news";
 import { imageUrl } from "@/lib/api/projects";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "News & Events | REDCon" };
+export const metadata = buildMetadata({
+  title: "News & Events",
+  description:
+    "The latest news, site visits and events from REDCon Ltd., covering our projects and activities across Bangladesh.",
+  path: "/news-events",
+});
 
 export default async function NewsEventsPage() {
   const items = await fetchPublishedNews();

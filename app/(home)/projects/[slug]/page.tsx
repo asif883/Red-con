@@ -4,6 +4,27 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, MapPin, Calendar, Tag, User } from "lucide-react";
 import Navbar from "@/components/Navbar/Navbar";
 import { fetchPublishedProjectBySlug, imageUrl, formatDate } from "@/lib/api/projects";
+import type { Metadata } from "next";
+import { buildMetadata, toDescription } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: PageProps<"/projects/[slug]">): Promise<Metadata> {
+  const { slug } = await params;
+  const project = await fetchPublishedProjectBySlug(slug);
+  if (!project) return { title: "Project not found", robots: { index: false } };
+
+  const details = [project.category.name, project.client, project.location].filter(Boolean).join(" · ");
+  return buildMetadata({
+    title: project.title,
+    description: toDescription(
+      project.description,
+      `${project.title}, a ${project.projectStatus.toLowerCase()} REDCon project${details ? ` (${details})` : ""}.`
+    ),
+    path: `/projects/${project.slug}`,
+    image: imageUrl(project.imageMain) ?? undefined,
+  });
+}
 
 /* ---------- HERO: text only, compact ---------- */
 function ProjectHero({

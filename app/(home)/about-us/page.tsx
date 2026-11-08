@@ -5,6 +5,14 @@ import BoardOfDirectors from "./_sections/BoardOfDirectors";
 import OurClients from "./_sections/OurClients";
 import OurStory from "./_sections/OurStory";
 import Stats from "./_sections/Stats";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "About Us",
+  description:
+    "Since 2018, REDCon Ltd. has delivered engineering, environmental and development consultancy in Bangladesh. Meet our board, clients and the values behind our work.",
+  path: "/about-us",
+});
 
 const page = () => {
     return (

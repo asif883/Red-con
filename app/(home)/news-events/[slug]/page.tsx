@@ -4,6 +4,25 @@ import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar/Navbar";
 import { fetchPublishedNewsBySlug, formatNewsDate, newsParagraphs } from "@/lib/api/news";
 import { imageUrl } from "@/lib/api/projects";
+import type { Metadata } from "next";
+import { buildMetadata, toDescription } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: PageProps<"/news-events/[slug]">): Promise<Metadata> {
+  const { slug } = await params;
+  const item = await fetchPublishedNewsBySlug(slug);
+  if (!item) return { title: "News not found", robots: { index: false } };
+
+  return buildMetadata({
+    title: item.title,
+    description: toDescription(newsParagraphs(item.content)[0], `${item.category} from REDCon Ltd.: ${item.title}`),
+    path: `/news-events/${item.slug}`,
+    image: imageUrl(item.image) ?? undefined,
+    type: "article",
+    publishedTime: item.date,
+  });
+}
 
 export default async function NewsDetailsPage({
   params,

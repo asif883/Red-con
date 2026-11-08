@@ -3,7 +3,24 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar/Navbar";
+import type { Metadata } from "next";
+import { buildMetadata, toDescription } from "@/lib/seo";
 import { servicesData } from "../_sections/services-data";
+
+export async function generateMetadata({
+  params,
+}: PageProps<"/services/[slug]">): Promise<Metadata> {
+  const { slug } = await params;
+  const service = servicesData.find((item) => item.slug === slug);
+  if (!service) return { title: "Service not found", robots: { index: false } };
+
+  return buildMetadata({
+    title: service.title,
+    description: toDescription(service.description, service.title),
+    path: `/services/${service.slug}`,
+    image: service.imageSrc,
+  });
+}
 
 export default async function ServiceDetailsPage({
   params,

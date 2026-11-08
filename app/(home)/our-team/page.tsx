@@ -1,11 +1,16 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/PageHero/PageHero";
 import BoardOfDirectors from "../about-us/_sections/BoardOfDirectors";
 import OurTeam from "../about-us/_sections/OurTeam";
 import ReadyToDeliver from "../about-us/_sections/ReadyToDeliver";
 import Teams from "../teams/_sections/Teams";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Our Team | REDCon" };
+export const metadata = buildMetadata({
+  title: "Our Team",
+  description:
+    "Meet the leadership and multidisciplinary professionals guiding REDCon towards sustainable growth.",
+  path: "/our-team",
+});
 
 export default function OurTeamPage() {
   return (
