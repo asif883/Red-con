@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero/PageHero";
-import { formatNewsDate, newsItems } from "./news-data";
+import { fetchPublishedNews, formatNewsDate } from "@/lib/api/news";
+import { imageUrl } from "@/lib/api/projects";
 
 export const metadata: Metadata = { title: "News & Events | REDCon" };
 
-export default function NewsEventsPage() {
-  const items = [...newsItems].sort((a, b) => b.date.localeCompare(a.date));
+export default async function NewsEventsPage() {
+  const items = await fetchPublishedNews();
 
   return (
     <div>
@@ -34,13 +34,14 @@ export default function NewsEventsPage() {
                     className="group flex flex-col rounded-[16px] overflow-hidden border border-white/10 bg-[rgba(13,92,63,0.12)] hover:border-[#16A34A]/50 transition-colors"
                   >
                     <div className="relative aspect-[16/10] overflow-hidden bg-neutral-900">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
+                      {item.image && (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={imageUrl(item.image)!}
+                          alt={item.title}
+                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      )}
                     </div>
 
                     <div className="relative px-6 pb-6 pt-2 flex flex-col gap-4">

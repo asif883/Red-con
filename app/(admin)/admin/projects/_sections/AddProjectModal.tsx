@@ -48,6 +48,7 @@ const toDateInput = (value: string | null) => (value ? value.slice(0, 10) : "");
 
 const inputClass =
   "w-full rounded-[10px] border border-neutral-800 bg-neutral-950 px-4 py-3 text-sm focus:outline-none focus:border-emerald-500/50 text-white disabled:opacity-40";
+
 const labelClass = "text-[11px] font-bold text-white/60 uppercase tracking-wider";
 const sectionClass = "sm:col-span-2 text-[10px] font-extrabold text-emerald-400 tracking-wider uppercase border-b border-neutral-800 pb-2 mt-2";
 

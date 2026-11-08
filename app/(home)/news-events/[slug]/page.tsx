@@ -1,19 +1,15 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar/Navbar";
-import { formatNewsDate, newsItems } from "../news-data";
-
-export function generateStaticParams() {
-  return newsItems.map((item) => ({ slug: item.slug }));
-}
+import { fetchPublishedNewsBySlug, formatNewsDate, newsParagraphs } from "@/lib/api/news";
+import { imageUrl } from "@/lib/api/projects";
 
 export default async function NewsDetailsPage({
   params,
 }: PageProps<"/news-events/[slug]">) {
   const { slug } = await params;
-  const item = newsItems.find((entry) => entry.slug === slug);
+  const item = await fetchPublishedNewsBySlug(slug);
 
   if (!item) notFound();
 
@@ -36,12 +32,15 @@ export default async function NewsDetailsPage({
 
         <h1 className="mt-5 text-3xl font-semibold leading-tight tracking-tight sm:text-5xl">{item.title}</h1>
 
-        <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-3xl border border-white/10 bg-neutral-900">
-          <Image src={item.image} alt={item.title} fill priority className="object-cover" sizes="(max-width: 1024px) 100vw, 900px" />
-        </div>
+        {item.image && (
+          <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-3xl border border-white/10 bg-neutral-900">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={imageUrl(item.image)!} alt={item.title} className="absolute inset-0 h-full w-full object-cover" />
+          </div>
+        )}
 
         <div className="mt-10 flex flex-col gap-5">
-          {item.content.map((paragraph, i) => (
+          {newsParagraphs(item.content).map((paragraph, i) => (
             <p key={i} className="text-white/70 text-[16px] leading-[28px]">{paragraph}</p>
           ))}
         </div>

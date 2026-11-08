@@ -14,6 +14,8 @@ import {
   ShieldCheck,
   ChevronRight,
   BarChart3,
+  Newspaper,
+  Users,
   LogOutIcon
 } from "lucide-react";
 
@@ -30,6 +32,8 @@ export default function AdminLayout({
     { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
     { name: "Projects", href: "/admin/projects", icon: Briefcase },
     { name: "Stats", href: "/admin/stats", icon: BarChart3 },
+    { name: "News & Events", href: "/admin/news", icon: Newspaper },
+    { name: "Careers", href: "/admin/careers", icon: Users },
     // { name: "Teams", href: "/admin/teams", icon: ShieldCheck },
   ];
 

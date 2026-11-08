@@ -3,9 +3,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronDown, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { departments, jobs, type Department } from "./jobs-data";
+import { departments, formatDeadline, isValidApplyUrl, type Department, type Job } from "@/lib/api/jobs";
 
-const JobBoard = () => {
+const JobBoard = ({ jobs }: { jobs: Job[] }) => {
   const [filter, setFilter] = useState<Department | "All">("All");
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -89,7 +89,7 @@ const JobBoard = () => {
           <div className="flex flex-col gap-4">
             {visibleJobs.map((job) => (
               <div
-                key={`${job.title}-${job.department}`}
+                key={job.id}
                 className="flex flex-col md:flex-row md:items-center justify-between gap-4 rounded-[16px] border border-white/10 bg-[rgba(13,92,63,0.12)] p-6"
               >
                 <div className="flex flex-col gap-2">
@@ -102,9 +102,10 @@ const JobBoard = () => {
                       <MapPin className="w-3.5 h-3.5" /> {job.location}
                     </span>
                     <span>{job.type}</span>
-                    {job.deadline && <span>Deadline: {job.deadline}</span>}
+                    {job.deadline && <span>Deadline: {formatDeadline(job.deadline)}</span>}
                   </div>
                 </div>
+                {isValidApplyUrl(job.applyUrl) && (
                 <a
                   href={job.applyUrl}
                   target="_blank"
@@ -113,6 +114,7 @@ const JobBoard = () => {
                 >
                   Apply <ArrowUpRight className="w-4 h-4" />
                 </a>
+                )}
               </div>
             ))}
           </div>
