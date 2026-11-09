@@ -6,7 +6,10 @@ import { clients } from "./clients-data";
 const TrustedClients = () => {
   return (
     <div className="relative w-full bg-black px-4 py-10 md:py-12 lg:py-16 overflow-hidden">
-    <section className="relative max-w-[1440px] mx-auto rounded-[24px] border border-white/[0.06] bg-gradient-to-b from-white/[0.04] via-white/[0.02] to-white/[0.01] backdrop-blur-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] py-10 md:py-12 lg:py-16 overflow-hidden flex flex-col items-center justify-center">
+    <section className="relative max-w-[1440px] mx-auto rounded-[24px] border border-white/[0.09] bg-[linear-gradient(135deg,rgba(255,255,255,0.07)_0%,rgba(255,255,255,0.02)_45%,rgba(255,255,255,0.035)_100%)] backdrop-blur-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.14),inset_0_0_0_1px_rgba(255,255,255,0.02),0_24px_60px_-24px_rgba(0,0,0,0.9)] py-10 md:py-12 lg:py-16 overflow-hidden flex flex-col items-center justify-center">
+
+      {/* Glass sheen: faint light catching the top-left edge, no glow */}
+      <div className="absolute inset-0 pointer-events-none rounded-[inherit] bg-[linear-gradient(115deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0)_38%)]" />
 
       {/* Styled Heading Content */}
       <div className="max-w-[1440px] w-full px-4 mx-auto mb-8 md:mb-12 z-10 relative  ">
