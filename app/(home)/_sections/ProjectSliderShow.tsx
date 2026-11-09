@@ -29,14 +29,14 @@ const col3Data = projectData.slice(6, 9);
 
 const ProjectCard: React.FC<{ item: ProjectItem }> = ({ item }) => (
   <div
-    className="relative w-[338px] h-[238px] rounded-lg overflow-hidden shrink-0 group flex items-end pt-6 px-6 pb-4 bg-[linear-gradient(0deg,rgba(0,0,0,0.96)_0%,rgba(0,0,0,0.34)_31.38%,rgba(0,0,0,0.00)_45.74%)]"
+    className="relative w-full h-[238px] rounded-lg overflow-hidden shrink-0 group flex items-end pt-6 px-6 pb-4 bg-[linear-gradient(0deg,rgba(0,0,0,0.96)_0%,rgba(0,0,0,0.34)_31.38%,rgba(0,0,0,0.00)_45.74%)]"
   >
     <Image
       src={item.image}
       alt={item.title || "Project Image"}
       fill
       className="object-cover transition-transform duration-500 group-hover:scale-110"
-      sizes="338px"
+      sizes="(min-width: 768px) 33vw, 338px"
       priority={item.id <= 3}
     />
     <div className="relative z-10 w-full">
@@ -63,7 +63,7 @@ const ProjectColumn: React.FC<{
   const singleColHeight = loopedData.length * (cardHeight + gap);
 
   return (
-    <div className="overflow-hidden w-[338px] h-[calc(3*238px+2*24px)] rounded-lg relative">
+    <div className="overflow-hidden w-full max-w-[338px] h-[calc(3*238px+2*24px)] rounded-lg relative">
       <motion.div
         className="flex flex-col gap-6"
         style={{ height: `${singleColHeight}px` }}
@@ -99,7 +99,7 @@ const ProjectSliderShow: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative w-full py-16 px-4 flex flex-col items-center overflow-hidden min-h-screen">
+    <section className="relative w-full py-10 md:py-12 lg:py-16 px-4 flex flex-col items-center overflow-hidden">
       
       {/* Main Container Card */}
       <div className="max-w-[1240px] w-full p-6 md:p-12 relative z-10 flex flex-col gap-12 rounded-[10px] bg-[#0d5c3f]/20 shadow-[0_0_10px_0_#166534] border border-[#34d399]/10">
@@ -116,19 +116,19 @@ const ProjectSliderShow: React.FC = () => {
         </div>
 
         {/* Responsive Grid System */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 justify-items-center">
           {/* Column 1: Hidden on mobile screens */}
-          <div className="hidden md:block">
+          <div className="hidden md:block w-full min-w-0">
             <ProjectColumn data={col1Data} animateUp={animationDirection === 'reverse'} />
           </div>
           
           {/* Column 2: Always visible (Mobile & Desktop) */}
-          <div className="block">
+          <div className="w-full min-w-0 flex justify-center">
             <ProjectColumn data={col2Data} animateUp={animationDirection === 'normal'} />
           </div>
           
           {/* Column 3: Hidden on mobile screens */}
-          <div className="hidden md:block">
+          <div className="hidden md:block w-full min-w-0">
             <ProjectColumn data={col3Data} animateUp={animationDirection === 'reverse'} />
           </div>
         </div>

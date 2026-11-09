@@ -54,7 +54,7 @@ const About = ({ stats }: { stats: Stat[] }) => {
 
   return (
     <section 
-      className="relative w-full  py-24 overflow-hidden min-h-screen flex items-center justify-center"
+      className="relative w-full py-14 md:py-16 lg:py-24 overflow-hidden flex items-center justify-center"
       style={{
         background: "rgba(22, 101, 52, 0.08)",
       }}
@@ -143,7 +143,7 @@ const About = ({ stats }: { stats: Stat[] }) => {
 
           {/* Right Column Photographic Frame (4 Columns Spanning) */}
           <div className="lg:col-span-4 w-full flex justify-center">
-            <div className="relative w-full aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] max-w-md lg:max-w-none rounded-[24px] overflow-hidden border border-neutral-800 shadow-2xl bg-neutral-900">
+            <div className="relative w-full aspect-[4/5] sm:aspect-[4/3] md:aspect-[16/9] lg:aspect-[4/5] max-w-none rounded-[24px] overflow-hidden border border-neutral-800 shadow-2xl bg-neutral-900">
               <Image
                 src="/images/about.png"
                 alt="REDCon Corporate Meeting and Workspace Collaboration"

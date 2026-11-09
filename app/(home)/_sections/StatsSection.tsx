@@ -115,7 +115,7 @@ export default function StatsSection({ stats }: { stats: Stat[] }) {
       className="relative w-full overflow-hidden pt-12 md:pt-16"
     >
     <h2 
-        className="text-white  font-semibold text-3xl sm:text-4xl  lg:leading-[50px] tracking-[-1.2px] text-center pb-3 md:pb-0 px-2 md:px-0"
+        className="text-white  font-semibold text-3xl sm:text-4xl  lg:leading-[50px] tracking-[-1.2px] text-center pb-8 lg:pb-0 px-2 md:px-0"
     >
         Transforming Sustainable <span className="text-[#16A34A]">Bangladesh</span>
       </h2>

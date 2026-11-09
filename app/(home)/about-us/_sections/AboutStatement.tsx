@@ -37,7 +37,7 @@ const AboutStatement = ({ id, tinted = false }: { id: StatementKey; tinted?: boo
   return (
     <section
       id={id}
-      className={`relative w-full py-24 overflow-hidden scroll-mt-24 ${
+      className={`relative w-full py-14 md:py-16 lg:py-24 overflow-hidden scroll-mt-24 ${
         tinted ? "bg-[rgba(5,150,105,0.08)]" : "bg-black"
       }`}
     >

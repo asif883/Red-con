@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 
 const ReadyToDeliver = () => {
   return (
-    <section className="relative w-full py-24 overflow-hidden flex items-center justify-center ">
+    <section className="relative w-full py-14 md:py-16 lg:py-24 overflow-hidden flex items-center justify-center ">
       
       <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex justify-center">
         

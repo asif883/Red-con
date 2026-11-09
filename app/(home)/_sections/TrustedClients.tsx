@@ -5,10 +5,10 @@ import { clients } from "./clients-data";
 
 const TrustedClients = () => {
   return (
-    <section className="relative w-full bg-black py-16 overflow-hidden flex flex-col items-center justify-center">
+    <section className="relative w-full bg-black py-10 md:py-12 lg:py-16 overflow-hidden flex flex-col items-center justify-center">
       
       {/* Styled Heading Content */}
-      <div className="max-w-[1440px] w-full px-4 mx-auto mb-12 z-10 relative  ">
+      <div className="max-w-[1440px] w-full px-4 mx-auto mb-8 md:mb-12 z-10 relative  ">
         <h2 
           className="text-center   font-bold text-[30px] leading-[48px] tracking-[3.8px] bg-clip-text text-transparent"
           style={{

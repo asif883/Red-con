@@ -87,12 +87,12 @@ const OurTeam = () => {
   ];
 
   return (
-    <section className="relative w-full py-24 overflow-hidden flex flex-col justify-center bg-black text-white">
+    <section className="relative w-full py-14 md:py-16 lg:py-24 overflow-hidden flex flex-col justify-center bg-black text-white">
       
       {/* BACKGROUND ATMOSPHERIC LIGHTING */}
       <div className="absolute pointer-events-none   mix-blend-screen left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[1488px] h-[404px] rounded-[1488px] bg-[linear-gradient(270deg,rgba(0,151,56,0.35)_0%,rgba(0,151,56,0.35)_100%)] blur-[250px] z-0" />
 
-      <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-16">
+      <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-10 md:gap-12 lg:gap-16">
         
         {/* ========================================== */}
         {/* CORE GLOBAL HEADER ALIGNMENT ROW          */}

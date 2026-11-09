@@ -3,11 +3,11 @@ import { servicesData } from "./services-data";
 
 const Services = () => {
   return (
-    <section className="relative w-full py-24 overflow-hidden flex items-center justify-center bg-black text-white">
+    <section className="relative w-full py-14 md:py-16 lg:py-24 overflow-hidden flex items-center justify-center bg-black text-white">
       {/* BACKGROUND ATMOSPHERIC LIGHTING EFFECT (NO HEIGHT LIMITATION, WRAPS SYSTEM CONTENT) */}
       <div className="absolute pointer-events-none   mix-blend-screen left-1/2 top-0 -translate-x-1/2 w-[1000px] h-full bg-[linear-gradient(45deg,rgba(22,163,74,0.10)_0%,rgba(10,10,10,0.20)_50%,rgba(22,163,74,0.10)_100%)] blur-[75px] z-0" />
 
-      <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-20">
+      <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-10 md:gap-12 lg:gap-20">
         {/* Section Header Content Block */}
         <div className="w-full flex flex-col gap-4">
           {/* Top Tag Sub-indicator */}

@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
     <div>
       <PageHero tag="legal" title="Privacy Policy" />
 
-      <section className="w-full py-20 bg-black">
+      <section className="w-full py-12 md:py-14 lg:py-20 bg-black">
         <div className="max-w-3xl mx-auto px-4 flex flex-col gap-10">
           <p className="text-white/80 text-[18px] leading-[30px]">
             At REDCon, we respect your privacy and are committed to protecting your personal information.

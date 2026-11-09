@@ -63,7 +63,7 @@ const ResearchCategories = () => {
     : insightsData.filter((article) => article.category === activeTab);
 
   return (
-    <section className="relative w-full py-24 overflow-hidden flex flex-col justify-center bg-black text-white">
+    <section className="relative w-full py-14 md:py-16 lg:py-24 overflow-hidden flex flex-col justify-center bg-black text-white">
       
       {/* ATMOSPHERIC BACKGROUND ILLUMINATION ACCENT */}
       <div className="absolute pointer-events-none   mix-blend-screen left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[1200px] h-[600px] rounded-full bg-[linear-gradient(45deg,rgba(22,163,74,0.08)_0%,rgba(10,10,10,0.15)_50%,rgba(22,163,74,0.08)_100%)] blur-[100px] z-0" />

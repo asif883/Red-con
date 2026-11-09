@@ -39,7 +39,7 @@ const Stats = () => {
   ];
 
   return (
-    <section className="relative w-full py-24 overflow-hidden flex items-center justify-center bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(2,44,34,0.40)_100%)]">
+    <section className="relative w-full py-14 md:py-16 lg:py-24 overflow-hidden flex items-center justify-center bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(2,44,34,0.40)_100%)]">
       
       <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex justify-center">
         

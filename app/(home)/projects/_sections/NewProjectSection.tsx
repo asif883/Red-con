@@ -71,7 +71,7 @@ export default function NewProjectSection({ projects }: { projects: Project[] })
   };
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
+    <section className="py-10 md:py-12 lg:py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-[1440px] px-2 md:px-4">
         {/* Section heading */}
         <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-12">

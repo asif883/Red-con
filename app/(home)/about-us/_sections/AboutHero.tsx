@@ -12,7 +12,7 @@ const AboutHero = () => {
       <div className="absolute pointer-events-none   mix-blend-screen left-1/2 -translate-x-1/2 -top-40 w-[1488px] h-[581px] rounded-[1488px] bg-[linear-gradient(270deg,rgba(0,151,56,0.35)_0%,rgba(0,151,56,0.35)_100%)] blur-[250px] z-0" />
 
       {/* Main Content Layout Container */}
-      <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-16 xl:gap-24 flex-grow justify-center">
+      <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-10 md:gap-12 lg:gap-16 xl:gap-24 flex-grow justify-center">
         {/* Decorative L-Shaped Corner Frame Accent */}
         <div className="absolute top-0 left-1 lg:left-0 w-32 h-32 pointer-events-none  ">
           <Image

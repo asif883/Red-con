@@ -32,7 +32,7 @@ export default async function Projects() {
 
   return (
     <section
-      className="relative w-full overflow-hidden py-24"
+      className="relative w-full overflow-hidden py-14 md:py-16 lg:py-24"
       style={{ background: "rgba(22, 101, 52, 0.08)" }}
     >
       <div className="pointer-events-none absolute left-1/2 top-32 h-[581px] w-[1488px] max-w-none -translate-x-1/2 rounded-full bg-[linear-gradient(270deg,rgba(0,151,56,0.30)_0%,rgba(0,151,56,0.30)_100%)] blur-[250px]" />

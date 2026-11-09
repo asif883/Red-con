@@ -75,7 +75,7 @@ const ApproachCard: React.FC<ApproachCardProps> = ({
 
 const WhyChoose: React.FC = () => {
   return (
-    <section className="w-full bg-neutral-950 py-20 px-4 md:px-8 lg:px-16 flex items-center justify-center overflow-hidden">
+    <section className="w-full bg-neutral-950 py-12 md:py-14 lg:py-20 px-4 md:px-8 lg:px-16 flex items-center justify-center overflow-hidden">
       {/* Unified 12-Column Grid Setup */}
       <div className="max-w-[1440px] w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         

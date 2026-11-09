@@ -93,7 +93,7 @@ export default function ProjectsClient({
   }, [filteredProjects, visibleCount]);
 
   return (
-    <section className="relative w-full py-24 overflow-hidden flex flex-col justify-center bg-black">
+    <section className="relative w-full py-14 md:py-16 lg:py-24 overflow-hidden flex flex-col justify-center bg-black">
       <div className="absolute mix-blend-screen left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1279px] h-[600px] rounded-full bg-[linear-gradient(225deg,rgba(22,163,74,0.10)_0%,rgba(22,163,74,0.10)_50%,rgba(0,151,56,0.15)_100%)] blur-[75px] z-0" />
 
       <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-12">

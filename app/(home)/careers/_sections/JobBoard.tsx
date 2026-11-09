@@ -24,7 +24,7 @@ const JobBoard = ({ jobs }: { jobs: Job[] }) => {
   const options: (Department | "All")[] = ["All", ...departments];
 
   return (
-    <section className="w-full py-20 bg-black">
+    <section className="w-full py-12 md:py-14 lg:py-20 bg-black">
       <div className="max-w-[1440px] mx-auto px-4 flex flex-col gap-10">
         {/* Department filter */}
         <div ref={dropdownRef} className="relative w-full sm:w-[280px] z-20">

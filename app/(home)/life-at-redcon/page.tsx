@@ -22,7 +22,7 @@ export default function LifeAtRedconPage() {
     <div>
       <PageHero tag="our culture" title="Life at REDCon" />
 
-      <section className="relative w-full py-24 overflow-hidden bg-black">
+      <section className="relative w-full py-14 md:py-16 lg:py-24 overflow-hidden bg-black">
         <div className="absolute pointer-events-none left-1/2 -translate-x-1/2 top-0 w-[1488px] h-[581px] rounded-full bg-[rgba(0,151,56,0.15)] blur-[250px]" />
 
         <div className="max-w-[1440px] w-full mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

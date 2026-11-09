@@ -101,11 +101,11 @@ const OurStory = () => {
   return (
     <section
       id="our-story"
-      className="relative w-full py-24 overflow-hidden bg-black text-white scroll-mt-24"
+      className="relative w-full py-14 md:py-16 lg:py-24 overflow-hidden bg-black text-white scroll-mt-24"
     >
       <div className="absolute pointer-events-none mix-blend-screen left-1/2 -translate-x-1/2 top-0 w-[1488px] h-[581px] rounded-[1488px] bg-[linear-gradient(270deg,rgba(0,151,56,0.15)_0%,rgba(0,151,56,0.15)_100%)] blur-[250px] z-0" />
 
-      <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-16">
+      <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-10 md:gap-12 lg:gap-16">
         {/* Header */}
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3">

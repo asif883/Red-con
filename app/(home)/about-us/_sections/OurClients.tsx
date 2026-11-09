@@ -40,7 +40,7 @@ const OurClients = () => {
   return (
     <section
       id="our-clients"
-      className="relative w-full py-24 overflow-hidden bg-black scroll-mt-24"
+      className="relative w-full py-14 md:py-16 lg:py-24 overflow-hidden bg-black scroll-mt-24"
     >
       <div className="absolute pointer-events-none left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[1445px] h-[200px] rounded-full bg-[rgba(0,151,56,0.35)] blur-[250px]" />
 

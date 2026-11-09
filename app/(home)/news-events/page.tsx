@@ -22,7 +22,7 @@ export default async function NewsEventsPage() {
         description="Updates on our activities, projects and events."
       />
 
-      <section className="w-full py-20 bg-black">
+      <section className="w-full py-12 md:py-14 lg:py-20 bg-black">
         <div className="max-w-[1440px] mx-auto px-4">
           {items.length === 0 ? (
             <div className="w-full py-16 rounded-[16px] bg-white/[0.04] border border-white/10 text-center text-white/70 font-semibold">

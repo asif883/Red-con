@@ -141,7 +141,7 @@ const Services = () => {
     servicesData.find((s) => s.id === activeId) || servicesData[0];
 
   return (
-    <section className="relative w-full py-20 overflow-hidden  flex items-center justify-center">
+    <section className="relative w-full py-12 md:py-14 lg:py-20 overflow-hidden  flex items-center justify-center">
       {/* Figma Ambient Background Glow Spot 1 (Top Left) */}
       {/* Figma Ambient Background Glow Spot 1 (Top Left) */}
       <div className="absolute pointer-events-none     left-[-73px] top-[62px] w-[504px] h-[504px] rounded-[504px] bg-[linear-gradient(270deg,rgba(0,151,56,0.30)_0%,rgba(0,151,56,0.30)_100%)] blur-[250px]" />
@@ -152,7 +152,7 @@ const Services = () => {
       {/* Figma Ambient Background Glow Spot 3 (Below Image Section) */}
       <div className="absolute pointer-events-none    left-[712px] bottom-[130px] w-[1280px] h-[349px] rounded-[1280px] bg-[linear-gradient(270deg,rgba(0,151,56,0.30)_0%,rgba(0,151,56,0.30)_100%)] blur-[250px]" />
 
-      <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-16">
+      <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-10 md:gap-12 lg:gap-16">
         {/* Header Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end w-full">
           <div className="flex flex-col gap-4">

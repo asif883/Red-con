@@ -29,7 +29,7 @@ export default function OneStopConsultancy() {
   const services = servicesData;
 
   return (
-    <section className="relative flex w-full items-center justify-center overflow-hidden bg-black py-20 text-white sm:py-24">
+    <section className="relative flex w-full items-center justify-center overflow-hidden bg-black py-12 md:py-14 lg:py-20 text-white sm:py-24">
       {/* Background atmospheric lighting */}
       <div
         aria-hidden="true"

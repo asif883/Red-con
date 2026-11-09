@@ -56,12 +56,12 @@ export default async function Teams() {
   if (!categories.some((category) => category.members?.length)) return null;
 
   return (
-    <section className="relative w-full py-24 overflow-hidden bg-[#050505] text-white">
+    <section className="relative w-full py-14 md:py-16 lg:py-24 overflow-hidden bg-[#050505] text-white">
       {/* Background Ambient Vector Glow Shapes */}
       <div className="absolute pointer-events-none   mix-blend-screen left-1/4 top-1/4 w-[800px] h-[500px] rounded-full bg-[linear-gradient(270deg,rgba(0,151,56,0.06)_0%,rgba(0,151,56,0.06)_100%)] blur-[150px]" />
       <div className="absolute pointer-events-none   mix-blend-screen right-1/4 bottom-1/4 w-[800px] h-[500px] rounded-full bg-[linear-gradient(270deg,rgba(0,151,56,0.06)_0%,rgba(0,151,56,0.06)_100%)] blur-[150px]" />
 
-      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col gap-20">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col gap-10 md:gap-12 lg:gap-20">
         {/* Main Section Header */}
         <div className="flex flex-col gap-4 max-w-4xl text-left  ">
           <div className="flex items-center gap-3">

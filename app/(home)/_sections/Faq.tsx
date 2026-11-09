@@ -92,7 +92,7 @@ const Faq: React.FC = () => {
   const [openId, setOpenId] = useState<number | null>(null);
 
   return (
-    <section className="relative w-full bg-black py-20 px-4 md:px-8 lg:px-16 flex flex-col items-center justify-center overflow-hidden min-h-screen gap-24">
+    <section className="relative w-full bg-black py-12 md:py-14 lg:py-20 px-4 md:px-8 lg:px-16 flex flex-col items-center justify-center overflow-hidden gap-12 md:gap-16 lg:gap-24">
       {/* Massive Top Background Glow Effect Element */}
       <div className="absolute pointer-events-none   z-0 right-[5.266px] top-[-792px] w-[1453.444px] h-[100.398px] rounded-[1453.444px] bg-[linear-gradient(0deg,rgba(22,163,74,0.30)_0%,rgba(22,163,74,0.30)_100%)] blur-[250px]" />
 
@@ -156,9 +156,9 @@ const Faq: React.FC = () => {
       </div>
 
       {/* LOWER CONTAINER SYSTEM: Interactive Bottom Consultation Banner */}
-      <div className="max-w-[1440px] w-full border border-neutral-900/60 bg-gradient-to-r from-neutral-950 via-[#0a160f]/60 to-neutral-950 p-8 md:p-12 rounded-[24px] flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 lg:gap-12 relative z-10 shadow-xl">
+      <div className="max-w-[1440px] w-full border border-neutral-900/60 bg-gradient-to-r from-neutral-950 via-[#0a160f]/60 to-neutral-950 p-8 md:p-12 rounded-[24px] flex flex-col xl:flex-row justify-between items-start xl:items-center gap-8 xl:gap-8 relative z-10 shadow-xl">
         {/* Left Aspect Header Layout Block */}
-        <div className="flex flex-col gap-3 max-w-[480px] lg:shrink-0">
+        <div className="flex flex-col gap-3 max-w-[480px] min-w-0">
           <h2 className=" text-[32px] xl:text-[36px] font-bold leading-[38px] xl:leading-[40px] tracking-[0.9px] text-white">
             Ready To Start{" "}
             <span className="bg-clip-text text-transparent bg-[linear-gradient(270deg,#16A34A_0%,#16A34A_100%)]">
@@ -172,7 +172,7 @@ const Faq: React.FC = () => {
         </div>
 
         {/* Right Aspect Meta Action Layout Items - Locked onto a single row on desktop views */}
-        <div className="flex flex-col md:flex-row lg:flex-nowrap items-start md:items-center gap-8 lg:gap-6 xl:gap-10 w-full lg:w-auto lg:shrink-0">
+        <div className="flex flex-col md:flex-row md:flex-wrap xl:justify-end items-start md:items-center gap-6 md:gap-x-10 xl:gap-x-6 xl:gap-y-5 w-full xl:w-auto xl:min-w-0">
           {/* Call Line Box Component */}
           <div className="flex items-center gap-3 shrink-0">
             <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">

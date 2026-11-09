@@ -20,7 +20,7 @@ const quickLinks = [
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-[#030303] pt-20 pb-8 px-4 md:px-8 lg:px-16 flex flex-col items-center justify-center border-t border-neutral-900 overflow-hidden">
+    <footer className="w-full bg-[#030303] pt-12 md:pt-16 lg:pt-20 pb-8 px-4 md:px-8 lg:px-16 flex flex-col items-center justify-center border-t border-neutral-900 overflow-hidden">
       <div className="max-w-[1440px] w-full flex flex-col gap-12">
 
         {/* TOP MULTI-COLUMN LINK GRID MATRIX */}

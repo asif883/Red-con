@@ -77,7 +77,7 @@ const ToolCard: React.FC<{ tool: ToolItem }> = ({ tool }) => {
 
 const Technology: React.FC = () => {
   return (
-    <section className="w-full border-t border-b border-green-500/50 bg-[#166534]/[0.08] py-20 px-4 md:px-8 lg:px-16 flex items-center justify-center overflow-hidden">
+    <section className="w-full border-t border-b border-green-500/50 bg-[#166534]/[0.08] py-12 md:py-14 lg:py-20 px-4 md:px-8 lg:px-16 flex items-center justify-center overflow-hidden">
       {/* 12-Column Responsive Layout Grid */}
       <div className="max-w-[1440px] w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         

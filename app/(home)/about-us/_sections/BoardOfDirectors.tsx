@@ -226,9 +226,9 @@ const BoardOfDirectors = () => {
   return (
     <section
       id="our-team"
-      className="relative w-full py-24 bg-[rgba(5,150,105,0.10)] overflow-hidden scroll-mt-24"
+      className="relative w-full py-14 md:py-16 lg:py-24 bg-[rgba(5,150,105,0.10)] overflow-hidden scroll-mt-24"
     >
-      <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-16">
+      <div className="max-w-[1440px] w-full mx-auto px-4 z-10 relative flex flex-col gap-10 md:gap-12 lg:gap-16">
 
         {/* Section Heading */}
         <div className="w-full flex flex-col gap-4">

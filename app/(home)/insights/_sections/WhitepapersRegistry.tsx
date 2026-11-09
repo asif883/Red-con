@@ -11,7 +11,7 @@ const WhitepapersRegistry = () => {
   };
 
   return (
-    <section className="relative w-full py-24 overflow-hidden flex items-center justify-center ">
+    <section className="relative w-full py-14 md:py-16 lg:py-24 overflow-hidden flex items-center justify-center ">
       
       {/* BACKGROUND ATMOSPHERIC GLOW EFFECT */}
       <div 
