@@ -16,6 +16,7 @@ import {
   BarChart3,
   Newspaper,
   Users,
+  Crown,
   LogOutIcon
 } from "lucide-react";
 
@@ -34,6 +35,7 @@ export default function AdminLayout({
     { name: "Stats", href: "/admin/stats", icon: BarChart3 },
     { name: "News & Events", href: "/admin/news", icon: Newspaper },
     { name: "Careers", href: "/admin/careers", icon: Users },
+    { name: "Board of Directors", href: "/admin/board", icon: Crown },
     // { name: "Teams", href: "/admin/teams", icon: ShieldCheck },
   ];
 

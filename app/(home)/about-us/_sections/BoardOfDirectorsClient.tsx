@@ -5,7 +5,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { Plus, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { boardMembers, type BoardMember } from "./board-data";
+import type { BoardMember } from "@/lib/api/board";
 
 // Initials
 const initials = (name: string) =>
@@ -28,6 +28,7 @@ const Portrait: React.FC<{
       alt={member.name}
       fill
       sizes={sizes}
+      unoptimized={member.imageSrc.startsWith("http")}
       className={
         fit === "contain"
           ? "object-contain object-center"
@@ -216,7 +217,7 @@ const BioModal: React.FC<{
 };
 
 // Board of Directors
-const BoardOfDirectors = () => {
+const BoardOfDirectorsClient = ({ members }: { members: BoardMember[] }) => {
   const [activeMember, setActiveMember] = useState<BoardMember | null>(null);
 
   const closeBio = useCallback(() => {
@@ -250,8 +251,8 @@ const BoardOfDirectors = () => {
 
         {/* Members Grid */}
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {boardMembers.map((member) => (
-            <div key={member.name} className="flex flex-col gap-4 group">
+          {members.map((member) => (
+            <div key={member.id} className="flex flex-col gap-4 group">
 
               {/* Member Image */}
               <button
@@ -304,4 +305,4 @@ const BoardOfDirectors = () => {
   );
 };
 
-export default BoardOfDirectors;
+export default BoardOfDirectorsClient;

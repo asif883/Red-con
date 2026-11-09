@@ -22,7 +22,6 @@ export interface Job {
   location: string;
   type: string;
   deadline: string | null; // ISO string
-  applyUrl: string; // link or mailto:
   isPublished: boolean;
   createdAt: string;
   updatedAt: string;
@@ -34,15 +33,11 @@ export interface JobFormValues {
   location: string;
   type: string;
   deadline: string; // yyyy-mm-dd or ""
-  applyUrl: string;
   isPublished: boolean;
 }
 
 export const formatDeadline = (iso: string | null) =>
   iso ? new Date(iso).toLocaleDateString("en-GB", { timeZone: "UTC", day: "numeric", month: "short", year: "numeric" }) : null;
-
-/** Only http(s) and mailto links are allowed, so a bad value can't become a javascript: link. */
-export const isValidApplyUrl = (value: string) => /^(https?:\/\/|mailto:)\S+$/i.test(value.trim());
 
 const toPayload = (v: JobFormValues) => ({
   title: v.title.trim(),
@@ -50,7 +45,6 @@ const toPayload = (v: JobFormValues) => ({
   location: v.location.trim(),
   type: v.type.trim(),
   deadline: v.deadline,
-  applyUrl: v.applyUrl.trim(),
   isPublished: String(v.isPublished),
 });
 

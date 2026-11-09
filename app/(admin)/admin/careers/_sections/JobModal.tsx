@@ -7,7 +7,6 @@ import {
   JOB_TYPES,
   createJob,
   departments,
-  isValidApplyUrl,
   updateJob,
   type Job,
   type JobFormValues,
@@ -25,7 +24,6 @@ const emptyForm: JobFormValues = {
   location: "",
   type: JOB_TYPES[0],
   deadline: "",
-  applyUrl: "",
   isPublished: true,
 };
 
@@ -44,7 +42,6 @@ export default function JobModal({ onClose, onSaved, editingJob }: JobModalProps
           location: editingJob.location,
           type: editingJob.type,
           deadline: editingJob.deadline ? editingJob.deadline.slice(0, 10) : "",
-          applyUrl: editingJob.applyUrl,
           isPublished: editingJob.isPublished,
         }
       : emptyForm
@@ -57,10 +54,6 @@ export default function JobModal({ onClose, onSaved, editingJob }: JobModalProps
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isValidApplyUrl(form.applyUrl)) {
-      setError("Apply link must start with https://, http:// or mailto:");
-      return;
-    }
     setIsSaving(true);
     setError(null);
     try {
@@ -126,11 +119,6 @@ export default function JobModal({ onClose, onSaved, editingJob }: JobModalProps
           <div className="flex flex-col gap-1.5">
             <label className={labelClass}>Deadline (Optional)</label>
             <input type="date" value={form.deadline} onChange={(e) => setField("deadline", e.target.value)} className={`${inputClass} [color-scheme:dark]`} />
-          </div>
-
-          <div className="sm:col-span-2 flex flex-col gap-1.5">
-            <label className={labelClass}>Apply Link</label>
-            <input type="text" required placeholder="https://... or mailto:hr@example.com" value={form.applyUrl} onChange={(e) => setField("applyUrl", e.target.value)} className={inputClass} />
           </div>
 
           <div className="sm:col-span-2 flex flex-col gap-1.5">

@@ -96,7 +96,7 @@ const Navbar = () => {
               alt="REDCon Ltd. Logo"
               width={160}
               height={40}
-              className="object-contain w-[120px] sm:w-[180px]"
+              className="object-contain w-[140px] sm:w-[240px]"
               priority
             />
           </Link>

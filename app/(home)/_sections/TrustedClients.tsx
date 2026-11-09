@@ -5,8 +5,9 @@ import { clients } from "./clients-data";
 
 const TrustedClients = () => {
   return (
-    <section className="relative w-full bg-black py-10 md:py-12 lg:py-16 overflow-hidden flex flex-col items-center justify-center">
-      
+    <div className="relative w-full bg-black px-4 py-10 md:py-12 lg:py-16 overflow-hidden">
+    <section className="relative max-w-[1440px] mx-auto rounded-[24px] border border-white/[0.06] bg-gradient-to-b from-white/[0.04] via-white/[0.02] to-white/[0.01] backdrop-blur-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] py-10 md:py-12 lg:py-16 overflow-hidden flex flex-col items-center justify-center">
+
       {/* Styled Heading Content */}
       <div className="max-w-[1440px] w-full px-4 mx-auto mb-8 md:mb-12 z-10 relative  ">
         <h2 
@@ -19,9 +20,6 @@ const TrustedClients = () => {
         >
           Trusted By Major Client
         </h2>
-
-        {/* Updated Glowing Effect: Positioned exactly below the text & horizontally centered */}
-        <div className="absolute pointer-events-none   left-1/2 -translate-x-1/2 top-full w-[1445px] h-[49px] rounded-[1445px] bg-[linear-gradient(270deg,rgba(0,151,56,0.90)_0%,rgba(0,151,56,0.90)_100%)] blur-[250px] -z-10" />
       </div>
 
       {/* Infinite Logo Marquee Track Container */}
@@ -71,6 +69,7 @@ const TrustedClients = () => {
 
       </div>
     </section>
+    </div>
   );
 };
 

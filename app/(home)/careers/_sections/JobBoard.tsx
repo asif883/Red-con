@@ -3,10 +3,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronDown, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { departments, formatDeadline, isValidApplyUrl, type Department, type Job } from "@/lib/api/jobs";
+import { departments, formatDeadline, type Department, type Job } from "@/lib/api/jobs";
+import ApplyModal from "./ApplyModal";
 
 const JobBoard = ({ jobs }: { jobs: Job[] }) => {
   const [filter, setFilter] = useState<Department | "All">("All");
+  const [applyingJob, setApplyingJob] = useState<Job | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -105,21 +107,21 @@ const JobBoard = ({ jobs }: { jobs: Job[] }) => {
                     {job.deadline && <span>Deadline: {formatDeadline(job.deadline)}</span>}
                   </div>
                 </div>
-                {isValidApplyUrl(job.applyUrl) && (
-                <a
-                  href={job.applyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-fit inline-flex items-center gap-2 rounded-full bg-[#16A34A] hover:bg-[#15803d] px-5 py-2.5 text-[14px] font-semibold text-white transition-colors"
+                <button
+                  onClick={() => setApplyingJob(job)}
+                  className="w-fit inline-flex items-center gap-2 rounded-full bg-[#16A34A] hover:bg-[#15803d] px-5 py-2.5 text-[14px] font-semibold text-white transition-colors cursor-pointer"
                 >
-                  Apply <ArrowUpRight className="w-4 h-4" />
-                </a>
-                )}
+                  Apply Now <ArrowUpRight className="w-4 h-4" />
+                </button>
               </div>
             ))}
           </div>
         )}
       </div>
+
+      <AnimatePresence>
+        {applyingJob && <ApplyModal key={applyingJob.id} job={applyingJob} onClose={() => setApplyingJob(null)} />}
+      </AnimatePresence>
     </section>
   );
 };
