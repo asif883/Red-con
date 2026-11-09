@@ -29,7 +29,7 @@ type NavLink = {
 const navLinks: NavLink[] = [
   { name: "Home", href: "/" },
   {
-    name: "About REDCon",
+    name: "ABOUT REDCon Ltd.",
     href: "/about-us",
     subLinks: [
       { name: "Our Story", href: "/our-story" },

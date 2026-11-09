@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Plus, Minus, ArrowRight, Phone, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 interface FAQItem {
   id: number;
@@ -209,10 +210,13 @@ const Faq: React.FC = () => {
           </div>
 
           {/* Request Action Button Element */}
-          <button className="flex items-center gap-3 px-6 py-4 rounded-[6px] bg-emerald-950/40 hover:bg-emerald-900/60 border border-emerald-500/20 text-white   font-bold text-[14px] leading-[20px] tracking-[0.7px] uppercase transition-all duration-300 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] self-stretch md:self-auto justify-center group whitespace-nowrap grow sm:grow-0">
+          <Link
+            href="/#contact"
+            className="flex items-center gap-3 px-6 py-4 rounded-[6px] bg-emerald-950/40 hover:bg-emerald-900/60 border border-emerald-500/20 text-white font-bold text-[14px] leading-[20px] tracking-[0.7px] uppercase transition-all duration-300 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] self-stretch md:self-auto justify-center group whitespace-nowrap grow sm:grow-0"
+          >
             <span>Request A Consultation</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </button>
+          </Link>
         </div>
       </div>
     </section>

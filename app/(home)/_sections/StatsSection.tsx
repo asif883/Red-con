@@ -117,7 +117,7 @@ export default function StatsSection({ stats }: { stats: Stat[] }) {
     <h2 
         className="text-white  font-semibold text-3xl sm:text-4xl  lg:leading-[50px] tracking-[-1.2px] text-center pb-3 md:pb-0 px-2 md:px-0"
     >
-        Transforming Real Estate <span className="text-[#16A34A]">Across Bangladesh</span>
+        Transforming Sustainable <span className="text-[#16A34A]">Bangladesh</span>
       </h2>
 
       {/*
