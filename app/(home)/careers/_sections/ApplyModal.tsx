@@ -68,20 +68,25 @@ const ApplyModal = ({ job, onClose }: { job: Job; onClose: () => void }) => {
     setIsSubmitting(true);
     setError(null);
 
-    // Frontend only for now: the application is not sent anywhere yet.
-    // When the backend endpoint exists, POST this FormData to it here.
     const body = new FormData();
-    body.append("jobId", job.id);
+    body.append("jobId", String(job.id));
     body.append("jobTitle", job.title);
     body.append("name", name.trim());
     body.append("email", email.trim());
     body.append("mobile", mobile.trim());
     body.append("currentAddress", address.trim());
     body.append("cv", cv);
-    await new Promise((resolve) => setTimeout(resolve, 700));
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    try {
+      const res = await fetch("/api/careers/apply", { method: "POST", body });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data?.error || "Could not send your application. Please try again.");
+      setIsSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not send your application. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -118,7 +123,7 @@ const ApplyModal = ({ job, onClose }: { job: Job; onClose: () => void }) => {
             <h3 className="text-white text-[24px] font-bold">Application submitted</h3>
             <p className="text-white/60 text-[14px] leading-[24px] max-w-[380px]">
               Thank you, {name.trim()}. We have received your application for{" "}
-              <span className="text-white">{job.title}</span> and will contact you at{" "}
+              <span className="text-white">{job.title}</span>. A confirmation email has been sent to{" "}
               <span className="text-white">{email.trim()}</span>.
             </p>
             <button
