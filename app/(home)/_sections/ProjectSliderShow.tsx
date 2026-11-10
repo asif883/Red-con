@@ -32,7 +32,7 @@ const col3Data = projectData.slice(6, 9);
 
 const ProjectCard: React.FC<{ item: ProjectItem }> = ({ item }) => (
   <Link
-    href={`/projects/${item.slug}`}
+    href={`/#`}
     aria-label={item.title ? `View ${item.title}` : "View project"}
     className="relative w-full h-[238px] rounded-lg overflow-hidden shrink-0 group flex items-end pt-6 px-6 pb-4 bg-[linear-gradient(0deg,rgba(0,0,0,0.96)_0%,rgba(0,0,0,0.34)_31.38%,rgba(0,0,0,0.00)_45.74%)]"
   >
