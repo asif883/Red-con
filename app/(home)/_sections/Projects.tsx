@@ -68,15 +68,13 @@ export default async function Projects() {
         ) : (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredProjects.map((project) => (
-            <article
+            <Link
               key={project.id}
-              className="group overflow-hidden rounded-2xl border border-white/10 bg-neutral-950/70 transition-colors duration-300 hover:border-[#16A34A]/40"
+              href={`/projects/${project.slug}`}
+              aria-label={`View ${project.title}`}
+              className="group block overflow-hidden rounded-2xl border border-white/10 bg-neutral-950/70 transition-colors duration-300 hover:border-[#16A34A]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#16A34A]"
             >
-              <Link
-                href={`/projects/${project.slug}`}
-                className="relative block aspect-[16/10] overflow-hidden bg-neutral-900"
-                aria-label={`View ${project.title}`}
-              >
+              <div className="relative aspect-[16/10] overflow-hidden bg-neutral-900">
                 <Image
                   src={imageUrl(project.imageMain) || "/images/projects/project1_1.png"}
                   alt={project.title}
@@ -88,7 +86,7 @@ export default async function Projects() {
                 <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
                   {project.projectStatus}
                 </span>
-              </Link>
+              </div>
 
               <div className="flex flex-col gap-4 p-5 sm:p-6">
                 <p className="text-xs font-semibold uppercase tracking-wider text-[#34D399]">
@@ -105,16 +103,13 @@ export default async function Projects() {
                     <MapPin className="h-4 w-4 shrink-0 text-[#34D399]" aria-hidden="true" />
                     <span className="truncate">{project.location}</span>
                   </span>
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-[#34D399] transition-colors hover:text-white"
-                  >
+                  <span className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-[#34D399] transition-colors group-hover:text-white">
                     Details
                     <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
+                  </span>
                 </div>
               </div>
-            </article>
+            </Link>
           ))}  
         </div> 
         )}

@@ -1,34 +1,12 @@
-import nodemailer from "nodemailer";
+import { EMAIL_RE, PHONE_RE, escapeHtml, formField as field, isMailerConfigured, transporter } from "@/lib/mailer";
 
 export const runtime = "nodejs";
 
 const MAX_CV_SIZE = 5 * 1024 * 1024; // 5MB
 const ALLOWED_CV_EXTENSIONS = [".pdf", ".doc", ".docx"];
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-const escapeHtml = (value: string) =>
-  value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-
-const field = (form: FormData, key: string, max = 500) => {
-  const value = form.get(key);
-  return typeof value === "string" ? value.trim().slice(0, max) : "";
-};
-
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
 
 export async function POST(request: Request) {
-  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+  if (!isMailerConfigured()) {
     console.error("Careers apply: SMTP_USER / SMTP_PASS are not set");
     return Response.json({ error: "Email service is not configured." }, { status: 500 });
   }
@@ -54,7 +32,7 @@ export async function POST(request: Request) {
   if (!EMAIL_RE.test(email)) {
     return Response.json({ error: "Please enter a valid email address." }, { status: 400 });
   }
-  if (!/^[0-9+\s-]{7,20}$/.test(mobile)) {
+  if (!PHONE_RE.test(mobile)) {
     return Response.json({ error: "Please enter a valid mobile number." }, { status: 400 });
   }
   if (!(cv instanceof File) || cv.size === 0) {

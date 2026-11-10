@@ -1,22 +1,43 @@
 "use client";
 
 import React, { useState } from "react";
-import { MapPin, Phone, Mail, ChevronDown } from "lucide-react";
+import { MapPin, Phone, Mail, ChevronDown, CheckCircle2, Loader2 } from "lucide-react";
 import { servicesData } from "../services/_sections/services-data";
 
-const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    emailAddress: "",
-    phoneNumber: "",
-    serviceRequired: servicesData[0].title,
-    projectDetails: "",
-    message: "",
-  });
+const initialFormData = {
+  fullName: "",
+  emailAddress: "",
+  phoneNumber: "",
+  serviceRequired: servicesData[0].title,
+  projectDetails: "",
+  message: "",
+};
 
-  const handleSubmit = (e: React.FormEvent) => {
+const Contact: React.FC = () => {
+  const [formData, setFormData] = useState(initialFormData);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submittedAs, setSubmittedAs] = useState<{ name: string; email: string } | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Consultation Request Submitted:", formData);
+    setIsSubmitting(true);
+    setError(null);
+
+    const body = new FormData();
+    Object.entries(formData).forEach(([key, value]) => body.append(key, value.trim()));
+
+    try {
+      const res = await fetch("/api/contact", { method: "POST", body });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data?.error || "Could not send your message. Please try again.");
+      setSubmittedAs({ name: formData.fullName.trim(), email: formData.emailAddress.trim() });
+      setFormData(initialFormData);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not send your message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -141,10 +162,36 @@ const Contact: React.FC = () => {
           </div>
 
           {/* RIGHT AREA: INTERACTIVE CONSULTATION FORM SYSTEM (SPAN 7) */}
+          {submittedAs ? (
+            <div
+              role="status"
+              className="col-span-1 lg:col-span-7 w-full rounded-[24px] border border-[#16a34a]/20 bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(2,44,34,0.40)_100%)] backdrop-blur-[2px] p-6 md:p-10 flex flex-col items-center justify-center text-center gap-4 min-h-[420px]"
+            >
+              <CheckCircle2 className="w-14 h-14 text-[#34D399]" />
+              <h3 className="text-white text-[24px] font-bold">Thank you, {submittedAs.name}!</h3>
+              <p className="text-white/60 text-[14px] leading-[24px] max-w-[420px]">
+                We have received your message and one of our consultants will get back to you shortly. A
+                confirmation email has been sent to <span className="text-white">{submittedAs.email}</span>.
+              </p>
+              <button
+                type="button"
+                onClick={() => setSubmittedAs(null)}
+                className="mt-2 rounded-full border border-white/15 px-6 py-2.5 text-[14px] font-semibold text-white/80 hover:bg-white/5 transition-colors cursor-pointer"
+              >
+                Send another message
+              </button>
+            </div>
+          ) : (
           <form
             onSubmit={handleSubmit}
             className="col-span-1 lg:col-span-7 w-full rounded-[24px] border border-[#16a34a]/20 bg-[linear-gradient(45deg,rgba(2,44,34,0.40)_0%,rgba(2,44,34,0.40)_100%)] backdrop-blur-[2px] p-6 md:p-10 flex flex-col gap-6"
           >
+            {error && (
+              <p role="alert" className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-[13px] text-red-300">
+                {error}
+              </p>
+            )}
+
             {/* Row 1: Full Name & Email Address Split */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col">
@@ -260,11 +307,14 @@ const Contact: React.FC = () => {
             {/* Form Submit Button Component with Gradient-to-Right Accent Mapping */}
             <button
               type="submit"
-              className="w-full mt-2 py-3.5 text-center text-black font-bold text-[14px] leading-[20px] rounded-[12px] bg-[linear-gradient(270deg,#ffffff_0%,#00a63e_100%)] shadow-[0_20px_25px_-5px_rgba(2,44,34,0.20),0_8px_10px_-6px_rgba(2,44,34,0.20)] hover:opacity-95 active:scale-[0.99] transition-all cursor-pointer"
+              disabled={isSubmitting}
+              className="w-full mt-2 py-3.5 inline-flex items-center justify-center gap-2 text-center text-black font-bold text-[14px] leading-[20px] rounded-[12px] bg-[linear-gradient(270deg,#ffffff_0%,#00a63e_100%)] shadow-[0_20px_25px_-5px_rgba(2,44,34,0.20),0_8px_10px_-6px_rgba(2,44,34,0.20)] hover:opacity-95 active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed transition-all cursor-pointer"
             >
-              Schedule a Consultation
+              {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
+              {isSubmitting ? "Sending..." : "Schedule a Consultation"}
             </button>
           </form>
+          )}
         </div>
       </div>
     </section>

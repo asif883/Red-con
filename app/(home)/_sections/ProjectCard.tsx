@@ -20,7 +20,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     : "/images/projects/project1_1.png";
 
   return (
-    <div className="w-full py-12 border-b border-neutral-800/50 last:border-b-0 flex flex-col gap-6 relative">
+    <Link
+      href={`/projects/${project.slug}`}
+      aria-label={`View details for ${project.title}`}
+      className="group/card w-full py-12 border-b border-neutral-800/50 last:border-b-0 flex flex-col gap-6 relative"
+    >
       {/* Top Header Row of Project Card */}
       <div className="w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex flex-col gap-3 max-w-4xl">
@@ -46,17 +50,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         {/* View Details Redirect Action Trigger */}
-        <Link
-          href={`/projects/${project.slug}`}
-          className="flex items-center gap-2 group self-start sm:self-center shrink-0"
-        >
+        <span className="flex items-center gap-2 group self-start sm:self-center shrink-0">
           <span className="text-[#16A34A] text-[16px] font-normal leading-[32px] transition-colors group-hover:text-green-400">
             View Details
           </span>
           <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform bg-neutral-900/30">
             <ArrowUpRight className="w-4 h-4 text-[#16A34A] group-hover:text-green-400" />
           </div>
-        </Link>
+        </span>
       </div>
 
       {/* Main Multi-Column Media Content Grid Layout */}
@@ -122,6 +123,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

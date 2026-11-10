@@ -136,9 +136,9 @@ const Faq: React.FC = () => {
               before starting your project.
             </p>
 
-            <button className="w-full py-3 text-center bg-[#16A34A] hover:bg-[#15803d] active:scale-[0.99] transition-all text-white   font-bold text-[14px] leading-[20px] rounded-[16px] shadow-lg shadow-emerald-900/20">
+            <Link href="/#contact" className="w-full py-3 text-center bg-[#16A34A] hover:bg-[#15803d] active:scale-[0.99] transition-all text-white   font-bold text-[14px] leading-[20px] rounded-[16px] shadow-lg shadow-emerald-900/20">
               Book a Free Call
-            </button>
+            </Link>
           </div>
         </div>
 

@@ -174,9 +174,11 @@ export default function NewProjectSection({ projects }: { projects: Project[] })
           <>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {visibleProjects.map((project) => (
-                <article
+                <Link
                   key={project.id}
-                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#03170B] bg-[#03170B] transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/5"
+                  href={`/projects/${project.slug}`}
+                  aria-label={`View details for ${project.title}`}
+                  className="group flex h-full flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#16A34A] overflow-hidden rounded-2xl border border-[#03170B] bg-[#03170B] transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/5"
                 >
                   {/* Project image */}
                   <div className="relative aspect-[16/9] overflow-hidden bg-black">
@@ -254,11 +256,7 @@ export default function NewProjectSection({ projects }: { projects: Project[] })
                     </div>
 
                     {/* View details */}
-                    <Link
-                      href={`/projects/${project.slug}`}
-                      className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-semibold text-[#16A34A] transition-colors hover:text-emerald-300"
-                      aria-label={`View details for ${project.title}`}
-                    >
+                    <span className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-semibold text-[#16A34A] transition-colors group-hover:text-emerald-300">
                       View Details
 
                       <svg
@@ -275,9 +273,9 @@ export default function NewProjectSection({ projects }: { projects: Project[] })
                           strokeLinejoin="round"
                         />
                       </svg>
-                    </Link>
+                    </span>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
 
