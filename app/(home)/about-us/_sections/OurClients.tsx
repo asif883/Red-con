@@ -3,7 +3,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { clients } from "../../_sections/clients-data";
+import { majorClients } from "../../_sections/clients-data";
 
 const AUTO_SWIPE_MS = 3000;
 
@@ -85,7 +85,7 @@ const OurClients = () => {
           className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           data-lenis-prevent
         >
-          {clients.map((client) => (
+          {majorClients.map((client) => (
             <div
               key={client.logo}
               className="snap-start shrink-0 w-[calc(50%-12px)] sm:w-[calc(33.333%-16px)] lg:w-[calc(20%-19.2px)] h-[150px] rounded-[20px] border border-white/10 bg-white flex items-center justify-center p-6"

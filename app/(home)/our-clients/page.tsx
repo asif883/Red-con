@@ -1,6 +1,7 @@
 import PageHero from "@/components/PageHero/PageHero";
 import OurClients from "../about-us/_sections/OurClients";
 import ReadyToDeliver from "../about-us/_sections/ReadyToDeliver";
+import FundingAgencies from "./_sections/FundingAgencies";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -19,6 +20,7 @@ export default function OurClientsPage() {
         description="Government agencies, development partners and institutions we are proud to work with."
       />
       <OurClients />
+      <FundingAgencies />
       <ReadyToDeliver />
     </div>
   );
